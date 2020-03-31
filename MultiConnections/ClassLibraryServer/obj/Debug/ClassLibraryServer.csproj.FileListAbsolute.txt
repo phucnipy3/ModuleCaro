@@ -1,0 +1,11 @@
+E:\NCKH\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.dll
+E:\NCKH\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.pdb
+E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csprojAssemblyReference.cache
+E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CoreCompileInputs.cache
+E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
+E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
+E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.ResolveComReference.cache
+E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.Properties.Resources.resources
+E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCMatch.resources
+E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCPlayer.resources
+E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.GenerateResource.cache

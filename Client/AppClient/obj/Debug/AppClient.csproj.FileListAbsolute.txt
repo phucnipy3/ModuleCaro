@@ -1,0 +1,45 @@
+E:\Learning\Science Research\Caro\Client\AppClient\bin\Debug\AppClient.exe.config
+E:\Learning\Science Research\Caro\Client\AppClient\bin\Debug\AppClient.exe
+E:\Learning\Science Research\Caro\Client\AppClient\bin\Debug\AppClient.pdb
+E:\Learning\Science Research\Caro\Client\AppClient\obj\Debug\AppClient.csprojAssemblyReference.cache
+E:\Learning\Science Research\Caro\Client\AppClient\obj\Debug\AppClient.Form1.resources
+E:\Learning\Science Research\Caro\Client\AppClient\obj\Debug\AppClient.Properties.Resources.resources
+E:\Learning\Science Research\Caro\Client\AppClient\obj\Debug\AppClient.csproj.GenerateResource.cache
+E:\Learning\Science Research\Caro\Client\AppClient\obj\Debug\AppClient.csproj.CoreCompileInputs.cache
+E:\Learning\Science Research\Caro\Client\AppClient\obj\Debug\AppClient.exe
+E:\Learning\Science Research\Caro\Client\AppClient\obj\Debug\AppClient.pdb
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\bin\Debug\AppClient.exe.config
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\bin\Debug\AppClient.exe
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\bin\Debug\AppClient.pdb
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\obj\Debug\AppClient.csprojAssemblyReference.cache
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\obj\Debug\AppClient.Form1.resources
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\obj\Debug\AppClient.Properties.Resources.resources
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\obj\Debug\AppClient.csproj.GenerateResource.cache
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\obj\Debug\AppClient.csproj.CoreCompileInputs.cache
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\obj\Debug\AppClient.exe
+C:\Users\phucn\Desktop\Version_2_9_19\Version_2_9_19\Client(Beta)\AppClient\obj\Debug\AppClient.pdb
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Debug\AppClient.exe.config
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Debug\AppClient.exe
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Debug\AppClient.pdb
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Debug\AppClient.csprojAssemblyReference.cache
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Debug\AppClient.Form1.resources
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Debug\AppClient.Properties.Resources.resources
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Debug\AppClient.csproj.GenerateResource.cache
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Debug\AppClient.csproj.CoreCompileInputs.cache
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Debug\AppClient.exe
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Debug\AppClient.pdb
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Debug\ClassLibraryClient.dll
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Debug\ClassLibraryClient.pdb
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Debug\AppClient.csproj.CopyComplete
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Debug\AppClient.exe.config
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Debug\AppClient.exe
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Debug\AppClient.pdb
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Debug\ClassLibraryClient.dll
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Debug\ClassLibraryClient.pdb
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Debug\AppClient.csprojAssemblyReference.cache
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Debug\AppClient.Form1.resources
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Debug\AppClient.Properties.Resources.resources
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Debug\AppClient.csproj.GenerateResource.cache
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Debug\AppClient.csproj.CopyComplete
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Debug\AppClient.exe
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Debug\AppClient.pdb

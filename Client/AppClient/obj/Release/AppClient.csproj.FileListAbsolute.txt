@@ -1,0 +1,25 @@
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Release\AppClient.exe.config
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Release\AppClient.exe
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Release\AppClient.pdb
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Release\ClassLibraryClient.dll
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\bin\Release\ClassLibraryClient.pdb
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Release\AppClient.csprojAssemblyReference.cache
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Release\AppClient.Form1.resources
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Release\AppClient.Properties.Resources.resources
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Release\AppClient.csproj.GenerateResource.cache
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Release\AppClient.csproj.CoreCompileInputs.cache
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Release\AppClient.csproj.CopyComplete
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Release\AppClient.exe
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\AppClient\obj\Release\AppClient.pdb
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Release\AppClient.exe.config
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Release\AppClient.exe
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Release\AppClient.pdb
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Release\ClassLibraryClient.dll
+C:\Users\duong\Desktop\Client(Beta)\AppClient\bin\Release\ClassLibraryClient.pdb
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.csprojAssemblyReference.cache
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.Form1.resources
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.Properties.Resources.resources
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.csproj.GenerateResource.cache
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.csproj.CopyComplete
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.exe
+C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.pdb

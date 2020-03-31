@@ -1,0 +1,9 @@
+﻿  ReadAndWrite.cpp
+  Source.cpp
+e:\nckh\debugai\ai_cpp\ai\source.cpp(9): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Generating code
+  160 of 167 functions (95.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  AI.vcxproj -> E:\NCKH\DebugAI\AI_cpp\Release\AI.exe

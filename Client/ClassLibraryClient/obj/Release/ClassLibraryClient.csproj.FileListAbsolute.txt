@@ -1,0 +1,15 @@
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\ClassLibraryClient\bin\Release\ClassLibraryClient.dll
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\ClassLibraryClient\bin\Release\ClassLibraryClient.pdb
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.csprojAssemblyReference.cache
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.Properties.Resources.resources
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.csproj.GenerateResource.cache
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.csproj.CoreCompileInputs.cache
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.dll
+C:\Users\phucn\Desktop\Version 28-09\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.pdb
+C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\bin\Release\ClassLibraryClient.dll
+C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\bin\Release\ClassLibraryClient.pdb
+C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.csprojAssemblyReference.cache
+C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.Properties.Resources.resources
+C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.csproj.GenerateResource.cache
+C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.dll
+C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Release\ClassLibraryClient.pdb

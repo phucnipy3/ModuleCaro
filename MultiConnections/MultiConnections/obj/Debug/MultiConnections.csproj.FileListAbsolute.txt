@@ -1,0 +1,15 @@
+E:\NCKH\MultiConnections\MultiConnections\bin\Debug\MultiConnections.exe.config
+E:\NCKH\MultiConnections\MultiConnections\bin\Debug\MultiConnections.exe
+E:\NCKH\MultiConnections\MultiConnections\bin\Debug\MultiConnections.pdb
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csprojAssemblyReference.cache
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csproj.ResolveComReference.cache
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.Form1.resources
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.FormCreateMatch.resources
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.Properties.Resources.resources
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csproj.GenerateResource.cache
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csproj.CoreCompileInputs.cache
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.exe
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.pdb
+E:\NCKH\MultiConnections\MultiConnections\bin\Debug\ClassLibraryServer.dll
+E:\NCKH\MultiConnections\MultiConnections\bin\Debug\ClassLibraryServer.pdb
+E:\NCKH\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csproj.CopyComplete
