@@ -29,7 +29,7 @@ namespace AppClient
 
             myClient.StartLookingForServer();
             myClient.StartConnectToServer();
-            myClient.StartReciveAndSend();
+            myClient.StartReceiveAndSend();
             myClient.StartCheckForConnection(lblStatus);
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -90,6 +90,11 @@ namespace AppClient
         private void button1_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
