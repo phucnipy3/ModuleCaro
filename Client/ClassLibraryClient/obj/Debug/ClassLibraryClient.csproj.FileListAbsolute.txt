@@ -13,3 +13,11 @@ C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Debug\ClassLibraryCli
 C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.GenerateResource.cache
 C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Debug\ClassLibraryClient.dll
 C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Debug\ClassLibraryClient.pdb
+D:\caro\phucnipy3\Client\ClassLibraryClient\bin\Debug\ClassLibraryClient.dll
+D:\caro\phucnipy3\Client\ClassLibraryClient\bin\Debug\ClassLibraryClient.pdb
+D:\caro\phucnipy3\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csprojAssemblyReference.cache
+D:\caro\phucnipy3\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.Properties.Resources.resources
+D:\caro\phucnipy3\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.GenerateResource.cache
+D:\caro\phucnipy3\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.CoreCompileInputs.cache
+D:\caro\phucnipy3\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.dll
+D:\caro\phucnipy3\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.pdb

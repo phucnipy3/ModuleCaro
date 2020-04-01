@@ -11,6 +11,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
+using System.Net.NetworkInformation;
 
 namespace ClassLibraryClient
 {
@@ -33,6 +34,7 @@ namespace ClassLibraryClient
         private bool serverConnected = false;
         private string ipString;
         private bool serverFound = false;
+        private bool networkAvailable = true;
         private string name;
         private Image img;
         private Thread threadReceiveAndSend;
@@ -48,6 +50,12 @@ namespace ClassLibraryClient
             this.name = name;
             this.img = img;
             ClearInputOutput();
+            NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
+        }
+
+        private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
+        {
+            networkAvailable = e.IsAvailable;
         }
 
         public void ClearInputOutput()
@@ -59,7 +67,7 @@ namespace ClassLibraryClient
             writer1.Close();
             writer2.Close();
         }
-        public void StartReciveAndSend()
+        public void StartReceiveAndSend()
         {
             threadReceiveAndSend = new Thread(new ThreadStart(ReceiveAndSend));
             threadReceiveAndSend.IsBackground = true;
@@ -118,6 +126,7 @@ namespace ClassLibraryClient
                     }
                     catch(Exception e)
                     {
+                        //MessageBox.Show(e.Message);
                         continue;
                     }
                 }
@@ -126,6 +135,8 @@ namespace ClassLibraryClient
 
         private bool isConnecting()
         {
+            if (!networkAvailable)
+                return false;
             bool blockingState = player.Client.Blocking;
             try
             {
@@ -192,17 +203,39 @@ namespace ClassLibraryClient
 
         public void ReceiveData()
         {
-            byte[] dataTemp = new byte[SIZE_OF_BYTE];
-            NetworkStream stream = player.GetStream();
-            stream.Read(dataTemp, 0, dataTemp.Length);
-            string data = Encoding.ASCII.GetString(dataTemp);
+            string data = TryReadFromStream();
             TryWriteFile(data);
             if (data.Substring(0, 6).Equals(SECOND_TURN))
                 ReceiveData();
         }
+
+        public string TryReadFromStream()
+        {
+            while(true)
+            {
+                try
+                {
+                    return ReadFromStream();
+                }
+                catch
+                {
+                    continue;
+                }
+            }    
+        }
+        public string ReadFromStream()
+        {
+            byte[] dataTemp = new byte[SIZE_OF_BYTE];
+            NetworkStream stream = player.GetStream();
+            stream.ReadTimeout = 10000;
+            stream.Read(dataTemp, 0, dataTemp.Length);
+            return Encoding.ASCII.GetString(dataTemp);
+        }
+
         public bool isEmpty(byte[] data)
         {
             foreach (byte b in data)
+
                 if (b != 0)
                     return false;
             return true;
@@ -225,9 +258,10 @@ namespace ClassLibraryClient
 
         public void WriteFile(string data)
         {
-            StreamWriter sw = new StreamWriter(LINK_INPUT);
-            sw.Write(data);
-            sw.Close();
+            using (StreamWriter sw = new StreamWriter(LINK_INPUT))
+            {
+                sw.Write(data);
+            }
         }
 
         public void SendData()
@@ -235,24 +269,45 @@ namespace ClassLibraryClient
             string data;
             do
             {
-                data = TryReadFile();
+                data = TryReadFile(LINK_OUTPUT);
             }
             while (data == null || data.Equals(oldData));
             oldData = data;
 
+            TryWriteToStream(data);
+        }
+
+        public void TryWriteToStream(string data)
+        {
+            while(true)
+            {
+                try
+                {
+                    WriteToStream(data);
+                    break;
+                }
+                catch
+                {
+                    continue;
+                }
+            }    
+        }
+        public void WriteToStream(string data)
+        {
             byte[] dataTemp = new byte[SIZE_OF_BYTE];
             dataTemp = Encoding.ASCII.GetBytes(data);
             NetworkStream stream = player.GetStream();
+            stream.WriteTimeout = 10000;
             stream.Write(dataTemp, 0, dataTemp.Length);
         }
 
-        public string TryReadFile()
+        public string TryReadFile(string filename)
         {
             while (true)
             {
                 try
                 {
-                    return ReadFile();
+                    return ReadFile(filename);
                 }
                 catch
                 {
@@ -261,12 +316,13 @@ namespace ClassLibraryClient
             }
         }
 
-        public string ReadFile()
+        public string ReadFile(string filename)
         {
-            StreamReader read = new StreamReader(LINK_OUTPUT);
-            string newData = read.ReadLine();
-            read.Close();
-            return newData;
+            using (StreamReader read = new StreamReader(filename))
+            { 
+                string newData = read.ReadLine();
+                return newData;
+            }
         }
         public void CheckForConnection(object sender)
         {
