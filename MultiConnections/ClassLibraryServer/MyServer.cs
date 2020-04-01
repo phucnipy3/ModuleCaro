@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Windows.Forms;
 using System.Threading;
 using System.Drawing;
+using System.Linq;
 
 namespace ClassLibraryServer
 {
@@ -73,8 +74,18 @@ namespace ClassLibraryServer
                 if (isAvailableToConnect())
                 {
                     connectionsChanged = true;
-                    ListPlayer[connectionCount] = new Player(client, name, null);
-                    connectionCount++;
+                    Player y = ListPlayer.Where(x => x.Name == name).SingleOrDefault();
+                    if (y != null)
+                    {
+                        connectedClients.Remove(y.Client);
+                        y.Client = client;
+
+                    }
+                    else
+                    {
+                        ListPlayer[connectionCount] = new Player(client, name, null);
+                        connectionCount++;
+                    }
                     break;
                 }
             }
@@ -143,11 +154,11 @@ namespace ClassLibraryServer
         public void CheckAndRemoveConnection()
         {
             int i = 0;
-            while (i < connectedClients.Count)
+            while (i < ListPlayer.Count -1)
             {
-                if (!isConnecting(connectedClients[i]))
+                if (!isConnecting(ListPlayer[i].Client))
                 {
-                    RemoveConnection(connectedClients[i]);
+                    RemoveConnection(ListPlayer[i]);
                 }
                 else
                 {
@@ -155,12 +166,11 @@ namespace ClassLibraryServer
                 }
             }
         }
-        private void RemoveConnection(TcpClient client)
+        private void RemoveConnection(Player player)
         {
             connectionsChanged = true;
-            int index = connectedClients.IndexOf(client);
-            connectedClients.RemoveAt(index);
-            ListPlayer.RemoveAt(index);
+            connectedClients.Remove(player.Client);
+            ListPlayer.Remove(player);
             connectionCount--;
         }
         private bool isConnecting(TcpClient client)

@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using ClassLibraryClient;
+using System.Net.NetworkInformation;
 
 namespace AppClient
 {
@@ -60,7 +61,7 @@ namespace AppClient
 
         private void timerCheckConnection_Tick(object sender, EventArgs e)
         {
-            
+           // Ping x = new Ping()
         }
 
         

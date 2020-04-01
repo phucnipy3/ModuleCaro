@@ -13,3 +13,11 @@ C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Debug\ClassLibraryCli
 C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.GenerateResource.cache
 C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Debug\ClassLibraryClient.dll
 C:\Users\duong\Desktop\Client(Beta)\ClassLibraryClient\obj\Debug\ClassLibraryClient.pdb
+E:\NCKH\Caro\Client\ClassLibraryClient\bin\Debug\ClassLibraryClient.dll
+E:\NCKH\Caro\Client\ClassLibraryClient\bin\Debug\ClassLibraryClient.pdb
+E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csprojAssemblyReference.cache
+E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.Properties.Resources.resources
+E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.GenerateResource.cache
+E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.CoreCompileInputs.cache
+E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.dll
+E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.pdb
