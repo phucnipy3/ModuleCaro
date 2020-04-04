@@ -67,7 +67,7 @@ namespace ClassLibraryServer
                     Helper.SetWinner(Helper.GetPlayerByName(firstPlayer.Name), storedGame);
                     return;
                 }
-                TrySendData(secondPlayer, moveString);
+                TrySendData(secondPlayer, moveString + "[end]");
                 chessman = Chessman.X;
                 ProcessingDataFrom(secondPlayer);
                 if (gameEnded)
@@ -76,17 +76,17 @@ namespace ClassLibraryServer
                     Helper.SetWinner(Helper.GetPlayerByName(secondPlayer.Name), storedGame);
                     return;
                 }
-                TrySendData(firstPlayer, moveString);
+                TrySendData(firstPlayer, moveString + "[end]");
             }
         }
 
         private void SendStartMessageToFirstPlayer()
         {
-            TrySendData(firstPlayer, "-1,-1,");
+            TrySendData(firstPlayer, "playfirst[end]");
         }
         private void SendStartMessageToSecondPlayer()
         {
-            TrySendData(secondPlayer, "-2,-2,");
+            TrySendData(secondPlayer, "playsecond[end]");
         }
 
         private void ProcessingDataFrom(Player player)
@@ -128,7 +128,7 @@ namespace ClassLibraryServer
             stream.ReadTimeout = 10000;
             stream.Read(buffer, 0, buffer.Length);
             string data = Encoding.ASCII.GetString(buffer);
-            return data;
+            return data.Substring(0,data.LastIndexOf("[end]"));
         }
         public bool StrValid()
         {
