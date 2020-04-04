@@ -46,7 +46,7 @@ namespace DBAccessLibrary.DBHelper
             DB.SaveChanges();
             return game;
         }
-        public static void AddMove(StoredGame game, char chessman, int coordinateX, int coordinateY)
+        public static void AddMove(StoredGame game, string chessman, int coordinateX, int coordinateY)
         {
             Move move = new Move()
             {
@@ -75,7 +75,8 @@ namespace DBAccessLibrary.DBHelper
         
         public static bool Login(string infomation)
         {
-            return DB.Players.Where(x => infomation.Equals($"[username]{x.Username}[password]{"123456"}[end]")).Count() > 0;
+            var players = DB.Players;
+            return players.Where(x => infomation.Equals("[username]"+x.Username+"[password]123456")).Count() > 0;
         }
     }
 }

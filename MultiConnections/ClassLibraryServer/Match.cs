@@ -15,15 +15,13 @@ namespace ClassLibraryServer
         private Player player1;
         private Player player2;
         private Player firstPlayer;
-        private Player secondPlayer;
+        private Player secondPlayer; 
         private bool isBlockBothEnds;
         private int maxGames;
         private int gamesCounter;
         private int scoreOfPlayer1;
         private int scoreOfPlayer2;
         private bool gameEnded;
-        private ExcelFile fileSave;
-        private const string savePath = @"E:\NCKH\MatchHistory\";
         private StoredMatch storedMatch;
 
         public Player Player1 { get => player1; set => player1 = value; }
@@ -89,18 +87,12 @@ namespace ClassLibraryServer
 
         private void StartOneGame()
         {
-            if (gamesCounter == 1)
-                fileSave = ExcelFile.CreateNewFile(savePath + GetSaveName() + @".xlsx");
-            else
-                fileSave.SelectSheet(gamesCounter);
+           
             Game game = new Game(firstPlayer, secondPlayer, storedMatch);
-            game.Start(fileSave);
+            game.Start();
             IncreaseScoreOf(game.Winner);
             SwapPlayers();
-            fileSave.AddNewSheet();
             gamesCounter++;
-            if (Done())
-                Save();
             ShowScore();
         }
 
@@ -149,17 +141,6 @@ namespace ClassLibraryServer
             firstPlayer = secondPlayer;
             secondPlayer = tempPlayer;
             Helper.SwapPlayer(storedMatch);
-        }
-
-        public bool Done()
-        {
-            return gamesCounter > maxGames;
-        }
-
-        public void Save()
-        {
-            fileSave.Save();
-            fileSave.Close();
         }
     }
 }

@@ -60,6 +60,14 @@
     <Compile Include="Migrations\202004040400522_Init.designer.cs">
       <DependentUpon>202004040400522_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004041349122_UpdateChessman.cs" />
+    <Compile Include="Migrations\202004041349122_UpdateChessman.designer.cs">
+      <DependentUpon>202004041349122_UpdateChessman.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004041356560_UpdateChessman1.cs" />
+    <Compile Include="Migrations\202004041356560_UpdateChessman1.designer.cs">
+      <DependentUpon>202004041356560_UpdateChessman1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Move.cs" />
     <Compile Include="Models\StoredGame.cs" />
@@ -74,6 +82,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004040400522_Init.resx">
       <DependentUpon>202004040400522_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041349122_UpdateChessman.resx">
+      <DependentUpon>202004041349122_UpdateChessman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004041356560_UpdateChessman1.resx">
+      <DependentUpon>202004041356560_UpdateChessman1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

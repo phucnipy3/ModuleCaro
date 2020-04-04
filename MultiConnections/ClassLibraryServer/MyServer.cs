@@ -58,7 +58,6 @@ namespace ClassLibraryServer
             {
                 TcpClient client = server.AcceptTcpClient();
                 client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, 0);
-
                 AddNewPlayer(client);
             }
         }
@@ -66,28 +65,42 @@ namespace ClassLibraryServer
         public void AddNewPlayer(TcpClient client)
         {
             string name = GetName(client);
-            if(Helper.Login(name))
-
-            //Image avatar = GetImage(client);
-            while (true)
+            if (!Helper.Login(name))
             {
-                if (isAvailableToConnect())
-                {
-                    connectionsChanged = true;
-                    Player y = Players.Where(x => x.Name == name).SingleOrDefault();
-                    if (y != null)
-                    {
-                        y.Client = client;
+                SendMesssage(client, "invalid");
+            }
+            else
+            {
+                SendMesssage(client, "valid");
 
-                    }
-                    else
+                while (true)
+                {
+                    if (isAvailableToConnect())
                     {
-                        Players[connectionCount] = new Player(client, name, null);
-                        connectionCount++;
+                        connectionsChanged = true;
+                        Player y = Players.Where(x => x.Name == name).SingleOrDefault();
+                        if (y != null)
+                        {
+                            y.Client = client;
+
+                        }
+                        else
+                        {
+                            Players[connectionCount] = new Player(client, name, null);
+                            connectionCount++;
+                        }
+                        break;
                     }
-                    break;
                 }
             }
+        }
+
+        private void SendMesssage(TcpClient client, string loginMessage)
+        {
+            byte[] buffer = new byte[BYTES_SIZE];
+            buffer = Encoding.ASCII.GetBytes(loginMessage);
+            NetworkStream stream = client.GetStream();
+            stream.Write(buffer, 0, buffer.Length);
         }
 
         private string GetName(TcpClient client)
@@ -120,13 +133,8 @@ namespace ClassLibraryServer
         {
             if (!isAvailableToConnect())
             {
-                AddNewEmptyPlayer();
+                Players.Add(new Player());
             }
-        }
-
-        private void AddNewEmptyPlayer()
-        {
-            Players.Add(new Player());
         }
 
         public void HardRefreshListPlayer(FlowLayoutPanel PnlPlayerList)

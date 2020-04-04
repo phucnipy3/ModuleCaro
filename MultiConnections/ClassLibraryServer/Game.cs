@@ -26,7 +26,6 @@ namespace ClassLibraryServer
         private string moveString;
         private Chessman chessman;
         private int moveCount;
-        private ExcelFile fileSave;
         private StoredGame storedGame;
         public Player Winner
         {
@@ -54,9 +53,8 @@ namespace ClassLibraryServer
                     matrix[i, j] = Chessman.Empty;
         }
 
-        public void Start(ExcelFile fileSave)
+        public void Start()
         {
-            this.fileSave = fileSave;
             SendStartMessageToFirstPlayer();
             SendStartMessageToSecondPlayer();
             while (true)
@@ -159,9 +157,8 @@ namespace ClassLibraryServer
             int col = int.Parse(move[1]);
             matrix[row, col] = chessman;
             string saveValue = chessman.ToString() + moveCount.ToString();
-            fileSave.WriteToCell(row, col, saveValue);
             moveCount++;
-            Helper.AddMove(storedGame, chessman == Chessman.X ? 'X' : 'Y', col, row);
+            Helper.AddMove(storedGame, chessman == Chessman.X ? "X" : "Y", col, row);
         }
 
         public bool GameOver()
