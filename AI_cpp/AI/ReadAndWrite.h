@@ -2,4 +2,6 @@
 
 char* ReadData();
 
-void WriteData(char* data);
+void WriteData(string data);
+const string PlayFirstMessage = "playfirst";
+const string PlaySecondMessage = "playsecond";

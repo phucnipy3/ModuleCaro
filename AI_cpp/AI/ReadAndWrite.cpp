@@ -7,6 +7,7 @@ using namespace std;
 char oldStr[1024] = "";
 char *newStr = new char[1024];
 
+
 char* ReadData()
 {
 	delete newStr;
@@ -29,7 +30,7 @@ char* ReadData()
 	}
 }
 
-void WriteData(char* data)
+void WriteData(string data)
 {
 	while(1)
 	{
@@ -43,6 +44,9 @@ void WriteData(char* data)
 		}
 	}
 }
+
+
+
 
 
 
