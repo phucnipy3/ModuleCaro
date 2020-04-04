@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Drawing;
 using System.Linq;
+using DBAccessLibrary.DBHelper;
 
 namespace ClassLibraryServer
 {
@@ -15,7 +16,6 @@ namespace ClassLibraryServer
         private const int IMAGE_BYTE_SIZE = 20000;
         private const int BYTES_SIZE = 1024;
         private TcpListener server;
-        private List<TcpClient> connectedClients;
         private int connectionCount;
         private List<Player> players;
         private bool connectionsChanged;
@@ -52,14 +52,13 @@ namespace ClassLibraryServer
 
         private void GetConnection()
         {
-            connectedClients = new List<TcpClient>();
             server = new TcpListener(GetIPAddress(), 9999);
             server.Start();
             while (true)
             {
                 TcpClient client = server.AcceptTcpClient();
                 client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.KeepAlive, 0);
-                connectedClients.Add(client);
+
                 AddNewPlayer(client);
             }
         }
@@ -67,6 +66,8 @@ namespace ClassLibraryServer
         public void AddNewPlayer(TcpClient client)
         {
             string name = GetName(client);
+            if(Helper.Login(name))
+
             //Image avatar = GetImage(client);
             while (true)
             {
@@ -76,7 +77,6 @@ namespace ClassLibraryServer
                     Player y = Players.Where(x => x.Name == name).SingleOrDefault();
                     if (y != null)
                     {
-                        connectedClients.Remove(y.Client);
                         y.Client = client;
 
                     }
@@ -169,7 +169,6 @@ namespace ClassLibraryServer
         private void RemoveConnection(Player player)
         {
             connectionsChanged = true;
-            connectedClients.Remove(player.Client);
             Players.Remove(player);
             connectionCount--;
         }

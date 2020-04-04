@@ -72,5 +72,10 @@ namespace DBAccessLibrary.DBHelper
                 DB.SaveChanges();
             }
         }
+        
+        public static bool Login(string infomation)
+        {
+            return DB.Players.Where(x => infomation.Equals($"[username]{x.Username}[password]{"123456"}[end]")).Count() > 0;
+        }
     }
 }
