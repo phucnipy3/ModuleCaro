@@ -122,7 +122,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(296, 20);
             this.txtName.TabIndex = 7;
-            this.txtName.Text = "phucni1";
+            this.txtName.Text = "phucni2";
             this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // rtxtNotification
