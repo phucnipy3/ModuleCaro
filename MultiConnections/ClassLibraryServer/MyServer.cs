@@ -17,17 +17,16 @@ namespace ClassLibraryServer
         private TcpListener server;
         private List<TcpClient> connectedClients;
         private int connectionCount;
-        private List<Player> listPlayer;
+        private List<Player> players;
         private bool connectionsChanged;
 
-        public List<Player> ListPlayer { get => listPlayer; set => listPlayer = value; }
+        public List<Player> Players { get => players; set => players = value; }
 
         public MyServer()
         {
             connectionsChanged = false;
             connectionCount = 0;
-            ListPlayer = new List<Player>();
-            //ServicePointManager.SetTcpKeepAlive(true, 9000, 1000);
+            Players = new List<Player>();
         }
         public IPAddress GetIPAddress()
         {
@@ -74,7 +73,7 @@ namespace ClassLibraryServer
                 if (isAvailableToConnect())
                 {
                     connectionsChanged = true;
-                    Player y = ListPlayer.Where(x => x.Name == name).SingleOrDefault();
+                    Player y = Players.Where(x => x.Name == name).SingleOrDefault();
                     if (y != null)
                     {
                         connectedClients.Remove(y.Client);
@@ -83,7 +82,7 @@ namespace ClassLibraryServer
                     }
                     else
                     {
-                        ListPlayer[connectionCount] = new Player(client, name, null);
+                        Players[connectionCount] = new Player(client, name, null);
                         connectionCount++;
                     }
                     break;
@@ -115,7 +114,7 @@ namespace ClassLibraryServer
 
         private bool isAvailableToConnect()
         {
-            return connectionCount < ListPlayer.Count;
+            return connectionCount < Players.Count;
         }
         public void CreateEmptyPlayer()
         {
@@ -127,7 +126,7 @@ namespace ClassLibraryServer
 
         private void AddNewEmptyPlayer()
         {
-            ListPlayer.Add(new Player());
+            Players.Add(new Player());
         }
 
         public void HardRefreshListPlayer(FlowLayoutPanel PnlPlayerList)
@@ -135,7 +134,7 @@ namespace ClassLibraryServer
             PnlPlayerList.Controls.Clear();
             for (int i = 0; i < connectionCount; i++)
             {
-                PnlPlayerList.Controls.Add(new UCPlayer(ListPlayer[i]));
+                PnlPlayerList.Controls.Add(new UCPlayer(Players[i]));
             }
             connectionsChanged = false;
         }
@@ -146,7 +145,7 @@ namespace ClassLibraryServer
                 PnlPlayerList.Controls.Clear();
                 for (int i = 0; i < connectionCount; i++)
                 {
-                    PnlPlayerList.Controls.Add(new UCPlayer(ListPlayer[i]));
+                    PnlPlayerList.Controls.Add(new UCPlayer(Players[i]));
                 }
                 connectionsChanged = false;
             }
@@ -154,13 +153,14 @@ namespace ClassLibraryServer
         public void CheckAndRemoveConnection()
         {
             int i = 0;
-            while (i < ListPlayer.Count -1)
+            while (i < Players.Count -1)
             {
-                if (!isConnecting(ListPlayer[i].Client))
+                if (!Players[i].Playing&&!isConnecting(Players[i].Client))
                 {
-                    RemoveConnection(ListPlayer[i]);
+                    
+                        RemoveConnection(Players[i]);
                 }
-                else
+                else 
                 {
                     i++;
                 }
@@ -170,7 +170,7 @@ namespace ClassLibraryServer
         {
             connectionsChanged = true;
             connectedClients.Remove(player.Client);
-            ListPlayer.Remove(player);
+            Players.Remove(player);
             connectionCount--;
         }
         private bool isConnecting(TcpClient client)

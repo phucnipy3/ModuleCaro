@@ -13,27 +13,27 @@ namespace MultiConnections
 {
     public partial class FormCreateMatch : Form
     {   
-        private List<Player> listPlayer;
+        private List<Player> players;
         private Player lastPlayer = null;
         private int playersCount;
         private bool leftSide = true;
         private Player player1;
         private Player player2;
         private Match match;
-        public FormCreateMatch(List<Player> listPlayer)
+        public FormCreateMatch(List<Player> players)
         {
             InitializeComponent();
-            this.listPlayer = listPlayer;
-            playersCount = listPlayer.Count;
-            lastPlayer = listPlayer[listPlayer.Count - 1];
+            this.players = players;
+            playersCount = players.Count;
+            lastPlayer = players[players.Count - 1];
             AddUCPlayer();
         }
 
         private void AddUCPlayer()
         {
-            for (int i = 0; i < listPlayer.Count - 1; i++)
+            for (int i = 0; i < players.Count - 1; i++)
             {
-                UCPlayer ucPlayer = new UCPlayer(listPlayer[i]);
+                UCPlayer ucPlayer = new UCPlayer(players[i]);
                 ucPlayer.MouseClick += new MouseEventHandler(UcPlayer_MouseClick);
                 PnlPlayerList.Controls.Add(ucPlayer);
             }
@@ -48,31 +48,22 @@ namespace MultiConnections
             {
                 this.PnlPlayerList.Controls.Clear();
                 AddUCPlayer();
-                RemovePlayerIfNescessary();
+                RemoveDisconnectedPlayersOnMatch();
             }
         }
 
-        private void RemovePlayerIfNescessary()
+        private void RemoveDisconnectedPlayersOnMatch()
         {
-            if(!ExistingPlayer(player1))
+            if(!players.Contains(player1))
             {
                 RemovePlayer1();
             }
-            if(!ExistingPlayer(player2))
+            if(!players.Contains(player2))
             {
                 RemovePlayer2();
             }
         }
 
-        private bool ExistingPlayer(Player playerOnMatch)
-        {
-            foreach(Player player in listPlayer)
-            {
-                if (player == playerOnMatch)
-                    return true;
-            }
-            return false;
-        }
         private void RemovePlayer2()
         {
             player2 = null;
@@ -89,26 +80,26 @@ namespace MultiConnections
 
         private void UcPlayer_MouseClick(object sender, MouseEventArgs e)
         {
-            Player player = ((UCPlayer)sender).Player;
-            if (player.Playing)
+            Player selectedPlayer = ((UCPlayer)sender).Player;
+            if (selectedPlayer.Playing)
             {
                 MessageBox.Show("Player is now playing!!!");
                 return;
             }
-            if (player == player1 || player == player2)
+            if (selectedPlayer == player1 || selectedPlayer == player2)
                 return;
             if (player1 == null || (player2 != null && leftSide))
             {
-                ptbAvatar1.Image = player.Avatar;
-                lblNameOfPlayer1.Text = player.Name;
-                player1 = player;
+                ptbAvatar1.Image = selectedPlayer.Avatar;
+                lblNameOfPlayer1.Text = selectedPlayer.Name;
+                player1 = selectedPlayer;
                 leftSide = false;
             }
             else
             {
-                ptbAvatar2.Image = player.Avatar;
-                lblNameOfPlayer2.Text = player.Name;
-                player2 = player;
+                ptbAvatar2.Image = selectedPlayer.Avatar;
+                lblNameOfPlayer2.Text = selectedPlayer.Name;
+                player2 = selectedPlayer;
                 leftSide = true;
             }
             
@@ -116,13 +107,13 @@ namespace MultiConnections
 
         private bool PlayersChange()
         {
-            if(playersCount == listPlayer.Count)
+            if(playersCount == players.Count)
             {
-                if (lastPlayer == listPlayer[listPlayer.Count - 1])
+                if (lastPlayer == players[players.Count - 1])
                     return false;
             }
-            playersCount = listPlayer.Count;
-            lastPlayer = listPlayer[playersCount - 1];
+            playersCount = players.Count;
+            lastPlayer = players[playersCount - 1];
             return true;
         }
 

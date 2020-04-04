@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using DBAccessLibrary.DBHelper;
 
 namespace ClassLibraryServer
 {
@@ -21,7 +22,6 @@ namespace ClassLibraryServer
         {
             InitializeComponent();
             this.match = match;
-           
             ptbAvatar1.Image = match.Player1.Avatar;
             ptbAvatar2.Image = match.Player2.Avatar;
             

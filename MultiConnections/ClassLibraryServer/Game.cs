@@ -7,6 +7,8 @@ using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using System.IO;
+using DBAccessLibary.Models;
+using DBAccessLibrary.DBHelper;
 
 namespace ClassLibraryServer
 {
@@ -25,7 +27,7 @@ namespace ClassLibraryServer
         private Chessman chessman;
         private int moveCount;
         private ExcelFile fileSave;
-        private string prevMessage = "";
+        private StoredGame storedGame;
         public Player Winner
         {
             get { return winner; }
@@ -35,8 +37,9 @@ namespace ClassLibraryServer
         public Game()
         { }
 
-        public Game(Player firstPlayer, Player secondPlayer)
+        public Game(Player firstPlayer, Player secondPlayer, StoredMatch match)
         {
+            storedGame = Helper.AddNewGameToMatch(match);
             this.firstPlayer = firstPlayer;
             this.secondPlayer = secondPlayer;
             gameEnded = false;
@@ -63,6 +66,7 @@ namespace ClassLibraryServer
                 if (gameEnded)
                 {
                     winner = firstPlayer;
+                    Helper.SetWinner(Helper.GetPlayerByName(firstPlayer.Name), storedGame);
                     return;
                 }
                 TrySendData(secondPlayer, moveString);
@@ -71,6 +75,7 @@ namespace ClassLibraryServer
                 if (gameEnded)
                 {
                     winner = secondPlayer;
+                    Helper.SetWinner(Helper.GetPlayerByName(secondPlayer.Name), storedGame);
                     return;
                 }
                 TrySendData(firstPlayer, moveString);
@@ -156,6 +161,7 @@ namespace ClassLibraryServer
             string saveValue = chessman.ToString() + moveCount.ToString();
             fileSave.WriteToCell(row, col, saveValue);
             moveCount++;
+            Helper.AddMove(storedGame, chessman == Chessman.X ? 'X' : 'Y', col, row);
         }
 
         public bool GameOver()

@@ -119,5 +119,11 @@
   <ItemGroup>
     <None Include="Resources\DefaultAvatar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBAccessLibrary\DBAccessLibrary.csproj">
+      <Project>{22f06563-ff9f-46d6-a6f3-28d9592d7c7e}</Project>
+      <Name>DBAccessLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

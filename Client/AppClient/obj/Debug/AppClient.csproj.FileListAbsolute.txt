@@ -56,3 +56,16 @@ D:\caro\phucnipy3\Client\AppClient\obj\Debug\AppClient.csproj.CoreCompileInputs.
 D:\caro\phucnipy3\Client\AppClient\obj\Debug\AppClient.csproj.CopyComplete
 D:\caro\phucnipy3\Client\AppClient\obj\Debug\AppClient.exe
 D:\caro\phucnipy3\Client\AppClient\obj\Debug\AppClient.pdb
+E:\NCKH\Caro\Client\AppClient\bin\Debug\AppClient.exe.config
+E:\NCKH\Caro\Client\AppClient\bin\Debug\AppClient.exe
+E:\NCKH\Caro\Client\AppClient\bin\Debug\AppClient.pdb
+E:\NCKH\Caro\Client\AppClient\bin\Debug\ClassLibraryClient.dll
+E:\NCKH\Caro\Client\AppClient\bin\Debug\ClassLibraryClient.pdb
+E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.csprojAssemblyReference.cache
+E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.Form1.resources
+E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.Properties.Resources.resources
+E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.csproj.GenerateResource.cache
+E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.csproj.CoreCompileInputs.cache
+E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.csproj.CopyComplete
+E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.exe
+E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.pdb

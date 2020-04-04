@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using DBAccessLibrary.DBHelper;
+using DBAccessLibary.Models;
 
 namespace ClassLibraryServer
 {
@@ -22,9 +24,14 @@ namespace ClassLibraryServer
         private bool gameEnded;
         private ExcelFile fileSave;
         private const string savePath = @"E:\NCKH\MatchHistory\";
+        private StoredMatch storedMatch;
 
         public Player Player1 { get => player1; set => player1 = value; }
         public Player Player2 { get => player2; set => player2 = value; }
+
+        public bool IsPlayer1PlayFirst { get { return player1 == firstPlayer; } }
+
+        public bool IsBlockBothEnds { get => isBlockBothEnds; set => isBlockBothEnds = value; }
 
         public Match()
         {
@@ -37,15 +44,18 @@ namespace ClassLibraryServer
             this.Player2 = player2;
             firstPlayer = player1;
             secondPlayer = player2;
-            this.isBlockBothEnds = isBlockBothEnds;
+            this.IsBlockBothEnds = isBlockBothEnds;
             this.maxGames = maxGames;
             scoreOfPlayer1 = scoreOfPlayer2 = 0;
             gamesCounter = 1;
             gameEnded = false;
+
+            storedMatch = Helper.AddNewMatch(Helper.GetPlayerByName(Player1.Name), Helper.GetPlayerByName(Player2.Name), IsPlayer1PlayFirst, IsBlockBothEnds, maxGames);
+
         }
 
-        
-             
+
+
         public void TryStartAllGames()
         {
             try
@@ -79,11 +89,11 @@ namespace ClassLibraryServer
 
         private void StartOneGame()
         {
-             if (gamesCounter == 1)
+            if (gamesCounter == 1)
                 fileSave = ExcelFile.CreateNewFile(savePath + GetSaveName() + @".xlsx");
             else
                 fileSave.SelectSheet(gamesCounter);
-            Game game = new Game(firstPlayer, secondPlayer);
+            Game game = new Game(firstPlayer, secondPlayer, storedMatch);
             game.Start(fileSave);
             IncreaseScoreOf(game.Winner);
             SwapPlayers();
@@ -138,6 +148,7 @@ namespace ClassLibraryServer
             Player tempPlayer = firstPlayer;
             firstPlayer = secondPlayer;
             secondPlayer = tempPlayer;
+            Helper.SwapPlayer(storedMatch);
         }
 
         public bool Done()
