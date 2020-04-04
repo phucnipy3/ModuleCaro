@@ -235,7 +235,9 @@ namespace ClassLibraryClient
             NetworkStream stream = player.GetStream();
             stream.ReadTimeout = 10000;
             stream.Read(dataTemp, 0, dataTemp.Length);
-            return Encoding.ASCII.GetString(dataTemp);
+            string data = Encoding.ASCII.GetString(dataTemp);
+            return data.Substring(0, data.IndexOf("[end]"));
+;
         }
 
         public bool isEmpty(byte[] data)
@@ -280,7 +282,7 @@ namespace ClassLibraryClient
             while (data == null || data.Equals(oldData));
             oldData = data;
 
-            TryWriteToStream(data);
+            TryWriteToStream(data + "[end]");
         }
 
         public void TryWriteToStream(string data)
