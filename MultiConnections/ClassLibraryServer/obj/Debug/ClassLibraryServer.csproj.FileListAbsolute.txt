@@ -9,3 +9,14 @@ E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.Propert
 E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCMatch.resources
 E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCPlayer.resources
 E:\NCKH\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.GenerateResource.cache
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.dll
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.pdb
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csprojAssemblyReference.cache
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.ResolveComReference.cache
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.Properties.Resources.resources
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCMatch.resources
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCPlayer.resources
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.GenerateResource.cache
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CoreCompileInputs.cache
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb

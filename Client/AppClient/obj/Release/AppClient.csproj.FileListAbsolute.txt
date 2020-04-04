@@ -23,3 +23,16 @@ C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.csproj.Gener
 C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.csproj.CopyComplete
 C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.exe
 C:\Users\duong\Desktop\Client(Beta)\AppClient\obj\Release\AppClient.pdb
+E:\NCKH\Caro\Client\AppClient\bin\Release\AppClient.exe.config
+E:\NCKH\Caro\Client\AppClient\bin\Release\AppClient.exe
+E:\NCKH\Caro\Client\AppClient\bin\Release\AppClient.pdb
+E:\NCKH\Caro\Client\AppClient\bin\Release\ClassLibraryClient.dll
+E:\NCKH\Caro\Client\AppClient\bin\Release\ClassLibraryClient.pdb
+E:\NCKH\Caro\Client\AppClient\obj\Release\AppClient.csprojAssemblyReference.cache
+E:\NCKH\Caro\Client\AppClient\obj\Release\AppClient.Form1.resources
+E:\NCKH\Caro\Client\AppClient\obj\Release\AppClient.Properties.Resources.resources
+E:\NCKH\Caro\Client\AppClient\obj\Release\AppClient.csproj.GenerateResource.cache
+E:\NCKH\Caro\Client\AppClient\obj\Release\AppClient.csproj.CoreCompileInputs.cache
+E:\NCKH\Caro\Client\AppClient\obj\Release\AppClient.csproj.CopyComplete
+E:\NCKH\Caro\Client\AppClient\obj\Release\AppClient.exe
+E:\NCKH\Caro\Client\AppClient\obj\Release\AppClient.pdb

@@ -25,6 +25,7 @@ namespace ClassLibraryServer
         private Chessman chessman;
         private int moveCount;
         private ExcelFile fileSave;
+        private string prevMessage = "";
         public Player Winner
         {
             get { return winner; }
@@ -64,7 +65,7 @@ namespace ClassLibraryServer
                     winner = firstPlayer;
                     return;
                 }
-                SendData(secondPlayer.Client, moveString);
+                TrySendData(secondPlayer, moveString);
                 chessman = Chessman.X;
                 ProcessingDataFrom(secondPlayer);
                 if (gameEnded)
@@ -72,22 +73,22 @@ namespace ClassLibraryServer
                     winner = secondPlayer;
                     return;
                 }
-                SendData(firstPlayer.Client, moveString);
+                TrySendData(firstPlayer, moveString);
             }
         }
 
         private void SendStartMessageToFirstPlayer()
         {
-            SendData(firstPlayer.Client, "-1,-1,");
+            TrySendData(firstPlayer, "-1,-1,");
         }
         private void SendStartMessageToSecondPlayer()
         {
-            SendData(secondPlayer.Client, "-2,-2,");
+            TrySendData(secondPlayer, "-2,-2,");
         }
 
         private void ProcessingDataFrom(Player player)
         {
-            moveString = TryGetData(player.Client);
+            moveString = TryGetData(player);
             if (StrValid())
             {
                 MakeMove();
@@ -102,18 +103,26 @@ namespace ClassLibraryServer
             }
         }
 
-        public string TryGetData(TcpClient player)
+        public string TryGetData(Player player)
         {
-           
-                    return GetData(player);
-                
-            
+            while (true)
+            {
+                try
+                {
+                    return GetData(player.Client);
+                }
+                catch(Exception e)
+                {
+                    continue;
+                }
+            }  
         }
         public string GetData(TcpClient player)
         {
 
             byte[] buffer = new byte[BYTES_SIZE];
             NetworkStream stream = player.GetStream();
+            stream.ReadTimeout = 10000;
             stream.Read(buffer, 0, buffer.Length);
             string data = Encoding.ASCII.GetString(buffer);
             return data;
@@ -150,6 +159,7 @@ namespace ClassLibraryServer
         }
 
         public bool GameOver()
+
         {
 
             int[] X = new int[] { 5, 4, 3, 2, 1, 0, -1, -2, -3, -4, -5 };
@@ -206,11 +216,28 @@ namespace ClassLibraryServer
         {
             return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE;
         }
-        public void SendData(TcpClient player, string msg)
+
+        public void TrySendData(Player player, string msg)
+        {
+            while(true)
+            {
+                try
+                {
+                    SendData(player, msg);
+                    break;
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+        }
+        public void SendData(Player player, string msg)
         {
             byte[] buffer = new byte[BYTES_SIZE];
             buffer = Encoding.ASCII.GetBytes(msg);
-            NetworkStream stream = player.GetStream();
+            NetworkStream stream = player.Client.GetStream();
+            stream.WriteTimeout = 10000;
             stream.Write(buffer, 0, buffer.Length);
         }
     }
