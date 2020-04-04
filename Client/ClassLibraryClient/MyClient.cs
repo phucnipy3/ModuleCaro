@@ -179,7 +179,9 @@ namespace ClassLibraryClient
                         serverConnected = true;
                     }
                     catch
-                    {}
+                    {
+                        continue;
+                    }
                 }
             }
 
@@ -193,12 +195,16 @@ namespace ClassLibraryClient
         {
             byte[] nameBuffer = new byte[SIZE_OF_BYTE];
             byte[] imgBuffer = new byte[IMAGE_BYTE_SIZE];
-            nameBuffer = Encoding.UTF8.GetBytes(name);
+            nameBuffer = Encoding.UTF8.GetBytes($"[username]{name}[password]{"123456"}[end]");
             imgBuffer = (byte[])new ImageConverter().ConvertTo(img, typeof(byte[]));
 
             NetworkStream stream = player.GetStream();
             stream.Write(nameBuffer, 0, nameBuffer.Length);
-            //stream.Write(imgTemp, 0, imgTemp.Length);
+            byte[] buffer = new byte[SIZE_OF_BYTE];
+            stream.Read(buffer, 0, buffer.Length);
+            string loginMessage = Encoding.UTF8.GetString(buffer);
+            if (loginMessage.Trim().Equals("valid"))
+                MessageBox.Show("login valid");
         }
 
         public void ReceiveData()
