@@ -90,14 +90,12 @@ namespace MultiConnections
                 return;
             if (player1 == null || (player2 != null && leftSide))
             {
-                ptbAvatar1.Image = selectedPlayer.Avatar;
                 lblNameOfPlayer1.Text = selectedPlayer.Name;
                 player1 = selectedPlayer;
                 leftSide = false;
             }
             else
             {
-                ptbAvatar2.Image = selectedPlayer.Avatar;
                 lblNameOfPlayer2.Text = selectedPlayer.Name;
                 player2 = selectedPlayer;
                 leftSide = true;

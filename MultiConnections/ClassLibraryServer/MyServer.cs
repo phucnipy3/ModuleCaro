@@ -40,16 +40,12 @@ namespace ClassLibraryServer
             }
             return null;
         }
-
-
-
-        public void GetNewConnection()
+        public void StartThreadGetConnections()
         {
-            Thread threadGetNewConnection = new Thread(new ThreadStart(GetConnection));
-            threadGetNewConnection.IsBackground = true;
-            threadGetNewConnection.Start();
+            Thread threadGetConnection = new Thread(new ThreadStart(GetConnection));
+            threadGetConnection.IsBackground = true;
+            threadGetConnection.Start();
         }
-
         private void GetConnection()
         {
             server = new TcpListener(GetIPAddress(), 9999);
@@ -61,7 +57,6 @@ namespace ClassLibraryServer
                 AddNewPlayer(client);
             }
         }
-
         public void AddNewPlayer(TcpClient client)
         {
             string name = GetName(client);
@@ -86,23 +81,15 @@ namespace ClassLibraryServer
                         }
                         else
                         {
-                            Players[connectionCount] = new Player(client, name, null);
+                            Players[connectionCount] = new Player(client, name);
                             connectionCount++;
                         }
                         break;
                     }
+                    Thread.Sleep(100);
                 }
             }
         }
-
-        private void SendMesssage(TcpClient client, string loginMessage)
-        {
-            byte[] buffer = new byte[BYTES_SIZE];
-            buffer = Encoding.ASCII.GetBytes(loginMessage);
-            NetworkStream stream = client.GetStream();
-            stream.Write(buffer, 0, buffer.Length);
-        }
-
         private string GetName(TcpClient client)
         {
             string name;
@@ -114,17 +101,14 @@ namespace ClassLibraryServer
 
             return name.Trim();
         }
-        private Image GetImage(TcpClient client)
+        private void SendMesssage(TcpClient client, string loginMessage)
         {
-            Image avatar;
-            byte[] buffer = new byte[IMAGE_BYTE_SIZE];
+            byte[] buffer = new byte[BYTES_SIZE];
+            buffer = Encoding.ASCII.GetBytes(loginMessage);
             NetworkStream stream = client.GetStream();
-            stream.Read(buffer, 0, buffer.Length);
-            avatar = (Bitmap)new ImageConverter().ConvertFrom(buffer);
-            return avatar;
+            stream.Write(buffer, 0, buffer.Length);
         }
-
-
+        
         private bool isAvailableToConnect()
         {
             return connectionCount < Players.Count;
@@ -136,7 +120,6 @@ namespace ClassLibraryServer
                 Players.Add(new Player());
             }
         }
-
         public void HardRefreshListPlayer(FlowLayoutPanel PnlPlayerList)
         {
             PnlPlayerList.Controls.Clear();

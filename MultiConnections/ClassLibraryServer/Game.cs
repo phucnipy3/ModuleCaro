@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using DBAccessLibary.Models;
 using DBAccessLibrary.DBHelper;
+using System.Threading;
 
 namespace ClassLibraryServer
 {
@@ -30,12 +31,7 @@ namespace ClassLibraryServer
         public Player Winner
         {
             get { return winner; }
-
         }
-
-        public Game()
-        { }
-
         public Game(Player firstPlayer, Player secondPlayer, StoredMatch match)
         {
             storedGame = Helper.AddNewGameToMatch(match);
@@ -52,7 +48,6 @@ namespace ClassLibraryServer
                 for (int j = 0; j < BOARD_SIZE; j++)
                     matrix[i, j] = Chessman.Empty;
         }
-
         public void Start()
         {
             SendStartMessageToFirstPlayer();
@@ -116,6 +111,7 @@ namespace ClassLibraryServer
                 }
                 catch(Exception e)
                 {
+                    Thread.Sleep(2000);
                     continue;
                 }
             }  
@@ -231,6 +227,7 @@ namespace ClassLibraryServer
                 }
                 catch
                 {
+                    Thread.Sleep(2000);
                     continue;
                 }
             }

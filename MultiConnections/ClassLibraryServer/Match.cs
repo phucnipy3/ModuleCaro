@@ -96,30 +96,6 @@ namespace ClassLibraryServer
             ShowScore();
         }
 
-        private string GetSaveName()
-        {
-            int x = GetMatchNumber();
-            LeaveTrack(x);
-            return "Match" + x.ToString();
-        }
-
-        private int GetMatchNumber()
-        {
-            StreamReader sr = new StreamReader("MatchNumber.txt");
-            int x;
-            string str = sr.ReadLine();
-            sr.Close();
-            if (int.TryParse(str, out x))
-                return x;
-            return 0;
-        }
-
-        private void LeaveTrack(int x)
-        {
-            StreamWriter sw = new StreamWriter("MatchNumber.txt");
-            sw.WriteLine((x+1).ToString());
-            sw.Close();
-        }
         private void ShowScore()
         {
             MessageBox.Show(scoreOfPlayer1 + " : " + scoreOfPlayer2);

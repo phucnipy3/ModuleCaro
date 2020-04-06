@@ -22,8 +22,6 @@ namespace ClassLibraryServer
         {
             InitializeComponent();
             this.match = match;
-            ptbAvatar1.Image = match.Player1.Avatar;
-            ptbAvatar2.Image = match.Player2.Avatar;
             
             lblNameOfPlayer1.Text = match.Player1.Name;
             lblNameOfPlayer2.Text = match.Player2.Name;
@@ -34,11 +32,6 @@ namespace ClassLibraryServer
             Thread thread = new Thread(new ThreadStart(match.TryStartOneGame));
             thread.IsBackground = true;
             thread.Start();
-            if (match.Done())
-            {
-                btnByGame.Enabled = false;
-                btnByMatch.Enabled = false;
-            }
         }
 
         private void btnByMatch_Click(object sender, EventArgs e)

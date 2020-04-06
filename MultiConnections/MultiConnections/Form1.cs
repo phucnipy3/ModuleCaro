@@ -21,7 +21,7 @@ namespace MultiConnections
             InitializeComponent();
             myServer = new MyServer();
             ipAddress = myServer.GetIPAddress();
-            myServer.GetNewConnection();
+            myServer.StartThreadGetConnections();
             myServer.DeleteIP();
             myServer.PushIP();
         }
