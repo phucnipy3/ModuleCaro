@@ -98,6 +98,7 @@ namespace ClassLibraryClient
         {
             while (true)
             {
+                Thread.Sleep(1000);
                 if (!ServerFound)
                 {
                     ServerIP serverIP = new ServerIP();
@@ -127,8 +128,13 @@ namespace ClassLibraryClient
                     catch(Exception e)
                     {
                         //MessageBox.Show(e.Message);
+                        Thread.Sleep(1000);
                         continue;
                     }
+                }
+                else
+                {
+                    Thread.Sleep(1000);
                 }
             }
         }
@@ -167,6 +173,7 @@ namespace ClassLibraryClient
         {
             while (true)
             {
+                Thread.Sleep(1000);
                 if (ServerFound && !serverConnected)
                 {
                     try
@@ -225,6 +232,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }    
@@ -259,6 +267,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }
@@ -296,6 +305,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }    
@@ -319,6 +329,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }
@@ -350,8 +361,7 @@ namespace ClassLibraryClient
                         ServerFound = false;
                     }
                 }
-                else
-                    Thread.Sleep(1000);
+                Thread.Sleep(1000);
             }
         }
         public void StopCheckForConnection()
