@@ -13,7 +13,6 @@ namespace ClassLibraryServer
     {
         private TcpClient client;
         private string name;
-        private Image avatar;
         private bool playing;
 
         public string Name
@@ -21,21 +20,7 @@ namespace ClassLibraryServer
             get { return name; }
             set { name = value; }
         }
-        public Image Avatar
-        {
-            get { return avatar; }
-            set
-            {
-                if (value == null)
-                {
-                    avatar = Properties.Resources.DefaultAvatar;
-                }
-                else
-                {
-                    avatar = value;
-                }
-            }
-        }
+        
         public TcpClient Client
         {
             get { return client; }
@@ -48,13 +33,11 @@ namespace ClassLibraryServer
         {
             client = null;
             name = "";
-            avatar = Properties.Resources.DefaultAvatar;
         }
-        public Player(TcpClient client, string name, Image avatar)
+        public Player(TcpClient client, string name)
         {
             this.Client = client;
             this.Name = name;
-            this.Avatar = avatar;
             playing = false;
         }
 

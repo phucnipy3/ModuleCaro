@@ -14,13 +14,12 @@ void main()
 		cout << "Khong mo dc file";
 	while (1)
 	{
-		char* data;
+		string data;
 		data = ReadData();
-		if (strcmp(data, "-2,-2,") == 0)
+		if (data._Equal(PlaySecondMessage))
 			continue;
-		puts(data);
+		cout << data;
 		infile >> data;
-		//cin.getline(data, 1024);
 		WriteData(data);
 		cout << endl;
 	}

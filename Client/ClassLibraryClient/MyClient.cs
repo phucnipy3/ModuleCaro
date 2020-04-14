@@ -98,6 +98,7 @@ namespace ClassLibraryClient
         {
             while (true)
             {
+                Thread.Sleep(1000);
                 if (!ServerFound)
                 {
                     ServerIP serverIP = new ServerIP();
@@ -127,8 +128,13 @@ namespace ClassLibraryClient
                     catch(Exception e)
                     {
                         //MessageBox.Show(e.Message);
+                        Thread.Sleep(1000);
                         continue;
                     }
+                }
+                else
+                {
+                    Thread.Sleep(1000);
                 }
             }
         }
@@ -167,6 +173,7 @@ namespace ClassLibraryClient
         {
             while (true)
             {
+                Thread.Sleep(1000);
                 if (ServerFound && !serverConnected)
                 {
                     try
@@ -179,7 +186,9 @@ namespace ClassLibraryClient
                         serverConnected = true;
                     }
                     catch
-                    {}
+                    {
+                        continue;
+                    }
                 }
             }
 
@@ -193,12 +202,16 @@ namespace ClassLibraryClient
         {
             byte[] nameBuffer = new byte[SIZE_OF_BYTE];
             byte[] imgBuffer = new byte[IMAGE_BYTE_SIZE];
-            nameBuffer = Encoding.UTF8.GetBytes(name);
+            nameBuffer = Encoding.UTF8.GetBytes($"[username]{name}[password]{"123456"}[end]");
             imgBuffer = (byte[])new ImageConverter().ConvertTo(img, typeof(byte[]));
 
             NetworkStream stream = player.GetStream();
             stream.Write(nameBuffer, 0, nameBuffer.Length);
-            //stream.Write(imgTemp, 0, imgTemp.Length);
+            byte[] buffer = new byte[SIZE_OF_BYTE];
+            stream.Read(buffer, 0, buffer.Length);
+            string loginMessage = Encoding.UTF8.GetString(buffer);
+            if (loginMessage.Trim().Equals("valid"))
+                MessageBox.Show("login valid");
         }
 
         public void ReceiveData()
@@ -219,6 +232,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }    
@@ -229,7 +243,9 @@ namespace ClassLibraryClient
             NetworkStream stream = player.GetStream();
             stream.ReadTimeout = 10000;
             stream.Read(dataTemp, 0, dataTemp.Length);
-            return Encoding.ASCII.GetString(dataTemp);
+            string data = Encoding.ASCII.GetString(dataTemp);
+            return data.Substring(0, data.IndexOf("[end]"));
+;
         }
 
         public bool isEmpty(byte[] data)
@@ -251,6 +267,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }
@@ -274,7 +291,7 @@ namespace ClassLibraryClient
             while (data == null || data.Equals(oldData));
             oldData = data;
 
-            TryWriteToStream(data);
+            TryWriteToStream(data + "[end]");
         }
 
         public void TryWriteToStream(string data)
@@ -288,6 +305,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }    
@@ -311,6 +329,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }
@@ -342,8 +361,7 @@ namespace ClassLibraryClient
                         ServerFound = false;
                     }
                 }
-                else
-                    Thread.Sleep(1000);
+                Thread.Sleep(1000);
             }
         }
         public void StopCheckForConnection()

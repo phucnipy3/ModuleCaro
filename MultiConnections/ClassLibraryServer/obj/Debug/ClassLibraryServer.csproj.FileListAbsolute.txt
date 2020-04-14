@@ -20,3 +20,9 @@ E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.cs
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CoreCompileInputs.cache
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\EntityFramework.dll
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.pdb
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll.config
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\EntityFramework.xml
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete

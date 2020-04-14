@@ -24,7 +24,6 @@ namespace ClassLibraryServer
             InitializeComponent();
             this.Player = player;
             lblName.Text = player.Name;
-            ptbAvatar.Image = player.Avatar;
         }
 
         public Player Player { get => player; set => player = value; }

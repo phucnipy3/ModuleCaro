@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Drawing;
 using ClassLibraryServer;
+using DBAccessLibrary.DBHelper;
+
 namespace MultiConnections
 {
     public partial class Form1 : Form
@@ -19,7 +21,7 @@ namespace MultiConnections
             InitializeComponent();
             myServer = new MyServer();
             ipAddress = myServer.GetIPAddress();
-            myServer.GetNewConnection();
+            myServer.StartThreadGetConnections();
             myServer.DeleteIP();
             myServer.PushIP();
         }
@@ -40,7 +42,7 @@ namespace MultiConnections
 
         private void btnNewMatch_Click(object sender, EventArgs e)
         {
-            FormCreateMatch form = new FormCreateMatch(myServer.ListPlayer);
+            FormCreateMatch form = new FormCreateMatch(myServer.Players);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 UCMatch ucMatch = new UCMatch(form.GetMatch());

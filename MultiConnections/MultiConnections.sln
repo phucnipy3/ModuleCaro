@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiConnections", "MultiCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryServer", "ClassLibraryServer\ClassLibraryServer.csproj", "{DEAB6336-D48A-49EF-972A-BFA71F84459A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBAccessLibrary", "DBAccessLibrary\DBAccessLibrary.csproj", "{22F06563-FF9F-46D6-A6F3-28D9592D7C7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{DEAB6336-D48A-49EF-972A-BFA71F84459A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEAB6336-D48A-49EF-972A-BFA71F84459A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEAB6336-D48A-49EF-972A-BFA71F84459A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22F06563-FF9F-46D6-A6F3-28D9592D7C7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22F06563-FF9F-46D6-A6F3-28D9592D7C7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22F06563-FF9F-46D6-A6F3-28D9592D7C7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22F06563-FF9F-46D6-A6F3-28D9592D7C7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
