@@ -78,5 +78,14 @@ namespace DBAccessLibrary.DBHelper
             var players = DB.Players;
             return players.Where(x => infomation.Equals("[username]"+x.Username+"[password]123456[end]")).Count() > 0;
         }
+        public static bool AddPlayer(string username, string password)
+        {
+            if (DB.Players.Where(x => x.Username == username).Count() > 0)
+                return false;
+            StoredPlayer player = new StoredPlayer() { Username = username, Password = password };
+            DB.Players.Add(player);
+            DB.SaveChanges();
+            return true;
+        }
     }
 }
