@@ -25,9 +25,9 @@ namespace AppClient
         {
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
-            myClient = new MyClient(txtName.Text, ptbAvatar.Image);
+            myClient = new MyClient(txtName.Text, "192.168.1.244");
 
-            myClient.StartLookingForServer();
+            //myClient.StartLookingForServer();
             myClient.StartConnectToServer();
             myClient.StartReceiveAndSend();
             myClient.StartCheckForConnection(lblStatus);

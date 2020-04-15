@@ -24,8 +24,8 @@ namespace ClassLibraryClient
         private const int SIZE_OF_AVT = 69;
         private const string LINK_OUTPUT = "Output.txt";
         private const string LINK_INPUT = "Input.txt";
-        private const string FISRT_TURN = "-1,-1,";
-        private const string SECOND_TURN = "-2,-2,";
+        private const string FISRT_TURN = "playfirst[end]";
+        private const string SECOND_TURN = "playsecond[end]";
         private const int IMAGE_BYTE_SIZE = 20000;
 
 
@@ -36,19 +36,20 @@ namespace ClassLibraryClient
         private bool serverFound = false;
         private bool networkAvailable = true;
         private string name;
-        private Image img;
         private Thread threadReceiveAndSend;
         private Thread threadLookingForServer;
         private Thread threadConnectToServer;
         private Thread threadCheckForConnection;
 
+        private string serverIPAddress;
+
         public bool ServerFound { get => serverFound; set => serverFound = value; }
 
-        public MyClient(string name, Image img)
+        public MyClient(string name, string serverIPAddress)
         {
             player = new TcpClient();
             this.name = name;
-            this.img = img;
+            this.serverIPAddress = serverIPAddress;
             ClearInputOutput();
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
         }
@@ -174,7 +175,7 @@ namespace ClassLibraryClient
             while (true)
             {
                 Thread.Sleep(1000);
-                if (ServerFound && !serverConnected)
+                if (!serverConnected)
                 {
                     try
                     {
@@ -196,14 +197,13 @@ namespace ClassLibraryClient
 
         private IPAddress GetIPAddress()
         {
-            return IPAddress.Parse(ipString);
+            return IPAddress.Parse(serverIPAddress);
         }
         public void SendNameAndAvatar()
         {
             byte[] nameBuffer = new byte[SIZE_OF_BYTE];
             byte[] imgBuffer = new byte[IMAGE_BYTE_SIZE];
             nameBuffer = Encoding.UTF8.GetBytes($"[username]{name}[password]{"123456"}[end]");
-            imgBuffer = (byte[])new ImageConverter().ConvertTo(img, typeof(byte[]));
 
             NetworkStream stream = player.GetStream();
             stream.Write(nameBuffer, 0, nameBuffer.Length);
@@ -358,7 +358,7 @@ namespace ClassLibraryClient
                     {
                         lblStatus.Text = "No connection";
                         serverConnected = false;
-                        ServerFound = false;
+                       
                     }
                 }
                 Thread.Sleep(1000);

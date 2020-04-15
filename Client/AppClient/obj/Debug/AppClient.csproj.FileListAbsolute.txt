@@ -69,3 +69,8 @@ E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.csproj.CoreCompileInputs.cache
 E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.csproj.CopyComplete
 E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.exe
 E:\NCKH\Caro\Client\AppClient\obj\Debug\AppClient.pdb
+E:\NCKH\Caro\Client\AppClient\bin\Debug\MaterialDesignColors.dll
+E:\NCKH\Caro\Client\AppClient\bin\Debug\MaterialDesignThemes.Wpf.dll
+E:\NCKH\Caro\Client\AppClient\bin\Debug\MaterialDesignColors.pdb
+E:\NCKH\Caro\Client\AppClient\bin\Debug\MaterialDesignThemes.Wpf.pdb
+E:\NCKH\Caro\Client\AppClient\bin\Debug\MaterialDesignThemes.Wpf.xml
