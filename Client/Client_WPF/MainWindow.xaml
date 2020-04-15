@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Client_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="280" Width="430" Background="White" WindowStyle="None" ResizeMode="NoResize">
+        Title="MainWindow" Height="280" Width="430" Background="White" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid x:Name="grdMain">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -17,13 +17,13 @@
 
 
 
-        <StackPanel Background="#FF8522BD" Orientation="Horizontal" FlowDirection="RightToLeft">
+        <StackPanel Background="#FF8522BD" Orientation="Horizontal" FlowDirection="RightToLeft" MouseDown="StackPanel_MouseDown">
             <Button x:Name="btnClose" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" 
-                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Close">
+                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Close" Click="btnClose_Click">
                 <materialDesign:PackIcon Kind="WindowClose"/>
             </Button>
             <Button x:Name="btnMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" 
-                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Minimize">
+                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Minimize" Click="btnMinimize_Click">
                 <materialDesign:PackIcon Kind="WindowMinimize"/>
             </Button>
         </StackPanel>

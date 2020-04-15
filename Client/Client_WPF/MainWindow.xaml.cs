@@ -43,5 +43,22 @@ namespace Client_WPF
             grdLogin.Visibility = Visibility.Hidden;
             grdHome.Visibility = Visibility.Visible;
         }
+
+
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
     }
 }
