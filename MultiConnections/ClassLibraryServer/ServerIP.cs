@@ -13,19 +13,19 @@ namespace ClassLibraryServer
         string err;
         public ServerIP()
         {
-            db = new DBMain();
+            //db = new DBMain();
         }
 
         public void DeleteIP()
         {
-            string str = "delete from ServerIP";
-            db.MyExecuteNonQuery(str, CommandType.Text);
+            //string str = "delete from ServerIP";
+            //db.MyExecuteNonQuery(str, CommandType.Text);
         }
 
         public void PushIP(string ip)
         {
-            string str = $"insert into ServerIP values('{ip}')";
-            db.MyExecuteNonQuery(str, CommandType.Text);
+            //string str = $"insert into ServerIP values('{ip}')";
+            //db.MyExecuteNonQuery(str, CommandType.Text);
         }
     }
 }
