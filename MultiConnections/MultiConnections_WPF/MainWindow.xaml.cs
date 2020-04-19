@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Client_WPF
+namespace MultiConnections_WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -26,26 +26,6 @@ namespace Client_WPF
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
-        {
-            DialogLoading dialog = new DialogLoading();
-            Grid.SetRow(dialog, 1);
-            grdMain.Children.Add(dialog);
-            dialog.loading.IsOpen = true;
-            ForwardPage();
-            grdMain.Children.Remove(dialog);
-            
-        }
-
-        void ForwardPage()
-        {
-            
-            grdLogin.Visibility = Visibility.Hidden;
-            grdHome.Visibility = Visibility.Visible;
-        }
-
-
-
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
@@ -56,9 +36,31 @@ namespace Client_WPF
             this.Close();
         }
 
+        private void btnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+                iconMaximize.Kind = PackIconKind.WindowMaximize;
+                btnMaximize.ToolTip = "Maximize";
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+                iconMaximize.Kind = PackIconKind.WindowRestore;
+                btnMaximize.ToolTip = "Restore Down";
+            }    
+        }
+
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void btnCreateMatch_Click(object sender, RoutedEventArgs e)
+        {
+            CreateMatch createMatch = new CreateMatch();
+            createMatch.Show();
         }
     }
 }

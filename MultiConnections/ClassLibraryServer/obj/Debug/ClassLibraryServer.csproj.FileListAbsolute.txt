@@ -26,3 +26,19 @@ E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.pdb
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll.config
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\EntityFramework.xml
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.dll
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.pdb
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\EntityFramework.dll
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.pdb
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll.config
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\EntityFramework.xml
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csprojAssemblyReference.cache
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.ResolveComReference.cache
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.Properties.Resources.resources
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCMatch.resources
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCPlayer.resources
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.GenerateResource.cache
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
