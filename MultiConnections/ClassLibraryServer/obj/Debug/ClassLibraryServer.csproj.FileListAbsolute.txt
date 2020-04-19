@@ -42,3 +42,13 @@ E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\C
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.cache
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.g.cs
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.lref
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.dll
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.dll
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.pdb
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.pdb
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.xml
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.baml
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.g.resources

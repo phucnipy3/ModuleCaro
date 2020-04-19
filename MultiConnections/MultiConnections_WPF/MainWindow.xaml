@@ -118,8 +118,8 @@
                                 <TextBlock Text="Người chơi" VerticalAlignment="Center" FontSize="15" Foreground="White" Margin="10,0,0,0" FontFamily="Segoe UI Semibold"/>
                             </StackPanel>
 
-                            <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Width="20" Height="20" Margin="50,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Refresh"/>
+                            <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Width="20" Height="20" Margin="50,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="btnRefresh" Click="BtnRefresh_Click">
+                                <materialDesign:PackIcon Kind="Refresh" />
                             </Button>
                         </StackPanel>
 

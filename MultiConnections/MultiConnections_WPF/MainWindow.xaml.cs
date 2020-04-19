@@ -1,4 +1,5 @@
-﻿using MaterialDesignThemes.Wpf;
+﻿using ClassLibraryServer;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace MultiConnections_WPF
 {
@@ -21,9 +23,16 @@ namespace MultiConnections_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        MyServer myServer;
         public MainWindow()
         {
             InitializeComponent();
+            myServer = new MyServer();
+            txbIP.Text = myServer.GetIPAddress().ToString();
+            myServer.StartThreadGetConnections();
+            myServer.StartThreadCreateEmptyPlayer();
+            myServer.StartThreadRefreshListPlayer(spnlPlayer);
+            myServer.StartThreadCheckAndRemoveConnection();
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
@@ -61,6 +70,11 @@ namespace MultiConnections_WPF
         {
             CreateMatch createMatch = new CreateMatch();
             createMatch.Show();
+        }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+              myServer.HardRefreshListPlayer(spnlPlayer);
         }
     }
 }

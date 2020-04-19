@@ -8,6 +8,7 @@ using System.Threading;
 using System.Drawing;
 using System.Linq;
 using DBAccessLibrary.DBHelper;
+using System.Windows;
 
 namespace ClassLibraryServer
 {
@@ -39,6 +40,24 @@ namespace ClassLibraryServer
                 }
             }
             return null;
+        }
+        public void StartThreadCheckAndRemoveConnection()
+        {
+            Thread threadCheckAndRemoveConnection = new Thread(new ThreadStart(CheckAndRemoveConnection));
+            threadCheckAndRemoveConnection.IsBackground = true;
+            threadCheckAndRemoveConnection.Start();
+        }
+        public void StartThreadRefreshListPlayer(System.Windows.Controls.ListBox listBox)
+        {
+            Thread threadRefreshListPlayer = new Thread(RefreshListPlayer);
+            threadRefreshListPlayer.IsBackground = true;
+            threadRefreshListPlayer.Start(listBox);
+        }
+        public void StartThreadCreateEmptyPlayer()
+        {
+            Thread threadCreateEmptyPlayer = new Thread(new ThreadStart(CreateEmptyPlayer));
+            threadCreateEmptyPlayer.IsBackground = true;
+            threadCreateEmptyPlayer.Start();
         }
         public void StartThreadGetConnections()
         {
@@ -90,6 +109,7 @@ namespace ClassLibraryServer
                 }
             }
         }
+
         private string GetName(TcpClient client)
         {
             string name;
@@ -115,10 +135,18 @@ namespace ClassLibraryServer
         }
         public void CreateEmptyPlayer()
         {
-            if (!isAvailableToConnect())
+            while(true)
             {
-                Players.Add(new Player());
+                if (!isAvailableToConnect())
+                {
+                    Players.Add(new Player());
+                }
+                else
+                {
+                    Thread.Sleep(1000);
+                }
             }
+            
         }
         public void HardRefreshListPlayer(FlowLayoutPanel PnlPlayerList)
         {
@@ -141,6 +169,36 @@ namespace ClassLibraryServer
                 connectionsChanged = false;
             }
         }
+        public void RefreshListPlayer(object sender)
+        {
+            while(true)
+            {
+                System.Windows.Controls.ListBox listBox = sender as System.Windows.Controls.ListBox;
+                if (connectionsChanged)
+                {
+                    listBox.Dispatcher.BeginInvoke(new Action(delegate ()
+                    {
+                        listBox.Items.Clear();
+                        for (int i = 0; i < connectionCount; i++)
+                        {
+                            listBox.Items.Add(new UserControls.UCPlayer(Players[i]));
+                        }
+                    }));
+                    connectionsChanged = false;
+                }
+                Thread.Sleep(500);
+            }
+            
+        }
+        public void HardRefreshListPlayer(System.Windows.Controls.ListBox listBox)
+        {
+            listBox.Items.Clear();
+            for (int i = 0; i < connectionCount; i++)
+            {
+                listBox.Items.Add(new UserControls.UCPlayer(Players[i]));
+            }
+            connectionsChanged = false;
+        }
         public void CheckAndRemoveConnection()
         {
             int i = 0;
@@ -156,6 +214,7 @@ namespace ClassLibraryServer
                     i++;
                 }
             }
+            Thread.Sleep(500);
         }
         private void RemoveConnection(Player player)
         {
