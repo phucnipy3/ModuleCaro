@@ -126,7 +126,9 @@ namespace Client_WPF
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
+            myClient.ClearInputOutput();
             app = Process.Start(txtApp.Text.Trim());
+            
         }
 
         private void btnBrowse_Click(object sender, RoutedEventArgs e)
