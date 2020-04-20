@@ -219,7 +219,7 @@ namespace ClassLibraryClient
             byte[] buffer = new byte[SIZE_OF_BYTE];
             stream.Read(buffer, 0, buffer.Length);
             string loginMessage = Encoding.UTF8.GetString(buffer);
-            if (loginMessage.Trim().Equals("valid"))
+            if (loginMessage.Substring(0,loginMessage.IndexOf("[end]")).Equals("valid"))
                 MessageBox.Show("login valid");
         }
 
