@@ -78,8 +78,9 @@ namespace ClassLibraryServer
         }
         public void AddNewPlayer(TcpClient client)
         {
-            string name = GetName(client);
-            if (!Helper.Login(name))
+            string loginString = GetName(client);
+            string name = loginString.Substring(0, loginString.IndexOf("[password]")).Substring(loginString.IndexOf("[username]")+10);
+            if (!Helper.Login(loginString))
             {
                 SendMesssage(client, "invalid");
             }
