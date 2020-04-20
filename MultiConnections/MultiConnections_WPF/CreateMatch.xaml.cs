@@ -160,7 +160,6 @@ namespace MultiConnections_WPF
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = true;
             this.Close();
         }
 
@@ -180,6 +179,22 @@ namespace MultiConnections_WPF
         public Match GetMatch()
         {
             return match;
+        }
+
+        private void BtnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            if (player1 == null || player2 == null)
+            {
+                MessageBox.Show("Not enough players");
+                return;
+            }
+            player1.OnMatch();
+            player2.OnMatch();
+            match = new Match(player1, player2, (int)numBestOf.Value, chkRule.Checked);
+            if (ptbFirstPlay2.Visible)
+                match.SwapPlayers();
+            this.Close();
         }
     }
 }
