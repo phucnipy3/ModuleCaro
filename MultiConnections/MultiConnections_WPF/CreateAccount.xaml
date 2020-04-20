@@ -57,9 +57,9 @@
                 </materialDesign:Card>
             </StackPanel>
 
-            <Button x:Name="btnCreate" Grid.Row="2" Padding="10,4" VerticalAlignment="Top" Margin="139,0" >
+            <Button x:Name="btnCreate" Grid.Row="2" Padding="10,4" VerticalAlignment="Top" Margin="139,0" Click="btnCreate_Click" >
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Create"/>
+                    <materialDesign:PackIcon Kind="Create" VerticalAlignment="Center"/>
                     <TextBlock Text="Tạo" Margin="5,0,0,0"/>
                 </StackPanel>
             </Button>
