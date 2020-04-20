@@ -201,20 +201,24 @@ namespace ClassLibraryServer
         }
         public void CheckAndRemoveConnection()
         {
-            int i = 0;
-            while (i < Players.Count -1)
+            while(true)
             {
-                if (!Players[i].Playing&&!isConnecting(Players[i].Client))
+                int i = 0;
+                while (i < Players.Count - 1)
                 {
-                    
+                    if (!Players[i].Playing && !isConnecting(Players[i].Client))
+                    {
+
                         RemoveConnection(Players[i]);
+                    }
+                    else
+                    {
+                        i++;
+                    }
                 }
-                else 
-                {
-                    i++;
-                }
+                Thread.Sleep(500);
             }
-            Thread.Sleep(500);
+            
         }
         private void RemoveConnection(Player player)
         {

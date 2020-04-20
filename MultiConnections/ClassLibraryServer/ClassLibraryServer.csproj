@@ -80,6 +80,9 @@
     <Compile Include="UCPlayer.Designer.cs">
       <DependentUpon>UCPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCMatch.xaml.cs">
+      <DependentUpon>UCMatch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCPlayer.xaml.cs">
       <DependentUpon>UCPlayer.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UserControls\UCMatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\UCPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
