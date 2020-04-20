@@ -33,7 +33,7 @@ namespace MultiConnections_WPF
             myServer.StartThreadCreateEmptyPlayer();
             myServer.StartThreadRefreshListPlayer(spnlPlayer);
             myServer.StartThreadCheckAndRemoveConnection();
-            wrapPanelMatches.Children.Add(new UC_Library.UCMatch());
+            
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
