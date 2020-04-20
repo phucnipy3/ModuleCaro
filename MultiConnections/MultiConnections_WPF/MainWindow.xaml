@@ -74,31 +74,8 @@
                 </Grid>
 
                 <ScrollViewer  Grid.Row="1">
-                    <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
-                        <library:UCMatch HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
+                    <WrapPanel x:Name="wrapPanelMatches" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        
                     </WrapPanel>
                 </ScrollViewer>
 
@@ -125,22 +102,7 @@
 
                         <ScrollViewer Grid.Row="1">
                             <ListBox x:Name="spnlPlayer" Grid.Row="1">
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
-                                <library:UCPlayer/>
+                                
                             </ListBox>
                         </ScrollViewer>
 

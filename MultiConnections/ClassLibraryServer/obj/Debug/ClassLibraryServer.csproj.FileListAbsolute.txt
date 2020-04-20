@@ -52,3 +52,5 @@ E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.xml
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.baml
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.g.resources
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.g.cs
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.baml

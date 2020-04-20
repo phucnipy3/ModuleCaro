@@ -78,8 +78,9 @@ namespace ClassLibraryServer
         }
         public void AddNewPlayer(TcpClient client)
         {
-            string name = GetName(client);
-            if (!Helper.Login(name))
+            string loginString = GetName(client);
+            string name = loginString.Substring(0, loginString.IndexOf("[password]")).Substring(loginString.IndexOf("[username]")+10);
+            if (!Helper.Login(loginString))
             {
                 SendMesssage(client, "invalid");
             }
@@ -201,20 +202,24 @@ namespace ClassLibraryServer
         }
         public void CheckAndRemoveConnection()
         {
-            int i = 0;
-            while (i < Players.Count -1)
+            while(true)
             {
-                if (!Players[i].Playing&&!isConnecting(Players[i].Client))
+                int i = 0;
+                while (i < Players.Count - 1)
                 {
-                    
+                    if (!Players[i].Playing && !isConnecting(Players[i].Client))
+                    {
+
                         RemoveConnection(Players[i]);
+                    }
+                    else
+                    {
+                        i++;
+                    }
                 }
-                else 
-                {
-                    i++;
-                }
+                Thread.Sleep(500);
             }
-            Thread.Sleep(500);
+            
         }
         private void RemoveConnection(Player player)
         {

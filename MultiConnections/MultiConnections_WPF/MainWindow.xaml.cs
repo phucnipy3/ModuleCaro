@@ -33,6 +33,7 @@ namespace MultiConnections_WPF
             myServer.StartThreadCreateEmptyPlayer();
             myServer.StartThreadRefreshListPlayer(spnlPlayer);
             myServer.StartThreadCheckAndRemoveConnection();
+            
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
@@ -68,8 +69,18 @@ namespace MultiConnections_WPF
 
         private void btnCreateMatch_Click(object sender, RoutedEventArgs e)
         {
-            CreateMatch createMatch = new CreateMatch();
-            createMatch.Show();
+            CreateMatch createMatch = new CreateMatch(myServer.Players);
+            if (createMatch.ShowDialog() == true)
+            {
+                ClassLibraryServer.UserControls.UCMatch ucMatch = new ClassLibraryServer.UserControls.UCMatch(createMatch.GetMatch());
+                ucMatch.ButtonCloseClicked += UcMatch_ButtonCloseClicked;
+                wrapPanelMatches.Children.Add(ucMatch);
+            }
+        }
+
+        private void UcMatch_ButtonCloseClicked(object sender, EventArgs e)
+        {
+            wrapPanelMatches.Children.Remove(sender as ClassLibraryServer.UserControls.UCMatch);
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)

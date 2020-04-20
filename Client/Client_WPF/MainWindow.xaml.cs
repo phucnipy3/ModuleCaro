@@ -1,8 +1,7 @@
-﻿using MaterialDesignThemes.Wpf;
-using Microsoft.Win32;
+﻿using ClassLibraryClient;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,8 +22,10 @@ namespace Client_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Process app;
-
+        private string ipAddress;
+        private string username;
+        private string password;
+        private MyClient myClient;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,18 +33,29 @@ namespace Client_WPF
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+
+            InitHomePage();
             DialogLoading dialog = new DialogLoading();
             Grid.SetRow(dialog, 1);
             grdMain.Children.Add(dialog);
             dialog.loading.IsOpen = true;
             ForwardPage();
             grdMain.Children.Remove(dialog);
-            
+        }
+
+        private void InitHomePage()
+        {
+            ipAddress = txtIPServer.Text.Trim();
+            username = txtID.Text.Trim();
+            password = txtPassword.Password.Trim();
+            myClient = new MyClient(username, password, ipAddress);
+            myClient.StartConnectToServer();
+            myClient.StartReceiveAndSend();
+            myClient.StartCheckForConnection(txbConnectionStatus);
         }
 
         void ForwardPage()
         {
-            
             grdLogin.Visibility = Visibility.Hidden;
             grdHome.Visibility = Visibility.Visible;
         }
@@ -65,27 +77,16 @@ namespace Client_WPF
             this.WindowState = WindowState.Minimized;
         }
 
-        private void btnPlay_Click(object sender, RoutedEventArgs e)
+        private void TxtIPServer_LostFocus(object sender, RoutedEventArgs e)
         {
-            app = Process.Start(txtApp.Text.Trim());
+            txtIPServer.IsEnabled = false;
         }
 
-        private void btnBrowse_Click(object sender, RoutedEventArgs e)
+        private void BtnReFill_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Application|*.exe|All Files|*.*";
-            openFileDialog.DefaultExt = ".exe";
-
-            if (openFileDialog.ShowDialog() == true)
-            {
-                txtApp.Text = openFileDialog.FileName;
-            }
-        }
-
-        private void btnStop_Click(object sender, RoutedEventArgs e)
-        {
-            if (!app.HasExited)
-                app.Kill();
+            txtIPServer.IsEnabled = true;
+            txtIPServer.Clear();
+            txtIPServer.Focus();
         }
     }
 }

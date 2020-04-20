@@ -35,7 +35,8 @@ namespace ClassLibraryClient
         private string ipString;
         private bool serverFound = false;
         private bool networkAvailable = true;
-        private string name;
+        private string username;
+        private string password;
         private Thread threadReceiveAndSend;
         private Thread threadLookingForServer;
         private Thread threadConnectToServer;
@@ -45,13 +46,21 @@ namespace ClassLibraryClient
 
         public bool ServerFound { get => serverFound; set => serverFound = value; }
 
-        public MyClient(string name, string serverIPAddress)
+        public MyClient(string username,string password, string serverIPAddress)
         {
             player = new TcpClient();
-            this.name = name;
+            this.username = username;
+            this.password = password;
             this.serverIPAddress = serverIPAddress;
             ClearInputOutput();
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
+        }
+
+        public void StartCheckForConnection(System.Windows.Controls.TextBlock txbConnectionStatus)
+        {
+            threadCheckForConnection = new Thread(CheckForConnection);
+            threadCheckForConnection.IsBackground = true;
+            threadCheckForConnection.Start(txbConnectionStatus);
         }
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -203,7 +212,7 @@ namespace ClassLibraryClient
         {
             byte[] nameBuffer = new byte[SIZE_OF_BYTE];
             byte[] imgBuffer = new byte[IMAGE_BYTE_SIZE];
-            nameBuffer = Encoding.UTF8.GetBytes($"[username]{name}[password]{"123456"}[end]");
+            nameBuffer = Encoding.UTF8.GetBytes($"[username]{username}[password]{password}[end]");
 
             NetworkStream stream = player.GetStream();
             stream.Write(nameBuffer, 0, nameBuffer.Length);
@@ -343,23 +352,49 @@ namespace ClassLibraryClient
                 return newData;
             }
         }
+        //public void CheckForConnection(object sender)
+        //{
+        //    Label lblStatus = sender as Label;
+        //    while (true)
+        //    {
+        //        if (serverConnected)
+        //        {
+        //            if (isConnecting())
+        //            {
+        //                lblStatus.Text = "Connected";
+        //            }
+        //            else
+        //            {
+        //                lblStatus.Text = "No connection";
+        //                serverConnected = false;
+
+        //            }
+        //        }
+        //        Thread.Sleep(1000);
+        //    }
+        //}
         public void CheckForConnection(object sender)
         {
-            Label lblStatus = sender as Label;
+            System.Windows.Controls.TextBlock txtStatus = sender as System.Windows.Controls.TextBlock;
             while (true)
             {
                 if (serverConnected)
                 {
+                    string str;
                     if (isConnecting())
                     {
-                        lblStatus.Text = "Connected";
+                        str = "Đã kết nối";
                     }
                     else
                     {
-                        lblStatus.Text = "No connection";
+                        str = "Mất kết nối";
                         serverConnected = false;
-                       
+
                     }
+                    txtStatus.Dispatcher.BeginInvoke(new Action(delegate
+                    {
+                        txtStatus.Text = str;
+                    }));
                 }
                 Thread.Sleep(1000);
             }
