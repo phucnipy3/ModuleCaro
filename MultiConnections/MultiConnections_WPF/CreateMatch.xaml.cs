@@ -191,8 +191,9 @@ namespace MultiConnections_WPF
             }
             player1.OnMatch();
             player2.OnMatch();
-            match = new Match(player1, player2, (int)numBestOf.Value, chkRule.Checked);
-            if (ptbFirstPlay2.Visible)
+            //TODO
+            //match = new Match(player1, player2, (int)numBestOf.Value, chkRule.Checked);
+            if (rbtnPlayer2.IsChecked == true)
                 match.SwapPlayers();
             this.Close();
         }
