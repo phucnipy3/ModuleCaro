@@ -28,7 +28,7 @@
             </Button>
         </StackPanel>
 
-        <Grid x:Name="grdLogin"  Grid.Row="1" >
+        <Grid x:Name="grdLogin" Visibility="Hidden" Grid.Row="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="65*"/>
                 <RowDefinition Height="197*"/>
@@ -83,7 +83,7 @@
 
         </Grid>
 
-        <Grid Visibility="Hidden" Grid.Row="1" x:Name="grdHome">
+        <Grid  Grid.Row="1" x:Name="grdHome">
             <Grid.RowDefinitions>
                 <RowDefinition Height="49"/>
                 <RowDefinition Height="84"/>
@@ -115,10 +115,10 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Style="{StaticResource MaterialDesignFloatingActionButton}" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0">
+                        <Button x:Name="btnPlay" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0" Click="btnPlay_Click">
                             <materialDesign:PackIcon Kind="Play"/>
                         </Button>
-                        <Button Background="Red" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" BorderBrush="{x:Null}">
+                        <Button x:Name="btnStop" Background="Red" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" BorderBrush="{x:Null}" Click="btnStop_Click">
                             <materialDesign:PackIcon Kind="Stop"/>
                         </Button>
                     </StackPanel>
@@ -137,7 +137,7 @@
                                 <TextBox x:Name="txtApp" BorderThickness="0"/>
                             </materialDesign:Card>
                         </StackPanel>
-                        <Button  Margin="10,0,0,9" HorizontalAlignment="Right" Height="26" Background="White" Foreground="#DD102897" VerticalAlignment="Bottom">
+                        <Button x:Name="btnBrowse" Margin="10,0,0,9" HorizontalAlignment="Right" Height="26" Background="White" Foreground="#DD102897" VerticalAlignment="Bottom" Click="btnBrowse_Click">
                             <materialDesign:PackIcon Kind="ApplicationImport"/>
                         </Button>
                     </StackPanel>
