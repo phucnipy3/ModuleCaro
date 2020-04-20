@@ -23,6 +23,11 @@
                     Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Minimize" Click="btnMinimize_Click">
                 <materialDesign:PackIcon Kind="WindowMinimize"/>
             </Button>
+
+            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" Margin="400,0,0,0">
+                <materialDesign:PackIcon Kind="FootballPitch" Foreground="White" VerticalAlignment="Center"/>
+                <TextBlock Text="Tạo trận đấu" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0"/>
+            </StackPanel>
         </StackPanel>
 
         <Grid Grid.Row="1">
@@ -48,7 +53,7 @@
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0">
                             <TextBlock Text="Số trận đấu" FontSize="15" Foreground="White" FontFamily="Segoe UI Semibold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-                            <ListBox materialDesign:ListBoxAssist.IsToggle="True" Style="{StaticResource MaterialDesignToolToggleListBox}" SelectedIndex="0" Margin="50,0,0,0">
+                            <ListBox x:Name="lbxBestOf" materialDesign:ListBoxAssist.IsToggle="True" Style="{StaticResource MaterialDesignToolToggleListBox}" SelectedIndex="0" Margin="50,0,0,0">
                                 <ListBoxItem>
                                     <materialDesign:PackIcon Kind="Number1Circle"/>
                                 </ListBoxItem>
@@ -68,7 +73,7 @@
                             <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0">
                                 <TextBlock Text="Luật chặn hai đầu" Foreground="#FF8522BD" FontFamily="Segoe UI Semibold" FontSize="15" VerticalAlignment="Center"/>
 
-                                <ToggleButton
+                                <ToggleButton x:Name="tbtnCheckRule"
                             Style="{StaticResource MaterialDesignSwitchAccentToggleButton}"
                             Background="YellowGreen"
                             IsChecked="False" VerticalAlignment="Center" Margin="122,0,0,0" />

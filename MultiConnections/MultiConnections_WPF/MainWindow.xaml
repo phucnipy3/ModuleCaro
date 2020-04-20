@@ -64,7 +64,7 @@
                         </StackPanel>
                     </materialDesign:Card>
 
-                    <Button Grid.Column="2" Background="#FFC30000" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="10,4" Height="25" Margin="0,0,10,0" BorderBrush="{x:Null}">
+                    <Button x:Name="btnCreateAccount" Grid.Column="2" Background="#FFC30000" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="10,4" Height="25" Margin="0,0,10,0" BorderBrush="{x:Null}" Click="btnCreateAccount_Click">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Plus" FontWeight="Bold" Width="20" Height="20" VerticalAlignment="Center"/>
                             <TextBlock Text="Tạo tài khoản" VerticalAlignment="Center" Margin="5,0,0,0"/>
