@@ -28,7 +28,7 @@
             </Button>
         </StackPanel>
 
-        <Grid x:Name="grdLogin" Visibility="Hidden" Grid.Row="1" >
+        <Grid x:Name="grdLogin" Grid.Row="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="65*"/>
                 <RowDefinition Height="197*"/>
@@ -83,7 +83,7 @@
 
         </Grid>
 
-        <Grid  Grid.Row="1" x:Name="grdHome">
+        <Grid  Grid.Row="1" Visibility="Hidden" x:Name="grdHome">
             <Grid.RowDefinitions>
                 <RowDefinition Height="49"/>
                 <RowDefinition Height="84"/>

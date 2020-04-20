@@ -87,5 +87,11 @@ namespace MultiConnections_WPF
         {
               myServer.HardRefreshListPlayer(spnlPlayer);
         }
-    }
+
+        private void btnCreateAccount_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAccount createAccount = new CreateAccount();
+            createAccount.Show();
+        }
+    }   
 }

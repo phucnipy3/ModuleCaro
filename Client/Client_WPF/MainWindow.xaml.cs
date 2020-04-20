@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+using Microsoft.Win32;
 
 namespace Client_WPF
 {
@@ -22,6 +24,8 @@ namespace Client_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Process app;
+
         private string ipAddress;
         private string username;
         private string password;
@@ -87,6 +91,30 @@ namespace Client_WPF
             txtIPServer.IsEnabled = true;
             txtIPServer.Clear();
             txtIPServer.Focus();
+        }
+
+
+        private void btnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            app = Process.Start(txtApp.Text.Trim());
+        }
+
+        private void btnBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Application|*.exe|All Files|*.*";
+            openFileDialog.DefaultExt = ".exe";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                txtApp.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+            if (!app.HasExited)
+                app.Kill();
         }
     }
 }

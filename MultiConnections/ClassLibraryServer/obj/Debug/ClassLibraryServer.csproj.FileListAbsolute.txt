@@ -54,3 +54,15 @@ E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.g.resources
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.g.cs
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.baml
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.dll
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.dll
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.pdb
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.pdb
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.xml
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.g.cs
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.g.cs
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.cache
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.lref
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.baml
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.baml
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.g.resources

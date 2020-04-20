@@ -183,19 +183,37 @@ namespace MultiConnections_WPF
 
         private void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
+
             this.DialogResult = true;
             if (player1 == null || player2 == null)
             {
-                MessageBox.Show("Not enough players");
+                MessageBox.Show("Không đủ số người chơi.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             player1.OnMatch();
             player2.OnMatch();
             //TODO
-            //match = new Match(player1, player2, (int)numBestOf.Value, chkRule.Checked);
+
+
+            match = new Match(player1, player2, BestOf(), (bool)tbtnCheckRule.IsChecked);
             if (rbtnPlayer2.IsChecked == true)
                 match.SwapPlayers();
             this.Close();
+        }
+
+        public int BestOf()
+        {
+            int index = lbxBestOf.SelectedIndex;
+            switch (index)
+            {
+                case 0:
+                    return 1;
+                case 1:
+                    return 3;
+                case 2:
+                    return 5;   
+            }
+            return 0;
         }
     }
 }
