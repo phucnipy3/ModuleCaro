@@ -1,6 +1,8 @@
 ﻿using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,8 @@ namespace Client_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Process app;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -59,6 +63,29 @@ namespace Client_WPF
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void btnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            app = Process.Start(txtApp.Text.Trim());
+        }
+
+        private void btnBrowse_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Application|*.exe|All Files|*.*";
+            openFileDialog.DefaultExt = ".exe";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                txtApp.Text = openFileDialog.FileName;
+            }
+        }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+            if (!app.HasExited)
+                app.Kill();
         }
     }
 }
