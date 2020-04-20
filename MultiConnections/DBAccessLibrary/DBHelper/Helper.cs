@@ -76,7 +76,7 @@ namespace DBAccessLibrary.DBHelper
         public static bool Login(string infomation)
         {
             var players = DB.Players;
-            return players.Where(x => infomation.Equals("[username]"+x.Username+"[password]123456[end]")).Count() > 0;
+            return players.Where(x => infomation.Equals("[username]"+x.Username+"[password]"+x.Password+"[end]")).Count() > 0;
         }
         public static bool AddPlayer(string username, string password)
         {
