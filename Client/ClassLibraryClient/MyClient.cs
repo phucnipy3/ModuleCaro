@@ -181,8 +181,19 @@ namespace ClassLibraryClient
         }
         public void ConnectToServer()
         {
+            int counter = 4;
+            bool ignoreCounter = false;
             while (true)
             {
+                if(!ignoreCounter)
+                {
+                    counter--;
+                    if (counter < 0)
+                    {
+                        OnTakeTooMuchTimeToConnect(EventArgs.Empty);
+                        break;
+                    }
+                }
                 Thread.Sleep(1000);
                 if (!serverConnected)
                 {
@@ -192,10 +203,12 @@ namespace ClassLibraryClient
                         IPEndPoint ipe = new IPEndPoint(ip, PORT_NUMBER);
                         player = new TcpClient();
                         player.Connect(ipe);
-                        SendNameAndAvatar();
+                        if (!SendNameAndAvatar())
+                            break;
                         serverConnected = true;
+                        ignoreCounter = true;
                     }
-                    catch
+                    catch (Exception e )
                     {
                         continue;
                     }
@@ -208,7 +221,7 @@ namespace ClassLibraryClient
         {
             return IPAddress.Parse(serverIPAddress);
         }
-        public void SendNameAndAvatar()
+        public bool SendNameAndAvatar()
         {
             byte[] nameBuffer = new byte[SIZE_OF_BYTE];
             byte[] imgBuffer = new byte[IMAGE_BYTE_SIZE];
@@ -219,8 +232,19 @@ namespace ClassLibraryClient
             byte[] buffer = new byte[SIZE_OF_BYTE];
             stream.Read(buffer, 0, buffer.Length);
             string loginMessage = Encoding.UTF8.GetString(buffer);
+
+            LoginMessageReceivedEventArgs args = new LoginMessageReceivedEventArgs();
             if (loginMessage.Substring(0,loginMessage.IndexOf("[end]")).Equals("valid"))
-                MessageBox.Show("login valid");
+            {
+                args.IsValidLogin = true;
+            }
+            else
+            {
+                args.IsValidLogin = false;
+            }
+            OnLoginMessageReceived(args);
+            return args.IsValidLogin;
+                
         }
 
         public void ReceiveData()
@@ -415,5 +439,27 @@ namespace ClassLibraryClient
                 ptb.Image = bmp;
             }
         }
+        protected virtual void OnTakeTooMuchTimeToConnect(EventArgs e)
+        {
+            EventHandler handler = TakeTooMuchTimeToConnect;
+            if(handler!=null)
+            {
+                handler(this, e);
+            }
+        }
+        public EventHandler TakeTooMuchTimeToConnect;
+        protected virtual void OnLoginMessageReceived(LoginMessageReceivedEventArgs e)
+        {
+            EventHandler<LoginMessageReceivedEventArgs> handler = LoginMessageReceived;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+        public EventHandler<LoginMessageReceivedEventArgs> LoginMessageReceived;
+    }
+    public class LoginMessageReceivedEventArgs : EventArgs
+    {
+        public bool IsValidLogin { get; set; }
     }
 }
