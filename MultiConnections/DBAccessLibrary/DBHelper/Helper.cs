@@ -87,5 +87,10 @@ namespace DBAccessLibrary.DBHelper
             DB.SaveChanges();
             return true;
         }
+        public static void CheckOnSomething()
+        {
+            var x = DB.Matches.Include("Player1").Include("Player2").Include("Games.Moves").First();
+            return;
+        }
     }
 }
