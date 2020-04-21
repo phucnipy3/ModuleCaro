@@ -254,7 +254,7 @@ namespace ClassLibraryClient
         {
             string data = TryReadFromStream();
             TryWriteFile(data);
-            if (data.Substring(0, SECOND_TURN.Length).Equals(SECOND_TURN))
+            if (data.Equals(SECOND_TURN))
                 ReceiveData();
         }
 
