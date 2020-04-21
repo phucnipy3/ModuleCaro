@@ -1,5 +1,8 @@
-#pragma once
+
+using namespace std;
 
 char* ReadData();
 
-void WriteData(char* data);
+void WriteData(string);
+const string PlayFirstMessage = "playfirst";
+const string PlaySecondMessage = "playsecond";

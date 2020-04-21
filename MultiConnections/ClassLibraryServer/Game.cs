@@ -7,6 +7,9 @@ using System.Net;
 using System.Net.Sockets;
 using System.Windows.Forms;
 using System.IO;
+using DBAccessLibary.Models;
+using DBAccessLibrary.DBHelper;
+using System.Threading;
 
 namespace ClassLibraryServer
 {
@@ -24,19 +27,14 @@ namespace ClassLibraryServer
         private string moveString;
         private Chessman chessman;
         private int moveCount;
-        private ExcelFile fileSave;
-        private string prevMessage = "";
+        private StoredGame storedGame;
         public Player Winner
         {
             get { return winner; }
-
         }
-
-        public Game()
-        { }
-
-        public Game(Player firstPlayer, Player secondPlayer)
+        public Game(Player firstPlayer, Player secondPlayer, StoredMatch match)
         {
+            storedGame = Helper.AddNewGameToMatch(match);
             this.firstPlayer = firstPlayer;
             this.secondPlayer = secondPlayer;
             gameEnded = false;
@@ -50,10 +48,8 @@ namespace ClassLibraryServer
                 for (int j = 0; j < BOARD_SIZE; j++)
                     matrix[i, j] = Chessman.Empty;
         }
-
-        public void Start(ExcelFile fileSave)
+        public void Start()
         {
-            this.fileSave = fileSave;
             SendStartMessageToFirstPlayer();
             SendStartMessageToSecondPlayer();
             while (true)
@@ -63,27 +59,29 @@ namespace ClassLibraryServer
                 if (gameEnded)
                 {
                     winner = firstPlayer;
+                    Helper.SetWinner(Helper.GetPlayerByName(firstPlayer.Name), storedGame);
                     return;
                 }
-                TrySendData(secondPlayer, moveString);
+                TrySendData(secondPlayer, moveString + "[end]");
                 chessman = Chessman.X;
                 ProcessingDataFrom(secondPlayer);
                 if (gameEnded)
                 {
                     winner = secondPlayer;
+                    Helper.SetWinner(Helper.GetPlayerByName(secondPlayer.Name), storedGame);
                     return;
                 }
-                TrySendData(firstPlayer, moveString);
+                TrySendData(firstPlayer, moveString + "[end]");
             }
         }
 
         private void SendStartMessageToFirstPlayer()
         {
-            TrySendData(firstPlayer, "-1,-1,");
+            TrySendData(firstPlayer, "playfirst[end]");
         }
         private void SendStartMessageToSecondPlayer()
         {
-            TrySendData(secondPlayer, "-2,-2,");
+            TrySendData(secondPlayer, "playsecond[end]");
         }
 
         private void ProcessingDataFrom(Player player)
@@ -113,6 +111,7 @@ namespace ClassLibraryServer
                 }
                 catch(Exception e)
                 {
+                    Thread.Sleep(2000);
                     continue;
                 }
             }  
@@ -125,7 +124,7 @@ namespace ClassLibraryServer
             stream.ReadTimeout = 10000;
             stream.Read(buffer, 0, buffer.Length);
             string data = Encoding.ASCII.GetString(buffer);
-            return data;
+            return data.Substring(0,data.LastIndexOf("[end]"));
         }
         public bool StrValid()
         {
@@ -154,8 +153,8 @@ namespace ClassLibraryServer
             int col = int.Parse(move[1]);
             matrix[row, col] = chessman;
             string saveValue = chessman.ToString() + moveCount.ToString();
-            fileSave.WriteToCell(row, col, saveValue);
             moveCount++;
+            Helper.AddMove(storedGame, chessman == Chessman.X ? "X" : "Y", col, row);
         }
 
         public bool GameOver()
@@ -228,6 +227,7 @@ namespace ClassLibraryServer
                 }
                 catch
                 {
+                    Thread.Sleep(2000);
                     continue;
                 }
             }

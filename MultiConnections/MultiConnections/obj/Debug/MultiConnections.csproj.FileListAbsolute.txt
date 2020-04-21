@@ -28,3 +28,323 @@ E:\NCKH\Caro\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csproj
 E:\NCKH\Caro\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csproj.CopyComplete
 E:\NCKH\Caro\MultiConnections\MultiConnections\obj\Debug\MultiConnections.exe
 E:\NCKH\Caro\MultiConnections\MultiConnections\obj\Debug\MultiConnections.pdb
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Win32.Primitives.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\netstandard.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.AppContext.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Collections.Concurrent.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Collections.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Collections.NonGeneric.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Collections.Specialized.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.EventBasedAsync.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.Primitives.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.TypeConverter.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Console.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Data.Common.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Contracts.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Debug.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.FileVersionInfo.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Process.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.StackTrace.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.TextWriterTraceListener.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Tools.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.TraceSource.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Tracing.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Drawing.Primitives.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Dynamic.Runtime.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Globalization.Calendars.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Globalization.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Globalization.Extensions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.Compression.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.Compression.ZipFile.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.FileSystem.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.FileSystem.DriveInfo.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.FileSystem.Primitives.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.FileSystem.Watcher.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.IsolatedStorage.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.MemoryMappedFiles.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.Pipes.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.IO.UnmanagedMemoryStream.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Linq.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Linq.Expressions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Linq.Parallel.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Linq.Queryable.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.Http.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.NameResolution.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.NetworkInformation.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.Ping.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.Primitives.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.Requests.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.Security.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.Sockets.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.WebHeaderCollection.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.WebSockets.Client.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Net.WebSockets.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.ObjectModel.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Reflection.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Reflection.Extensions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Reflection.Primitives.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Resources.Reader.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Resources.ResourceManager.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Resources.Writer.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.CompilerServices.VisualC.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Extensions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Handles.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.InteropServices.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Numerics.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Serialization.Formatters.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Serialization.Json.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Serialization.Primitives.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Serialization.Xml.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Security.Claims.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.Algorithms.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.Csp.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.Encoding.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.Primitives.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Security.Principal.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Security.SecureString.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Text.Encoding.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Text.Encoding.Extensions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Text.RegularExpressions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Threading.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Threading.Overlapped.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Threading.Tasks.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Threading.Tasks.Parallel.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Threading.Thread.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Threading.ThreadPool.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Threading.Timer.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.ValueTuple.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Xml.ReaderWriter.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Xml.XDocument.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Xml.XmlDocument.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Xml.XmlSerializer.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Xml.XPath.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Xml.XPath.XDocument.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Bcl.HashCode.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Logging.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Options.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Primitives.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Buffers.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Collections.Immutable.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.Annotations.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Memory.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Numerics.Vectors.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Bcl.HashCode.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Logging.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Options.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Primitives.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Buffers.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Collections.Immutable.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Memory.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Numerics.Vectors.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\obj\Debug\MultiConnections.exe.config
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\DBAccessLibrary.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\EntityFramework.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\DBAccessLibrary.pdb
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\DBAccessLibrary.dll.config
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\EntityFramework.xml
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\EntityFramework.SqlServer.dll
+E:\NCKH\Caro\MultiConnections\MultiConnections\bin\Debug\EntityFramework.SqlServer.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\MultiConnections.exe.config
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\MultiConnections.exe
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\MultiConnections.pdb
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Win32.Primitives.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\netstandard.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.AppContext.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Collections.Concurrent.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Collections.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Collections.NonGeneric.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Collections.Specialized.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.EventBasedAsync.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.Primitives.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.TypeConverter.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Console.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Data.Common.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Contracts.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Debug.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.FileVersionInfo.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Process.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.StackTrace.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.TextWriterTraceListener.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Tools.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.TraceSource.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.Tracing.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Drawing.Primitives.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Dynamic.Runtime.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Globalization.Calendars.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Globalization.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Globalization.Extensions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.Compression.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.Compression.ZipFile.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.FileSystem.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.FileSystem.DriveInfo.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.FileSystem.Primitives.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.FileSystem.Watcher.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.IsolatedStorage.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.MemoryMappedFiles.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.Pipes.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.IO.UnmanagedMemoryStream.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Linq.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Linq.Expressions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Linq.Parallel.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Linq.Queryable.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.Http.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.NameResolution.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.NetworkInformation.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.Ping.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.Primitives.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.Requests.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.Security.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.Sockets.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.WebHeaderCollection.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.WebSockets.Client.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Net.WebSockets.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.ObjectModel.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Reflection.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Reflection.Extensions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Reflection.Primitives.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Resources.Reader.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Resources.ResourceManager.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Resources.Writer.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.CompilerServices.VisualC.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Extensions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Handles.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.InteropServices.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Numerics.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Serialization.Formatters.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Serialization.Json.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Serialization.Primitives.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.Serialization.Xml.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Security.Claims.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.Algorithms.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.Csp.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.Encoding.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.Primitives.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Security.Cryptography.X509Certificates.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Security.Principal.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Security.SecureString.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Text.Encoding.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Text.Encoding.Extensions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Text.RegularExpressions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Threading.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Threading.Overlapped.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Threading.Tasks.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Threading.Tasks.Parallel.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Threading.Thread.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Threading.ThreadPool.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Threading.Timer.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.ValueTuple.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Xml.ReaderWriter.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Xml.XDocument.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Xml.XmlDocument.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Xml.XmlSerializer.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Xml.XPath.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Xml.XPath.XDocument.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\ClassLibraryServer.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\DBAccessLibrary.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\EntityFramework.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\EntityFramework.SqlServer.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Bcl.HashCode.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Design.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.Binder.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Logging.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Options.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Primitives.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Buffers.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Collections.Immutable.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.ComponentModel.Annotations.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Memory.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Numerics.Vectors.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\ClassLibraryServer.pdb
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\DBAccessLibrary.pdb
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\DBAccessLibrary.dll.config
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\EntityFramework.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\EntityFramework.SqlServer.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Bcl.HashCode.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Design.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.EntityFrameworkCore.Relational.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.Abstractions.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Configuration.Binder.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Logging.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Options.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\Microsoft.Extensions.Primitives.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Buffers.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Collections.Immutable.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Memory.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Numerics.Vectors.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csprojAssemblyReference.cache
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.exe.config
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csproj.ResolveComReference.cache
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.Form1.resources
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.FormCreateMatch.resources
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.Properties.Resources.resources
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csproj.GenerateResource.cache
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.csproj.CopyComplete
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.exe
+E:\Learning\Science Research\New\MultiConnections\MultiConnections\obj\Debug\MultiConnections.pdb

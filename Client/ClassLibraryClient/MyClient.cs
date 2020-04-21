@@ -24,8 +24,8 @@ namespace ClassLibraryClient
         private const int SIZE_OF_AVT = 69;
         private const string LINK_OUTPUT = "Output.txt";
         private const string LINK_INPUT = "Input.txt";
-        private const string FISRT_TURN = "-1,-1,";
-        private const string SECOND_TURN = "-2,-2,";
+        private const string FISRT_TURN = "playfirst";
+        private const string SECOND_TURN = "playsecond";
         private const int IMAGE_BYTE_SIZE = 20000;
 
 
@@ -35,22 +35,32 @@ namespace ClassLibraryClient
         private string ipString;
         private bool serverFound = false;
         private bool networkAvailable = true;
-        private string name;
-        private Image img;
+        private string username;
+        private string password;
         private Thread threadReceiveAndSend;
         private Thread threadLookingForServer;
         private Thread threadConnectToServer;
         private Thread threadCheckForConnection;
 
+        private string serverIPAddress;
+
         public bool ServerFound { get => serverFound; set => serverFound = value; }
 
-        public MyClient(string name, Image img)
+        public MyClient(string username,string password, string serverIPAddress)
         {
             player = new TcpClient();
-            this.name = name;
-            this.img = img;
+            this.username = username;
+            this.password = password;
+            this.serverIPAddress = serverIPAddress;
             ClearInputOutput();
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
+        }
+
+        public void StartCheckForConnection(System.Windows.Controls.TextBlock txbConnectionStatus)
+        {
+            threadCheckForConnection = new Thread(CheckForConnection);
+            threadCheckForConnection.IsBackground = true;
+            threadCheckForConnection.Start(txbConnectionStatus);
         }
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -98,6 +108,7 @@ namespace ClassLibraryClient
         {
             while (true)
             {
+                Thread.Sleep(1000);
                 if (!ServerFound)
                 {
                     ServerIP serverIP = new ServerIP();
@@ -113,6 +124,9 @@ namespace ClassLibraryClient
                 }
             }
         }
+
+       
+
         public void ReceiveAndSend()
         {
             while (true)
@@ -127,8 +141,13 @@ namespace ClassLibraryClient
                     catch(Exception e)
                     {
                         //MessageBox.Show(e.Message);
+                        Thread.Sleep(1000);
                         continue;
                     }
+                }
+                else
+                {
+                    Thread.Sleep(1000);
                 }
             }
         }
@@ -165,9 +184,21 @@ namespace ClassLibraryClient
         }
         public void ConnectToServer()
         {
+            int counter = 4;
+            bool ignoreCounter = false;
             while (true)
             {
-                if (ServerFound && !serverConnected)
+                if(!ignoreCounter)
+                {
+                    counter--;
+                    if (counter < 0)
+                    {
+                        OnTakeTooMuchTimeToConnect(EventArgs.Empty);
+                        break;
+                    }
+                }
+                Thread.Sleep(1000);
+                if (!serverConnected)
                 {
                     try
                     {
@@ -175,10 +206,12 @@ namespace ClassLibraryClient
                         IPEndPoint ipe = new IPEndPoint(ip, PORT_NUMBER);
                         player = new TcpClient();
                         player.Connect(ipe);
-                        SendNameAndAvatar();
+                        if (!SendNameAndAvatar())
+                            break;
                         serverConnected = true;
+                        ignoreCounter = true;
                     }
-                    catch
+                    catch (Exception e )
                     {
                         continue;
                     }
@@ -189,29 +222,39 @@ namespace ClassLibraryClient
 
         private IPAddress GetIPAddress()
         {
-            return IPAddress.Parse(ipString);
+            return IPAddress.Parse(serverIPAddress);
         }
-        public void SendNameAndAvatar()
+        public bool SendNameAndAvatar()
         {
             byte[] nameBuffer = new byte[SIZE_OF_BYTE];
             byte[] imgBuffer = new byte[IMAGE_BYTE_SIZE];
-            nameBuffer = Encoding.UTF8.GetBytes($"[username]{name}[password]{"123456"}[end]");
-            imgBuffer = (byte[])new ImageConverter().ConvertTo(img, typeof(byte[]));
+            nameBuffer = Encoding.UTF8.GetBytes($"[username]{username}[password]{password}[end]");
 
             NetworkStream stream = player.GetStream();
             stream.Write(nameBuffer, 0, nameBuffer.Length);
             byte[] buffer = new byte[SIZE_OF_BYTE];
             stream.Read(buffer, 0, buffer.Length);
             string loginMessage = Encoding.UTF8.GetString(buffer);
-            if (loginMessage.Trim().Equals("valid"))
-                MessageBox.Show("login valid");
+
+            LoginMessageReceivedEventArgs args = new LoginMessageReceivedEventArgs();
+            if (loginMessage.Substring(0,loginMessage.IndexOf("[end]")).Equals("valid"))
+            {
+                args.IsValidLogin = true;
+            }
+            else
+            {
+                args.IsValidLogin = false;
+            }
+            OnLoginMessageReceived(args);
+            return args.IsValidLogin;
+                
         }
 
         public void ReceiveData()
         {
             string data = TryReadFromStream();
             TryWriteFile(data);
-            if (data.Substring(0, 6).Equals(SECOND_TURN))
+            if (data.Substring(0, SECOND_TURN.Length).Equals(SECOND_TURN))
                 ReceiveData();
         }
 
@@ -225,6 +268,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }    
@@ -235,7 +279,9 @@ namespace ClassLibraryClient
             NetworkStream stream = player.GetStream();
             stream.ReadTimeout = 10000;
             stream.Read(dataTemp, 0, dataTemp.Length);
-            return Encoding.ASCII.GetString(dataTemp);
+            string data = Encoding.ASCII.GetString(dataTemp);
+            return data.Substring(0, data.IndexOf("[end]"));
+;
         }
 
         public bool isEmpty(byte[] data)
@@ -257,6 +303,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }
@@ -280,7 +327,7 @@ namespace ClassLibraryClient
             while (data == null || data.Equals(oldData));
             oldData = data;
 
-            TryWriteToStream(data);
+            TryWriteToStream(data + "[end]");
         }
 
         public void TryWriteToStream(string data)
@@ -294,6 +341,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }    
@@ -317,6 +365,7 @@ namespace ClassLibraryClient
                 }
                 catch
                 {
+                    Thread.Sleep(1000);
                     continue;
                 }
             }
@@ -330,26 +379,51 @@ namespace ClassLibraryClient
                 return newData;
             }
         }
+        //public void CheckForConnection(object sender)
+        //{
+        //    Label lblStatus = sender as Label;
+        //    while (true)
+        //    {
+        //        if (serverConnected)
+        //        {
+        //            if (isConnecting())
+        //            {
+        //                lblStatus.Text = "Connected";
+        //            }
+        //            else
+        //            {
+        //                lblStatus.Text = "No connection";
+        //                serverConnected = false;
+
+        //            }
+        //        }
+        //        Thread.Sleep(1000);
+        //    }
+        //}
         public void CheckForConnection(object sender)
         {
-            Label lblStatus = sender as Label;
+            System.Windows.Controls.TextBlock txtStatus = sender as System.Windows.Controls.TextBlock;
             while (true)
             {
                 if (serverConnected)
                 {
+                    string str;
                     if (isConnecting())
                     {
-                        lblStatus.Text = "Connected";
+                        str = "Đã kết nối";
                     }
                     else
                     {
-                        lblStatus.Text = "No connection";
+                        str = "Mất kết nối";
                         serverConnected = false;
-                        ServerFound = false;
+
                     }
+                    txtStatus.Dispatcher.BeginInvoke(new Action(delegate
+                    {
+                        txtStatus.Text = str;
+                    }));
                 }
-                else
-                    Thread.Sleep(1000);
+                Thread.Sleep(1000);
             }
         }
         public void StopCheckForConnection()
@@ -368,5 +442,27 @@ namespace ClassLibraryClient
                 ptb.Image = bmp;
             }
         }
+        protected virtual void OnTakeTooMuchTimeToConnect(EventArgs e)
+        {
+            EventHandler handler = TakeTooMuchTimeToConnect;
+            if(handler!=null)
+            {
+                handler(this, e);
+            }
+        }
+        public EventHandler TakeTooMuchTimeToConnect;
+        protected virtual void OnLoginMessageReceived(LoginMessageReceivedEventArgs e)
+        {
+            EventHandler<LoginMessageReceivedEventArgs> handler = LoginMessageReceived;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+        public EventHandler<LoginMessageReceivedEventArgs> LoginMessageReceived;
+    }
+    public class LoginMessageReceivedEventArgs : EventArgs
+    {
+        public bool IsValidLogin { get; set; }
     }
 }
