@@ -24,8 +24,8 @@ namespace ClassLibraryClient
         private const int SIZE_OF_AVT = 69;
         private const string LINK_OUTPUT = "Output.txt";
         private const string LINK_INPUT = "Input.txt";
-        private const string FISRT_TURN = "playfirst[end]";
-        private const string SECOND_TURN = "playsecond[end]";
+        private const string FISRT_TURN = "playfirst";
+        private const string SECOND_TURN = "playsecond";
         private const int IMAGE_BYTE_SIZE = 20000;
 
 
@@ -254,7 +254,7 @@ namespace ClassLibraryClient
         {
             string data = TryReadFromStream();
             TryWriteFile(data);
-            if (data.Substring(0, 6).Equals(SECOND_TURN))
+            if (data.Substring(0, SECOND_TURN.Length).Equals(SECOND_TURN))
                 ReceiveData();
         }
 
