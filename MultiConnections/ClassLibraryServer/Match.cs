@@ -30,6 +30,7 @@ namespace ClassLibraryServer
         public bool IsPlayer1PlayFirst { get { return player1 == firstPlayer; } }
 
         public bool IsBlockBothEnds { get => isBlockBothEnds; set => isBlockBothEnds = value; }
+        public StoredMatch StoredMatch { get => storedMatch; set => storedMatch = value; }
 
         public Match()
         {
@@ -48,7 +49,7 @@ namespace ClassLibraryServer
             gamesCounter = 1;
             gameEnded = false;
 
-            storedMatch = Helper.AddNewMatch(Helper.GetPlayerByName(Player1.Name), Helper.GetPlayerByName(Player2.Name), IsPlayer1PlayFirst, IsBlockBothEnds, maxGames);
+            StoredMatch = Helper.AddNewMatch(Helper.GetPlayerByName(Player1.Name), Helper.GetPlayerByName(Player2.Name), IsPlayer1PlayFirst, IsBlockBothEnds, maxGames);
 
         }
 
@@ -88,7 +89,7 @@ namespace ClassLibraryServer
         private void StartOneGame()
         {
            
-            Game game = new Game(firstPlayer, secondPlayer, storedMatch);
+            Game game = new Game(firstPlayer, secondPlayer, StoredMatch);
             game.Start();
             IncreaseScoreOf(game.Winner);
             SwapPlayers();
@@ -116,7 +117,7 @@ namespace ClassLibraryServer
             Player tempPlayer = firstPlayer;
             firstPlayer = secondPlayer;
             secondPlayer = tempPlayer;
-            Helper.SwapPlayer(storedMatch);
+            Helper.SwapPlayer(StoredMatch);
         }
     }
 }

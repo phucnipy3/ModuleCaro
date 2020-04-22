@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DBAccessLibary.Models;
+using DBAccessLibrary.DBHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,6 +79,11 @@ namespace ClassLibraryServer.UserControls
             match.Player1.OutMatch();
             match.Player2.OutMatch();
             OnButtonCloseClicked(e);
+        }
+
+        private void btnShowMatch_Click(object sender, RoutedEventArgs e)
+        {
+            StoredMatch match = Helper.GetMatch(this.match.StoredMatch.Id);
         }
     }
 }
