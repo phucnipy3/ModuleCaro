@@ -83,7 +83,7 @@
 
         </Grid>
 
-        <Grid  Grid.Row="1" Visibility="Hidden" x:Name="grdHome">
+        <Grid  Grid.Row="1" Visibility="Hidden"  x:Name="grdHome">
             <Grid.RowDefinitions>
                 <RowDefinition Height="49"/>
                 <RowDefinition Height="84"/>
@@ -98,10 +98,11 @@
                     </StackPanel>
                 </Button>
 
-                <materialDesign:Card  Margin="10,10,0,10" HorizontalAlignment="Left">
+                <materialDesign:Card  Margin="10,10,0,10" HorizontalAlignment="Left" Width="130">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" FlowDirection="LeftToRight">
-                        <materialDesign:PackIcon Kind="Circle" Foreground="GreenYellow" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
-                        <TextBlock x:Name="txbConnectionStatus" Text="Đã kết nối" FontSize="15" Padding="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <materialDesign:PackIcon x:Name="iconConnection" Kind="Circle" Foreground="{Binding ElementName=txbTemp, Path=Foreground, Mode=OneWay}" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <TextBlock x:Name="txbConnectionStatus" Text="{Binding ElementName=txbTemp, Path=Text, Mode=OneWay}" FontSize="15" Padding="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="txbTemp" Text="Đang kết nối" Foreground="Red" Visibility="Collapsed"/>
                     </StackPanel>
                 </materialDesign:Card>
             </Grid>

@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using System.Net.NetworkInformation;
+using System.Windows.Media;
 
 namespace ClassLibraryClient
 {
@@ -425,19 +426,26 @@ namespace ClassLibraryClient
                 if (serverConnected)
                 {
                     string str;
+                    bool isConnected;
                     if (isConnecting())
                     {
                         str = "Đã kết nối";
+                        isConnected = true;
                     }
                     else
                     {
-                        str = "Mất kết nối";
+                        str = "Đang kết nối";
                         serverConnected = false;
-
+                        isConnected = false;
                     }
                     txtStatus.Dispatcher.BeginInvoke(new Action(delegate
                     {
                         txtStatus.Text = str;
+                        
+                        if (isConnected)
+                            txtStatus.Foreground = new SolidColorBrush(Colors.YellowGreen);
+                        else
+                            txtStatus.Foreground = new SolidColorBrush(Colors.Red);
                     }));
                 }
                 Thread.Sleep(1000);

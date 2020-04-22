@@ -66,3 +66,7 @@ E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\C
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.baml
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.baml
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.g.resources
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.g.cs
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.baml
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.g.cs
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.baml
