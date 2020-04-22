@@ -33,6 +33,7 @@ namespace Client_WPF
         public MainWindow()
         {
             InitializeComponent();
+            txbConnectionStatus.Tag = Colors.Red;
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -55,7 +56,10 @@ namespace Client_WPF
             myClient = new MyClient(username, password, ipAddress);
             myClient.StartConnectToServer();
             myClient.StartReceiveAndSend();
-            myClient.StartCheckForConnection(txbConnectionStatus);
+
+            myClient.StartCheckForConnection(txbTemp);
+
+            
         }
 
         void ForwardPage()

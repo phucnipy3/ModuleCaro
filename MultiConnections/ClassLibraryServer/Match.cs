@@ -96,9 +96,9 @@ namespace ClassLibraryServer
             ShowScore();
         }
 
-        private void ShowScore()
+        public string ShowScore()
         {
-            MessageBox.Show(scoreOfPlayer1 + " : " + scoreOfPlayer2);
+            return scoreOfPlayer1 + " : " + scoreOfPlayer2;
         }
         private void IncreaseScoreOf(Player winner)
         {

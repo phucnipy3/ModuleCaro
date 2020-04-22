@@ -59,7 +59,18 @@ namespace ClassLibraryServer.UserControls
                 thread.Start();
                 btnPlay.IsEnabled = false;
             }
+
+            Thread threadGetScore = new Thread(new ThreadStart(ShowScore));
+            threadGetScore.Start();
         }
+
+        public void ShowScore()
+        {
+            string[] result = match.ShowScore().Trim().Split(':');
+            txbPlayer1.Text = result[0].Trim();
+            txbPlayer2.Text = result[1].Trim();
+        }
+
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
