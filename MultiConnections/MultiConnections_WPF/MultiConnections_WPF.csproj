@@ -79,6 +79,9 @@
     <Compile Include="CreateMatch.xaml.cs">
       <DependentUpon>CreateMatch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShowMatch.xaml.cs">
+      <DependentUpon>ShowMatch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UC Library\UCMatch.xaml.cs">
       <DependentUpon>UCMatch.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ShowMatch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UC Library\UCMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

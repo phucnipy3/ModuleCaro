@@ -80,11 +80,17 @@
     <Compile Include="UCPlayer.Designer.cs">
       <DependentUpon>UCPlayer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCBoard.xaml.cs">
+      <DependentUpon>UCBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCMatch.xaml.cs">
       <DependentUpon>UCMatch.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UCPlayer.xaml.cs">
       <DependentUpon>UCPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCRectangle.xaml.cs">
+      <DependentUpon>UCRectangle.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -145,11 +151,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="UserControls\UCBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\UCMatch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\UCPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UCRectangle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

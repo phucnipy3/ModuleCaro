@@ -29,3 +29,10 @@ E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.Gener
 E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.CoreCompileInputs.cache
 E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.dll
 E:\NCKH\Caro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.pdb
+E:\Learning\Science Research\New\Client\ClassLibraryClient\bin\Debug\ClassLibraryClient.dll
+E:\Learning\Science Research\New\Client\ClassLibraryClient\bin\Debug\ClassLibraryClient.pdb
+E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csprojAssemblyReference.cache
+E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.Properties.Resources.resources
+E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.GenerateResource.cache
+E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.dll
+E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.pdb

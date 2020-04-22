@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using System.Net.NetworkInformation;
+using System.Windows.Media;
 
 namespace ClassLibraryClient
 {
@@ -24,7 +25,7 @@ namespace ClassLibraryClient
         private const int SIZE_OF_AVT = 69;
         private const string LINK_OUTPUT = "Output.txt";
         private const string LINK_INPUT = "Input.txt";
-        private const string FISRT_TURN = "playfirst";
+        private const string FIRST_TURN = "playfirst";
         private const string SECOND_TURN = "playsecond";
         private const int IMAGE_BYTE_SIZE = 20000;
 
@@ -37,6 +38,7 @@ namespace ClassLibraryClient
         private bool networkAvailable = true;
         private string username;
         private string password;
+        private MoveTracker moveTracker;
         private Thread threadReceiveAndSend;
         private Thread threadLookingForServer;
         private Thread threadConnectToServer;
@@ -54,6 +56,7 @@ namespace ClassLibraryClient
             this.serverIPAddress = serverIPAddress;
             ClearInputOutput();
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
+            moveTracker = new MoveTracker();
         }
 
         public void StartCheckForConnection(System.Windows.Controls.TextBlock txbConnectionStatus)
@@ -254,8 +257,13 @@ namespace ClassLibraryClient
         {
             string data = TryReadFromStream();
             TryWriteFile(data);
-            if (data.Equals(SECOND_TURN))
-                ReceiveData();
+            moveTracker.AddOpponentMove(data);
+            if(data.Equals(FIRST_TURN) || data.Equals(SECOND_TURN))
+            {
+                moveTracker.Reset();
+                if (data.Equals(SECOND_TURN))
+                    ReceiveData();
+            }
         }
 
         public string TryReadFromStream()
@@ -322,9 +330,19 @@ namespace ClassLibraryClient
             string data;
             do
             {
-                data = TryReadFile(LINK_OUTPUT);
+                do
+                {
+                    data = TryReadFile(LINK_OUTPUT);
+                }
+                while (data == null || data.Equals(oldData));
+                if (moveTracker.TryAddAllyMove(data))
+                    break;
+                else
+                {
+                    TryWriteFile("moveexist");
+                }
             }
-            while (data == null || data.Equals(oldData));
+            while (true);
             oldData = data;
 
             TryWriteToStream(data + "[end]");
@@ -408,19 +426,26 @@ namespace ClassLibraryClient
                 if (serverConnected)
                 {
                     string str;
+                    bool isConnected;
                     if (isConnecting())
                     {
                         str = "Đã kết nối";
+                        isConnected = true;
                     }
                     else
                     {
-                        str = "Mất kết nối";
+                        str = "Đang kết nối";
                         serverConnected = false;
-
+                        isConnected = false;
                     }
                     txtStatus.Dispatcher.BeginInvoke(new Action(delegate
                     {
                         txtStatus.Text = str;
+                        
+                        if (isConnected)
+                            txtStatus.Foreground = new SolidColorBrush(Colors.YellowGreen);
+                        else
+                            txtStatus.Foreground = new SolidColorBrush(Colors.Red);
                     }));
                 }
                 Thread.Sleep(1000);
@@ -465,4 +490,5 @@ namespace ClassLibraryClient
     {
         public bool IsValidLogin { get; set; }
     }
+
 }
