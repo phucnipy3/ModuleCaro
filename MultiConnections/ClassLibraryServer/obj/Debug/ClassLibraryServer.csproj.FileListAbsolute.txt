@@ -70,3 +70,40 @@ E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\U
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.baml
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.g.cs
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.baml
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.dll
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.pdb
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.dll
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\EntityFramework.dll
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.pdb
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll.config
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.pdb
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\EntityFramework.xml
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csprojAssemblyReference.cache
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.ResolveComReference.cache
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.g.cs
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.g.cs
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.g.cs
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.g.cs
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.cache
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.lref
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.baml
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.baml
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.baml
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.baml
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.g.resources
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.Properties.Resources.resources
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCMatch.resources
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCPlayer.resources
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.GenerateResource.cache
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CoreCompileInputs.cache
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
+D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.g.cs
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.g.cs
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.baml
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.baml
