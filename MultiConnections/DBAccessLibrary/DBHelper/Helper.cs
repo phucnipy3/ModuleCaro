@@ -87,6 +87,12 @@ namespace DBAccessLibrary.DBHelper
             DB.SaveChanges();
             return true;
         }
+
+        public static StoredMatch GetMatch(int id)
+        {
+            return DB.Matches.Include("Player1").Include("Player2").Include("Games.Moves").Where(x => x.Id == id).SingleOrDefault();
+        }
+
         public static void CheckOnSomething()
         {
             var x = DB.Matches.Include("Player1").Include("Player2").Include("Games.Moves").First();
