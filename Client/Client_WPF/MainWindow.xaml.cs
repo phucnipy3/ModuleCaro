@@ -38,28 +38,58 @@ namespace Client_WPF
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            btnLogin.IsEnabled = false;
             InitHomePage();
-            DialogLoading dialog = new DialogLoading();
-            Grid.SetRow(dialog, 1);
-            grdMain.Children.Add(dialog);
-            dialog.loading.IsOpen = true;
-            ForwardPage();
-            grdMain.Children.Remove(dialog);
         }
-
+        public void MoveToHomePage()
+        {
+            Application.Current.Dispatcher.Invoke(new Action(delegate
+            {
+                DialogLoading dialog = new DialogLoading();
+                Grid.SetRow(dialog, 1);
+                grdMain.Children.Add(dialog);
+                dialog.loading.IsOpen = true;
+                ForwardPage();
+                grdMain.Children.Remove(dialog);
+            }));
+        }
         private void InitHomePage()
         {
             ipAddress = txtIPServer.Text.Trim();
             username = txtID.Text.Trim();
             password = txtPassword.Password.Trim();
             myClient = new MyClient(username, password, ipAddress);
+            myClient.LoginMessageReceived += myClient_LoginMessageReceived;
+            myClient.TakeTooMuchTimeToConnect += myClient_TakeTooMuchTime;
             myClient.StartConnectToServer();
             myClient.StartReceiveAndSend();
 
             myClient.StartCheckForConnection(txbTemp);
 
             
+        }
+
+        private void myClient_TakeTooMuchTime(object sender, EventArgs e)
+        {
+            MessageBox.Show("Mất quá nhiều thời gian để thiết lập kết nối");
+            btnLogin.Dispatcher.BeginInvoke(new Action(delegate
+            {
+                btnLogin.IsEnabled = true;
+            }));
+        }
+
+        private void myClient_LoginMessageReceived(object sender, LoginMessageReceivedEventArgs e)
+        {
+            if (e.IsValidLogin)
+                MoveToHomePage();
+            else
+            {
+                MessageBox.Show("Sai thông tin đăng nhập");
+                btnLogin.Dispatcher.BeginInvoke(new Action(delegate
+                {
+                    btnLogin.IsEnabled = true;
+                }));
+            }
         }
 
         void ForwardPage()
@@ -100,7 +130,9 @@ namespace Client_WPF
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
+            myClient.ClearInputOutput();
             app = Process.Start(txtApp.Text.Trim());
+            
         }
 
         private void btnBrowse_Click(object sender, RoutedEventArgs e)

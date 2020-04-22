@@ -76,7 +76,7 @@ namespace DBAccessLibrary.DBHelper
         public static bool Login(string infomation)
         {
             var players = DB.Players;
-            return players.Where(x => infomation.Equals("[username]"+x.Username+"[password]123456[end]")).Count() > 0;
+            return players.Where(x => infomation.Equals("[username]"+x.Username+"[password]"+x.Password+"[end]")).Count() > 0;
         }
         public static bool AddPlayer(string username, string password)
         {
@@ -86,6 +86,11 @@ namespace DBAccessLibrary.DBHelper
             DB.Players.Add(player);
             DB.SaveChanges();
             return true;
+        }
+        public static void CheckOnSomething()
+        {
+            var x = DB.Matches.Include("Player1").Include("Player2").Include("Games.Moves").First();
+            return;
         }
     }
 }

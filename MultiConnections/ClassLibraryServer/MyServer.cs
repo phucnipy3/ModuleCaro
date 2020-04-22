@@ -82,11 +82,11 @@ namespace ClassLibraryServer
             string name = loginString.Substring(0, loginString.IndexOf("[password]")).Substring(loginString.IndexOf("[username]")+10);
             if (!Helper.Login(loginString))
             {
-                SendMesssage(client, "invalid");
+                SendMesssage(client, "invalid[end]");
             }
             else
             {
-                SendMesssage(client, "valid");
+                SendMesssage(client, "valid[end]");
 
                 while (true)
                 {

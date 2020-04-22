@@ -1,4 +1,5 @@
 ﻿using ClassLibraryServer;
+using DBAccessLibrary.DBHelper;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -33,7 +34,6 @@ namespace MultiConnections_WPF
             myServer.StartThreadCreateEmptyPlayer();
             myServer.StartThreadRefreshListPlayer(spnlPlayer);
             myServer.StartThreadCheckAndRemoveConnection();
-            
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)

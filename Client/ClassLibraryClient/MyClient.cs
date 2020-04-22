@@ -25,8 +25,8 @@ namespace ClassLibraryClient
         private const int SIZE_OF_AVT = 69;
         private const string LINK_OUTPUT = "Output.txt";
         private const string LINK_INPUT = "Input.txt";
-        private const string FISRT_TURN = "playfirst[end]";
-        private const string SECOND_TURN = "playsecond[end]";
+        private const string FISRT_TURN = "playfirst";
+        private const string SECOND_TURN = "playsecond";
         private const int IMAGE_BYTE_SIZE = 20000;
 
 
@@ -125,6 +125,9 @@ namespace ClassLibraryClient
                 }
             }
         }
+
+       
+
         public void ReceiveAndSend()
         {
             while (true)
@@ -182,8 +185,19 @@ namespace ClassLibraryClient
         }
         public void ConnectToServer()
         {
+            int counter = 4;
+            bool ignoreCounter = false;
             while (true)
             {
+                if(!ignoreCounter)
+                {
+                    counter--;
+                    if (counter < 0)
+                    {
+                        OnTakeTooMuchTimeToConnect(EventArgs.Empty);
+                        break;
+                    }
+                }
                 Thread.Sleep(1000);
                 if (!serverConnected)
                 {
@@ -193,10 +207,12 @@ namespace ClassLibraryClient
                         IPEndPoint ipe = new IPEndPoint(ip, PORT_NUMBER);
                         player = new TcpClient();
                         player.Connect(ipe);
-                        SendNameAndAvatar();
+                        if (!SendNameAndAvatar())
+                            break;
                         serverConnected = true;
+                        ignoreCounter = true;
                     }
-                    catch
+                    catch (Exception e )
                     {
                         continue;
                     }
@@ -209,7 +225,7 @@ namespace ClassLibraryClient
         {
             return IPAddress.Parse(serverIPAddress);
         }
-        public void SendNameAndAvatar()
+        public bool SendNameAndAvatar()
         {
             byte[] nameBuffer = new byte[SIZE_OF_BYTE];
             byte[] imgBuffer = new byte[IMAGE_BYTE_SIZE];
@@ -220,15 +236,26 @@ namespace ClassLibraryClient
             byte[] buffer = new byte[SIZE_OF_BYTE];
             stream.Read(buffer, 0, buffer.Length);
             string loginMessage = Encoding.UTF8.GetString(buffer);
-            if (loginMessage.Trim().Equals("valid"))
-                MessageBox.Show("login valid");
+
+            LoginMessageReceivedEventArgs args = new LoginMessageReceivedEventArgs();
+            if (loginMessage.Substring(0,loginMessage.IndexOf("[end]")).Equals("valid"))
+            {
+                args.IsValidLogin = true;
+            }
+            else
+            {
+                args.IsValidLogin = false;
+            }
+            OnLoginMessageReceived(args);
+            return args.IsValidLogin;
+                
         }
 
         public void ReceiveData()
         {
             string data = TryReadFromStream();
             TryWriteFile(data);
-            if (data.Substring(0, 6).Equals(SECOND_TURN))
+            if (data.Equals(SECOND_TURN))
                 ReceiveData();
         }
 
@@ -423,5 +450,27 @@ namespace ClassLibraryClient
                 ptb.Image = bmp;
             }
         }
+        protected virtual void OnTakeTooMuchTimeToConnect(EventArgs e)
+        {
+            EventHandler handler = TakeTooMuchTimeToConnect;
+            if(handler!=null)
+            {
+                handler(this, e);
+            }
+        }
+        public EventHandler TakeTooMuchTimeToConnect;
+        protected virtual void OnLoginMessageReceived(LoginMessageReceivedEventArgs e)
+        {
+            EventHandler<LoginMessageReceivedEventArgs> handler = LoginMessageReceived;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
+        public EventHandler<LoginMessageReceivedEventArgs> LoginMessageReceived;
+    }
+    public class LoginMessageReceivedEventArgs : EventArgs
+    {
+        public bool IsValidLogin { get; set; }
     }
 }
