@@ -84,6 +84,8 @@ namespace ClassLibraryServer.UserControls
         private void btnShowMatch_Click(object sender, RoutedEventArgs e)
         {
             StoredMatch match = Helper.GetMatch(this.match.StoredMatch.Id);
+            //TODO
+            // mở show match window truyền vào biến match, hk phải this.match. rồi làm trỏng.
         }
     }
 }

@@ -103,3 +103,7 @@ D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServ
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.g.cs
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.g.cs
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.baml
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.baml
