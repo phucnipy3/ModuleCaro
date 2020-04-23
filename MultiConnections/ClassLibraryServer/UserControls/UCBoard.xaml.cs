@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DBAccessLibary.Models;
 
 namespace ClassLibraryServer.UserControls
 {
@@ -23,14 +24,16 @@ namespace ClassLibraryServer.UserControls
         
         private const int BOARD_SIZE = 10;
         private int sizeOfRectangle;
+        public UCRectangle[,] listUCRectangle = new UCRectangle[BOARD_SIZE,BOARD_SIZE];
+        
 
         public UCBoard()
         {
             InitializeComponent();
-
             sizeOfRectangle = (int)this.Width / BOARD_SIZE;
 
             DrawBoard();
+            
         }
 
         public void DrawBoard()
@@ -39,20 +42,19 @@ namespace ClassLibraryServer.UserControls
 
             for (int i = 0; i < BOARD_SIZE; i++)
             {
-                UCRectangle uCRowRectangle = new UCRectangle() { Width = sizeOfRectangle, Height = sizeOfRectangle };
-                uCRowRectangle.txbChessman.Text = "X";
-                uCRowRectangle.txbChessman.Foreground = new SolidColorBrush(Colors.Red);
-                wpnlBoard.Children.Add(uCRowRectangle);
+                DrawRectangle(i, 0);
                 for (int j = 1; j < BOARD_SIZE; j++)
                 {
-                    UCRectangle uCColumnRectangle = new UCRectangle() { Width = sizeOfRectangle, Height = sizeOfRectangle };
-                    uCColumnRectangle.txbChessman.Text = "O";
-                    uCColumnRectangle.txbChessman.Foreground = new SolidColorBrush(Colors.Blue);
-                    wpnlBoard.Children.Add(uCColumnRectangle);
+                    DrawRectangle(i, j);
                 }
             }
-            
+        }
 
+        public void DrawRectangle(int i, int j)
+        {
+            UCRectangle uCRectangle = new UCRectangle() { Width = sizeOfRectangle, Height = sizeOfRectangle };
+            listUCRectangle[i, j] = uCRectangle;
+            wpnlBoard.Children.Add(uCRectangle);
         }
     }
 }

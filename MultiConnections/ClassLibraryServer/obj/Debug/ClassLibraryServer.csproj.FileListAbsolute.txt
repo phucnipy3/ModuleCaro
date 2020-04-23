@@ -107,3 +107,7 @@ E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.g.cs
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.baml
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.baml
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.g.cs
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.baml
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.g.cs
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.baml

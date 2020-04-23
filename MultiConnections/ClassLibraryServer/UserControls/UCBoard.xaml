@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ClassLibraryServer.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Width="350" Height="350">
+             d:DesignHeight="450" d:DesignWidth="800" Width="350" Height="350" HorizontalAlignment="Center" VerticalAlignment="Center">
     <materialDesign:Card>
         <WrapPanel x:Name="wpnlBoard" HorizontalAlignment="Center" VerticalAlignment="Center">
             

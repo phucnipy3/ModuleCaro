@@ -154,7 +154,7 @@ namespace ClassLibraryServer
             matrix[row, col] = chessman;
             string saveValue = chessman.ToString() + moveCount.ToString();
             moveCount++;
-            Helper.AddMove(storedGame, chessman == Chessman.X ? "X" : "Y", col, row);
+            Helper.AddMove(storedGame, chessman == Chessman.X ? "X" : "O", col, row);
         }
 
         public bool GameOver()
