@@ -9,11 +9,11 @@
              d:DesignHeight="450" d:DesignWidth="800" Width="430" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
     <Grid x:Name="grdMain">
         <Grid.RowDefinitions>
-            <RowDefinition Height="370"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="382"/>
+            <RowDefinition Height="68"/>
         </Grid.RowDefinitions>
 
-        <materialDesign:Card Grid.Row="1" Margin="0,12.5" Background="#FF8522BD" Height="55" VerticalAlignment="Center">
+        <materialDesign:Card Grid.Row="1" Margin="0,6.5" Background="#FF8522BD" Height="55" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 
                 <Button x:Name="btnBack" Background="Red" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" BorderBrush="{x:Null}" Margin="10,0,0,0" IsEnabled="False" Click="btnBack_Click">

@@ -58,9 +58,11 @@ namespace ClassLibraryServer.UserControls
                     for (int i = 0; i < storedGame.Moves.Count; i++)
                     {
                         DrawChessman(i);
+                        currentMove = i;
                         if (!isSkip)
                             Thread.Sleep(1000);
                     }
+                    isPause = true;
                 }
 
             }
@@ -90,16 +92,20 @@ namespace ClassLibraryServer.UserControls
 
         public void Next()
         {
-            currentMove++;
-            DrawChessman(currentMove);
+            if (currentMove < storedGame.Moves.Count - 1)
+            {
+                currentMove++;
+                DrawChessman(currentMove);
+            }
+            
         }
 
         public void Back()
         {
-            if (currentMove > 0)
+            if (currentMove >= 0)
             {
-                currentMove--;
                 DeleteChessman(currentMove);
+                currentMove--;
             }
             else
                 currentMove = 0;

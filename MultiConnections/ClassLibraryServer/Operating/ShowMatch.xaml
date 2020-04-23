@@ -7,7 +7,7 @@
         xmlns:userControl="clr-namespace:ClassLibraryServer.UserControls;assembly=ClassLibraryServer"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ShowMatch" Height="500" Width="700" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="ShowMatch" Height="550" Width="750" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
