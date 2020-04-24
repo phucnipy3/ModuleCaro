@@ -20,11 +20,15 @@
                     <materialDesign:PackIcon Kind="StepBackward"/>
                 </Button>
 
+                <Button x:Name="btnReset" Background="Green" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" BorderBrush="{x:Null}" Margin="10,0,0,0" Click="btnReset_Click" >
+                    <materialDesign:PackIcon Kind="Refresh"/>
+                </Button>
+                
                 <Button x:Name="btnPlay" Background="YellowGreen" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" BorderBrush="{x:Null}" Margin="10,0,0,0" Click="btnPlay_Click">
                     <materialDesign:PackIcon Kind="Play"/>
                 </Button>
 
-                <Button x:Name="btnPause" Background="Red" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" BorderBrush="{x:Null}" Margin="10,0,0,0" Click="btnPause_Click">
+                <Button x:Name="btnPause" Visibility="Collapsed" Background="Red" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" BorderBrush="{x:Null}" Margin="10,0,0,0" Click="btnPause_Click">
                     <materialDesign:PackIcon Kind="Pause"/>
                 </Button>
 

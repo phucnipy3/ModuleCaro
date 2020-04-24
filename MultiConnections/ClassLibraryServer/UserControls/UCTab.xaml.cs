@@ -23,12 +23,14 @@ namespace ClassLibraryServer.UserControls
     public partial class UCTab : UserControl
     {
 
-        private bool isPause;
+        
         private int currentMove;
         private StoredGame storedGame;
         private UCBoard uCBoard;
 
         private int delay;
+        private bool isPause;
+        private bool isOver;
 
         public UCTab(StoredGame storedGame)
         {
@@ -38,6 +40,7 @@ namespace ClassLibraryServer.UserControls
             uCBoard = new UCBoard();
             grdMain.Children.Add(uCBoard);
             isPause = true;
+            isOver = false;
             currentMove = -1;
 
             Thread thread = new Thread(new ThreadStart(PlayGame));
@@ -49,7 +52,13 @@ namespace ClassLibraryServer.UserControls
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
+            if (isOver)
+                ResetGame();
             isPause = false;
+            btnBack.IsEnabled = false;
+            btnNext.IsEnabled = false;
+            btnPlay.Visibility = Visibility.Collapsed;
+            btnPause.Visibility = Visibility.Visible;
         }
 
         public void PlayGame()
@@ -64,7 +73,7 @@ namespace ClassLibraryServer.UserControls
                 else
                 {
                     Thread.Sleep(200);
-                }
+                }   
             }
         }
 
@@ -73,6 +82,8 @@ namespace ClassLibraryServer.UserControls
             isPause = true;
             btnBack.IsEnabled = true;
             btnNext.IsEnabled = true;
+            btnPlay.Visibility = Visibility.Visible;
+            btnPause.Visibility = Visibility.Collapsed;
         }
 
         private void btnSkip_Click(object sender, RoutedEventArgs e)
@@ -91,6 +102,8 @@ namespace ClassLibraryServer.UserControls
             Next();
         }
 
+        
+
         public void Next()
         {
             if (currentMove < storedGame.Moves.Count - 1)
@@ -98,11 +111,16 @@ namespace ClassLibraryServer.UserControls
                 currentMove++;
                 DrawChessman(currentMove);
             }
+            else
+            {
+                isOver = true;
+            }
             
         }
 
         public void Back()
         {
+            isOver = false;
             if (currentMove >= 0)
             {
                 DeleteChessman(currentMove);
@@ -110,6 +128,19 @@ namespace ClassLibraryServer.UserControls
             }
             else
                 currentMove = 0;
+        }
+
+        public void ResetGame()
+        {
+            isPause = true;
+            isOver = false;
+            currentMove = -1;
+            btnBack.IsEnabled = false;
+            btnNext.IsEnabled = false;
+            btnPause.Visibility = Visibility.Collapsed;
+            btnPlay.Visibility = Visibility.Visible;
+            foreach (var chessMan in uCBoard.listUCRectangle)
+                chessMan.txbChessman.Text = "";
         }
 
         void DeleteChessman(int index)
@@ -141,6 +172,9 @@ namespace ClassLibraryServer.UserControls
                 }));
         }
 
-       
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            ResetGame();
+        }
     }
 }
