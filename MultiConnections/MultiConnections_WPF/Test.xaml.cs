@@ -26,11 +26,11 @@ namespace MultiConnections_WPF
         public Test()
         {
             InitializeComponent();
-            storedMatch = Helper.GetMatch(26);
+            storedMatch = Helper.GetMatch(6);
             InitMatch();
             //storedMatch = match;
 
-
+            ShowPlayerInformations();
         }
 
         private void InitMatch()
@@ -43,6 +43,35 @@ namespace MultiConnections_WPF
                 tabItem.Content = tab;
                 tcMatch.Items.Add(tabItem);
             }
+        }
+
+        private void ShowPlayerInformations()
+        {
+            ShowName();
+            ShowScore();
+        }
+
+        private void ShowName()
+        {
+            txbPlayer1.Text = storedMatch.Player1.Username.Trim();
+            txbPlayer2.Text = storedMatch.Player2.Username.Trim();
+
+        }
+
+        private void ShowScore()
+        {
+            int score1 = 0;
+            int score2 = 0;
+            foreach (var game in storedMatch.Games)
+            {
+                if (game.Winner == storedMatch.Player1)
+                    score1++;
+                if (game.Winner == storedMatch.Player2)
+                    score2++;
+            }
+
+            txbPlayer1Score.Text = score1.ToString();
+            txbPlayer2Score.Text = score2.ToString();
         }
 
 

@@ -24,7 +24,6 @@ namespace ClassLibraryServer.UserControls
     {
 
         private bool isPause;
-        private bool isSkip;
         private int currentMove;
         private StoredGame storedGame;
         private UCBoard uCBoard;
@@ -39,7 +38,6 @@ namespace ClassLibraryServer.UserControls
             uCBoard = new UCBoard();
             grdMain.Children.Add(uCBoard);
             isPause = true;
-            isSkip = false;
             currentMove = -1;
 
             Thread thread = new Thread(new ThreadStart(PlayGame));
