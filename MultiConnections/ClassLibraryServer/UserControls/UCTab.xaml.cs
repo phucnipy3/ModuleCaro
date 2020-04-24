@@ -135,6 +135,7 @@ namespace ClassLibraryServer.UserControls
             isPause = true;
             isOver = false;
             currentMove = -1;
+            delay = 1000;
             btnBack.IsEnabled = false;
             btnNext.IsEnabled = false;
             btnPause.Visibility = Visibility.Collapsed;
