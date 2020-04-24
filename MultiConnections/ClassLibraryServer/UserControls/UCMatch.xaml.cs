@@ -93,10 +93,7 @@ namespace ClassLibraryServer.UserControls
 
         private void btnShowMatch_Click(object sender, RoutedEventArgs e)
         {
-            StoredMatch match = Helper.GetMatch(7);
-            //StoredMatch match = Helper.GetMatch(this.match.StoredMatch.Id);
-            //TODO
-            // mở show match window truyền vào biến match, hk phải this.match. rồi làm trỏng.
+            StoredMatch match = Helper.GetMatch(this.match.StoredMatch.Id);
             ShowMatch showMatch = new ShowMatch(match);
             showMatch.Show();
         }

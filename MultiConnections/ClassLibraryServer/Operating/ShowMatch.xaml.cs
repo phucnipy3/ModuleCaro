@@ -27,16 +27,15 @@ namespace ClassLibraryServer.Operating
         public ShowMatch(StoredMatch match)
         {
             InitializeComponent();
+            storedMatch = match;
             InitMatch();
-            storedMatch = Helper.GetMatch(7);
-            //storedMatch = match;
 
             ShowPlayerInformations();
         }
 
         private void InitMatch()
         {
-            for (int i = 0; i < storedMatch.GameCount; i++)
+            for (int i = 0; i < storedMatch.Games.Count; i++)
             {
                 UCTab tab = new UCTab(storedMatch.Games[i]);
 
