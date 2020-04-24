@@ -29,7 +29,8 @@ namespace ClassLibraryServer.UserControls
         private StoredGame storedGame;
         private UCBoard uCBoard;
 
-        
+        private int delay;
+
         public UCTab(StoredGame storedGame)
         {
             this.storedGame = storedGame;
@@ -37,16 +38,20 @@ namespace ClassLibraryServer.UserControls
 
             uCBoard = new UCBoard();
             grdMain.Children.Add(uCBoard);
-            isPause = false;
+            isPause = true;
             isSkip = false;
             currentMove = -1;
+
+            Thread thread = new Thread(new ThreadStart(PlayGame));
+            thread.IsBackground = true;
+            thread.Start();
+
+            delay = 1000;
         }
 
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
-            Thread thread = new Thread(new ThreadStart(PlayGame));
-            thread.IsBackground = true;
-            thread.Start();
+            isPause = false;
         }
 
         public void PlayGame()
@@ -55,16 +60,13 @@ namespace ClassLibraryServer.UserControls
             {
                 if (!isPause)
                 {
-                    for (int i = 0; i < storedGame.Moves.Count; i++)
-                    {
-                        DrawChessman(i);
-                        currentMove = i;
-                        if (!isSkip)
-                            Thread.Sleep(1000);
-                    }
-                    isPause = true;
+                    Next();
+                    Thread.Sleep(delay);
                 }
-
+                else
+                {
+                    Thread.Sleep(200);
+                }
             }
         }
 
@@ -77,7 +79,8 @@ namespace ClassLibraryServer.UserControls
 
         private void btnSkip_Click(object sender, RoutedEventArgs e)
         {
-            isSkip = true;
+            delay = 0;
+            isPause = false;
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

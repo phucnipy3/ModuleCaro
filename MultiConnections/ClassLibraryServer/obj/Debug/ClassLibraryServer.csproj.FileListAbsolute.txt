@@ -111,3 +111,7 @@ E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\O
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.baml
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.g.cs
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.baml
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.g.cs
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.g.cs
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.baml
+E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.baml
