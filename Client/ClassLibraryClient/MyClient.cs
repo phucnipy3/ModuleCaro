@@ -44,6 +44,8 @@ namespace ClassLibraryClient
         private Thread threadConnectToServer;
         private Thread threadCheckForConnection;
 
+        private bool isConnected = false;
+
         private string serverIPAddress;
 
         public bool ServerFound { get => serverFound; set => serverFound = value; }
@@ -58,6 +60,7 @@ namespace ClassLibraryClient
             moveTracker = new MoveTracker();
             StartThread(ReceiveAndSend);
             StartThread(ConnectToServer);
+            StartThread(CheckForConnection);
         }
 
         public delegate void ConsecutiveFuction();
@@ -67,13 +70,6 @@ namespace ClassLibraryClient
             Thread thread = new Thread(new ThreadStart(function));
             thread.IsBackground = true;
             thread.Start();
-        }
-
-        public void StartCheckForConnection(System.Windows.Controls.TextBlock txbConnectionStatus)
-        {
-            threadCheckForConnection = new Thread(CheckForConnection);
-            threadCheckForConnection.IsBackground = true;
-            threadCheckForConnection.Start(txbConnectionStatus);
         }
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -90,19 +86,6 @@ namespace ClassLibraryClient
             writer1.Close();
             writer2.Close();
         }
-        public void StartReceiveAndSend()
-        {
-            threadReceiveAndSend = new Thread(new ThreadStart(ReceiveAndSend));
-            threadReceiveAndSend.IsBackground = true;
-            threadReceiveAndSend.Start();
-        }
-
-        public void StartConnectToServer()
-        {
-            threadConnectToServer = new Thread(new ThreadStart(ConnectToServer));
-            threadConnectToServer.IsBackground = true;
-            threadConnectToServer.Start();
-        }
 
         public void ReceiveAndSend()
         {
@@ -117,7 +100,6 @@ namespace ClassLibraryClient
                     }
                     catch(Exception e)
                     {
-                        //MessageBox.Show(e.Message);
                         Thread.Sleep(1000);
                         continue;
                     }
@@ -128,7 +110,6 @@ namespace ClassLibraryClient
                 }
             }
         }
-
         private bool isConnecting()
         {
             if (!networkAvailable)
@@ -183,7 +164,7 @@ namespace ClassLibraryClient
                         IPEndPoint ipe = new IPEndPoint(ip, PORT_NUMBER);
                         player = new TcpClient();
                         player.Connect(ipe);
-                        if (!SendNameAndAvatar())
+                        if (!SendLoginInfomation())
                             break;
                         serverConnected = true;
                         ignoreCounter = true;
@@ -201,7 +182,7 @@ namespace ClassLibraryClient
         {
             return IPAddress.Parse(serverIPAddress);
         }
-        public bool SendNameAndAvatar()
+        public bool SendLoginInfomation()
         {
             byte[] nameBuffer = new byte[SIZE_OF_BYTE];
             byte[] imgBuffer = new byte[IMAGE_BYTE_SIZE];
@@ -371,57 +352,17 @@ namespace ClassLibraryClient
                 return newData;
             }
         }
-        //public void CheckForConnection(object sender)
-        //{
-        //    Label lblStatus = sender as Label;
-        //    while (true)
-        //    {
-        //        if (serverConnected)
-        //        {
-        //            if (isConnecting())
-        //            {
-        //                lblStatus.Text = "Connected";
-        //            }
-        //            else
-        //            {
-        //                lblStatus.Text = "No connection";
-        //                serverConnected = false;
-
-        //            }
-        //        }
-        //        Thread.Sleep(1000);
-        //    }
-        //}
-        public void CheckForConnection(object sender)
+        public void CheckForConnection()
         {
-            System.Windows.Controls.TextBlock txtStatus = sender as System.Windows.Controls.TextBlock;
             while (true)
             {
-                if (serverConnected)
+                if(isConnecting() != isConnected)
                 {
-                    string str;
-                    bool isConnected;
-                    if (isConnecting())
-                    {
-                        str = "Đã kết nối";
-                        isConnected = true;
-                    }
-                    else
-                    {
-                        str = "Đang kết nối";
-                        serverConnected = false;
-                        isConnected = false;
-                    }
-                    txtStatus.Dispatcher.BeginInvoke(new Action(delegate
-                    {
-                        txtStatus.Text = str;
-                        
-                        if (isConnected)
-                            txtStatus.Foreground = new SolidColorBrush(Colors.YellowGreen);
-                        else
-                            txtStatus.Foreground = new SolidColorBrush(Colors.Red);
-                    }));
-                }
+                    isConnected = !isConnected;
+                    ConnectionChangedEventArgs args = new ConnectionChangedEventArgs();
+                    args.isConnected = isConnected;
+                    OnConnectionChanged(args);
+                }    
                 Thread.Sleep(1000);
             }
         }
@@ -456,13 +397,29 @@ namespace ClassLibraryClient
             if (handler != null)
             {
                 handler(this, e);
+                
+            }
+        }
+        protected virtual void OnConnectionChanged(ConnectionChangedEventArgs e)
+        {
+            EventHandler<ConnectionChangedEventArgs> handler = ConnectionChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+
             }
         }
         public EventHandler<LoginMessageReceivedEventArgs> LoginMessageReceived;
+
+        public EventHandler<ConnectionChangedEventArgs> ConnectionChanged;
     }
     public class LoginMessageReceivedEventArgs : EventArgs
     {
         public bool IsValidLogin { get; set; }
+    }
+    public class ConnectionChangedEventArgs : EventArgs
+    {
+        public bool isConnected { get; set; }
     }
 
 }
