@@ -8,6 +8,6 @@
              d:DesignHeight="450" d:DesignWidth="800" Width="35" Height="35">
     <Grid>
         <Rectangle Stroke="Black"/>
-        <TextBlock x:Name="txbChessman" Text="O" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <TextBlock x:Name="txbChessman" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontFamily="Segoe UI Semibold"/>
     </Grid>
 </UserControl>

@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClassLibraryServer.Operating;
 
 namespace ClassLibraryServer.UserControls
 {
@@ -68,9 +69,18 @@ namespace ClassLibraryServer.UserControls
 
         public void ShowScore()
         {
-            string[] result = match.ShowScore().Trim().Split(':');
-            txbPlayer1.Text = result[0].Trim();
-            txbPlayer2.Text = result[1].Trim();
+            while (true)
+            {
+                string[] result = match.ShowScore().Trim().Split(':');
+                txbPlayer1Score.Dispatcher.BeginInvoke(new Action(delegate {
+                    txbPlayer1Score.Text = result[0].Trim();
+                }));
+                txbPlayer2Score.Dispatcher.BeginInvoke(new Action(delegate {
+                    txbPlayer2Score.Text = result[1].Trim();
+                }));
+                Thread.Sleep(1000);
+            }
+            
         }
 
 
@@ -84,6 +94,8 @@ namespace ClassLibraryServer.UserControls
         private void btnShowMatch_Click(object sender, RoutedEventArgs e)
         {
             StoredMatch match = Helper.GetMatch(this.match.StoredMatch.Id);
+            ShowMatch showMatch = new ShowMatch(match);
+            showMatch.Show();
         }
     }
 }

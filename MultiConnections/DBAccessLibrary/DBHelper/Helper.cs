@@ -90,7 +90,7 @@ namespace DBAccessLibrary.DBHelper
 
         public static StoredMatch GetMatch(int id)
         {
-            return DB.Matches.Include("Player1").Include("Player2").Include("Games.Moves").Where(x => x.Id == id).SingleOrDefault();
+            return DB.Matches.Include("Player1").Include("Player2").Include("Games.Moves").Include("Games.Winner").Where(x => x.Id == id).SingleOrDefault();
         }
 
         public static void CheckOnSomething()
