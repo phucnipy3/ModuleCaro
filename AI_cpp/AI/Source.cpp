@@ -15,12 +15,10 @@ void main()
 	while (1)
 	{
 		string data;
-		data = ReadData();
+		cin >> data;
 		if (data._Equal(PlaySecondMessage))
 			continue;
-		cout << data;
 		infile >> data;
-		WriteData(data);
-		cout << endl;
+		cout << data << endl;
 	}
 }
