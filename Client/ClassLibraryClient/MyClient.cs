@@ -32,7 +32,6 @@ namespace ClassLibraryClient
 
         private TcpClient player;
         private string oldData = "";
-        private bool serverConnected = false;
         private string ipString;
         private bool serverFound = false;
         private bool networkAvailable = true;
@@ -91,7 +90,7 @@ namespace ClassLibraryClient
         {
             while (true)
             {
-                if (serverConnected && isConnecting())
+                if (isConnecting())
                 {
                     try
                     {
@@ -156,7 +155,7 @@ namespace ClassLibraryClient
                     }
                 }
                 Thread.Sleep(1000);
-                if (!serverConnected)
+                if (!isConnected)
                 {
                     try
                     {
@@ -166,7 +165,7 @@ namespace ClassLibraryClient
                         player.Connect(ipe);
                         if (!SendLoginInfomation())
                             break;
-                        serverConnected = true;
+                        isConnected = true;
                         ignoreCounter = true;
                     }
                     catch (Exception e )
