@@ -32,23 +32,14 @@ namespace ClassLibraryClient
 
         private TcpClient player;
         private string oldData = "";
-        private bool serverConnected = false;
-        private string ipString;
-        private bool serverFound = false;
         private bool networkAvailable = true;
         private string username;
         private string password;
         private MoveTracker moveTracker;
-        private Thread threadReceiveAndSend;
-        private Thread threadLookingForServer;
-        private Thread threadConnectToServer;
-        private Thread threadCheckForConnection;
 
         private bool isConnected = false;
 
         private string serverIPAddress;
-
-        public bool ServerFound { get => serverFound; set => serverFound = value; }
 
         public MyClient(string username,string password, string serverIPAddress)
         {
@@ -91,7 +82,7 @@ namespace ClassLibraryClient
         {
             while (true)
             {
-                if (serverConnected && isConnecting())
+                if (isConnecting())
                 {
                     try
                     {
@@ -156,7 +147,7 @@ namespace ClassLibraryClient
                     }
                 }
                 Thread.Sleep(1000);
-                if (!serverConnected)
+                if (!isConnected)
                 {
                     try
                     {
@@ -166,7 +157,7 @@ namespace ClassLibraryClient
                         player.Connect(ipe);
                         if (!SendLoginInfomation())
                             break;
-                        serverConnected = true;
+                        isConnected = true;
                         ignoreCounter = true;
                     }
                     catch (Exception e )
@@ -366,22 +357,7 @@ namespace ClassLibraryClient
                 Thread.Sleep(1000);
             }
         }
-        public void StopCheckForConnection()
-        {
-            threadCheckForConnection.Abort();
-        }
 
-        public void UploadImageTo(PictureBox ptb)
-        {
-            OpenFileDialog openDiaglog = new OpenFileDialog();
-            string imgURL;
-            if (openDiaglog.ShowDialog() == DialogResult.OK)
-            {
-                imgURL = openDiaglog.FileName;
-                Bitmap bmp = new Bitmap(Image.FromFile(imgURL), new Size(SIZE_OF_AVT, SIZE_OF_AVT));
-                ptb.Image = bmp;
-            }
-        }
         protected virtual void OnTakeTooMuchTimeToConnect(EventArgs e)
         {
             EventHandler handler = TakeTooMuchTimeToConnect;
