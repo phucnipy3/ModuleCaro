@@ -61,12 +61,18 @@ namespace Client_WPF
             myClient = new MyClient(username, password, ipAddress);
             myClient.LoginMessageReceived += myClient_LoginMessageReceived;
             myClient.TakeTooMuchTimeToConnect += myClient_TakeTooMuchTime;
-            myClient.StartConnectToServer();
-            myClient.StartReceiveAndSend();
+            myClient.ConnectionChanged += myClient_ConnectionChanged;
+        }
 
-            myClient.StartCheckForConnection(txbTemp);
-
-            
+        private void myClient_ConnectionChanged(object sender, ConnectionChangedEventArgs e)
+        {
+            txbTemp.Dispatcher.BeginInvoke(new Action(delegate
+            {
+                if (e.isConnected)
+                    txbTemp.Text = "Đã kết nối";
+                else
+                    txbTemp.Text = "Mất kết nối";
+            }));
         }
 
         private void myClient_TakeTooMuchTime(object sender, EventArgs e)

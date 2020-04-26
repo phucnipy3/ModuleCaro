@@ -48,7 +48,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBMain.cs" />
     <Compile Include="MoveTracker.cs" />
     <Compile Include="MyClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,7 +56,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ServerIP.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
