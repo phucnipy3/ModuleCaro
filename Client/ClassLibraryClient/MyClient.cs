@@ -54,9 +54,19 @@ namespace ClassLibraryClient
             this.username = username;
             this.password = password;
             this.serverIPAddress = serverIPAddress;
-            ClearInputOutput();
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
             moveTracker = new MoveTracker();
+            StartThread(ReceiveAndSend);
+            StartThread(ConnectToServer);
+        }
+
+        public delegate void ConsecutiveFuction();
+
+        public void StartThread(ConsecutiveFuction function)
+        {
+            Thread thread = new Thread(new ThreadStart(function));
+            thread.IsBackground = true;
+            thread.Start();
         }
 
         public void StartCheckForConnection(System.Windows.Controls.TextBlock txbConnectionStatus)
@@ -86,12 +96,6 @@ namespace ClassLibraryClient
             threadReceiveAndSend.IsBackground = true;
             threadReceiveAndSend.Start();
         }
-        public void StartLookingForServer()
-        {
-            threadLookingForServer = new Thread(new ThreadStart(LookingForServer));
-            threadLookingForServer.IsBackground = true;
-            threadLookingForServer.Start();
-        }
 
         public void StartConnectToServer()
         {
@@ -99,36 +103,6 @@ namespace ClassLibraryClient
             threadConnectToServer.IsBackground = true;
             threadConnectToServer.Start();
         }
-
-        public void StartCheckForConnection(Label lbl)
-        {
-            threadCheckForConnection = new Thread(CheckForConnection);
-            threadCheckForConnection.IsBackground = true;
-            threadCheckForConnection.Start(lbl);
-        }
-        
-        public void LookingForServer()
-        {
-            while (true)
-            {
-                Thread.Sleep(1000);
-                if (!ServerFound)
-                {
-                    ServerIP serverIP = new ServerIP();
-                    if (serverIP.Accessable())
-                    {
-                        string str = serverIP.GetIP();
-                        if (str != "")
-                        {
-                            ServerFound = true;
-                            ipString = str;
-                        }
-                    }
-                }
-            }
-        }
-
-       
 
         public void ReceiveAndSend()
         {

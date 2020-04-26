@@ -61,9 +61,6 @@ namespace Client_WPF
             myClient = new MyClient(username, password, ipAddress);
             myClient.LoginMessageReceived += myClient_LoginMessageReceived;
             myClient.TakeTooMuchTimeToConnect += myClient_TakeTooMuchTime;
-            myClient.StartConnectToServer();
-            myClient.StartReceiveAndSend();
-
             myClient.StartCheckForConnection(txbTemp);
 
             
