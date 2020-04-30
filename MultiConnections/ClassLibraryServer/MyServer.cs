@@ -41,6 +41,7 @@ namespace ClassLibraryServer
             }
             return null;
         }
+
         public void StartThreadCheckAndRemoveConnection()
         {
             Thread threadCheckAndRemoveConnection = new Thread(new ThreadStart(CheckAndRemoveConnection));
@@ -78,7 +79,7 @@ namespace ClassLibraryServer
         }
         public void AddNewPlayer(TcpClient client)
         {
-            string loginString = GetName(client);
+            string loginString = GetLoginString(client);
             string name = loginString.Substring(0, loginString.IndexOf("[password]")).Substring(loginString.IndexOf("[username]")+10);
             if (!Helper.Login(loginString))
             {
@@ -111,16 +112,16 @@ namespace ClassLibraryServer
             }
         }
 
-        private string GetName(TcpClient client)
+        private string GetLoginString(TcpClient client)
         {
-            string name;
+            string login;
 
             byte[] buffer = new byte[BYTES_SIZE];
             NetworkStream stream = client.GetStream();
             stream.Read(buffer, 0, buffer.Length);
-            name = Encoding.UTF8.GetString(buffer);
+            login = Encoding.UTF8.GetString(buffer);
 
-            return name.Trim();
+            return login.Trim();
         }
         private void SendMesssage(TcpClient client, string loginMessage)
         {
@@ -257,13 +258,5 @@ namespace ClassLibraryServer
 
         }
 
-        public void PushIP()
-        {
-            new ServerIP().PushIP(GetIPAddress().ToString());
-        }
-        public void DeleteIP()
-        {
-            new ServerIP().DeleteIP();
-        }
     }
 }
