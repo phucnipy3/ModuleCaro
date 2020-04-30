@@ -13,6 +13,7 @@ using System.IO;
 using System.Threading;
 using System.Net.NetworkInformation;
 using System.Windows.Media;
+using System.Diagnostics;
 
 namespace ClassLibraryClient
 {
@@ -41,7 +42,12 @@ namespace ClassLibraryClient
 
         private string serverIPAddress;
 
-        public MyClient(string username,string password, string serverIPAddress)
+        private Process botProcess;
+
+        private string botPath;
+        private bool botStarted = false;
+
+        public MyClient(string username, string password, string serverIPAddress)
         {
             player = new TcpClient();
             this.username = username;
@@ -52,6 +58,39 @@ namespace ClassLibraryClient
             StartThread(ReceiveAndSend);
             StartThread(ConnectToServer);
             StartThread(CheckForConnection);
+            botProcess = new Process();
+        }
+        ~MyClient()
+        {
+            StopBot();
+        }
+        public void StopBot()
+        {
+            if (botStarted)
+            {
+                botProcess.Kill();
+                botStarted = false;
+            }
+        }
+        public void ChangeBot(string botPath)
+        {
+            this.botPath = botPath;
+            StopBot();
+        }
+        public void StartBot()
+        {
+            if(!botStarted)
+            {
+                if (string.IsNullOrEmpty(botPath))
+                    throw new NullReferenceException("Bot path is not set!");
+                botProcess = new Process();
+                botProcess.StartInfo.FileName = botPath;
+                botProcess.StartInfo.UseShellExecute = false;
+                botProcess.StartInfo.RedirectStandardInput = true;
+                botProcess.StartInfo.RedirectStandardOutput = true;
+                botProcess.StartInfo.CreateNoWindow = true;
+                botStarted = botProcess.Start();
+            }    
         }
 
         public delegate void ConsecutiveFuction();
@@ -82,7 +121,7 @@ namespace ClassLibraryClient
         {
             while (true)
             {
-                if (isConnecting())
+                if (botStarted && isConnecting())
                 {
                     try
                     {
@@ -252,7 +291,8 @@ namespace ClassLibraryClient
             {
                 try
                 {
-                    WriteFile(data);
+                    //WriteFile(data);
+                    botProcess.StandardInput.WriteLine(data);
                     break;
                 }
                 catch
@@ -325,7 +365,8 @@ namespace ClassLibraryClient
             {
                 try
                 {
-                    return ReadFile(filename);
+                    //return ReadFile(filename);
+                    return botProcess.StandardOutput.ReadLine();
                 }
                 catch
                 {

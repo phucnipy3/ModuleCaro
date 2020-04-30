@@ -137,7 +137,7 @@ namespace Client_WPF
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             myClient.ClearInputOutput();
-            app = Process.Start(txtApp.Text.Trim());
+            myClient.StartBot();
             
         }
 
@@ -150,13 +150,13 @@ namespace Client_WPF
             if (openFileDialog.ShowDialog() == true)
             {
                 txtApp.Text = openFileDialog.FileName;
+                myClient.ChangeBot(openFileDialog.FileName);
             }
         }
 
         private void btnStop_Click(object sender, RoutedEventArgs e)
         {
-            if (!app.HasExited)
-                app.Kill();
+            myClient.StopBot();
         }
     }
 }
