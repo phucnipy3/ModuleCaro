@@ -95,10 +95,10 @@ namespace ClassLibraryServer
         {
            
             Game game = await Game.CreateNewGameAsync(firstPlayer, secondPlayer, StoredMatch);
-            game.Start();
+            await game.StartAsync();
             Thread.Sleep(2000);
             IncreaseScoreOf(game.Winner);
-            SwapPlayers();
+            await SwapPlayersAsync();
             gamesCounter++;
             NotifyScoreChanged();
         }
@@ -121,12 +121,12 @@ namespace ClassLibraryServer
                 throw new Exception("Winner is either players");
             }
         }
-        public void SwapPlayers()
+        public async Task SwapPlayersAsync()
         {
             Player tempPlayer = firstPlayer;
             firstPlayer = secondPlayer;
             secondPlayer = tempPlayer;
-            Helper.SwapPlayerAsync(StoredMatch);
+            await Helper.SwapPlayerAsync(StoredMatch);
         }
         protected virtual void OnScoreChanged(ScoreChangedEventArgs e)
         {

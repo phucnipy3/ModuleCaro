@@ -10,8 +10,7 @@ namespace DBAccessLibary.DBAccess
     {
         public ModuleContext() : base("name=CaroModule")
         {
-            Database.SetInitializer<ModuleContext>(null);
-            Database.CreateIfNotExists();
+            Database.SetInitializer<ModuleContext>(new CreateDatabaseIfNotExists<ModuleContext>());
         }
 
         public DbSet<StoredPlayer> Players { get; set; }

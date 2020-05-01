@@ -9,8 +9,7 @@ namespace DBAccessLibary.Models
         public int Id { get; set; }
         public StoredPlayer Winner { get; set; }
         public int Order { get; set; }
-        public virtual StoredMatch Match {get; set;}
-        public virtual List<Move> Moves { get; set; } = new List<Move>();
+        public List<Move> Moves { get; set; } = new List<Move>();
 
     }
 }

@@ -29,9 +29,9 @@ namespace MultiConnections_WPF
             this.Close();
         }
 
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
+        private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            Helper.AddPlayerAsync(txtID.Text.Trim(), txtPassword.Password.Trim());
+            await Helper.AddPlayerAsync(txtID.Text.Trim(), txtPassword.Password.Trim());
             MessageBox.Show("Tạo tài khoản mới thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

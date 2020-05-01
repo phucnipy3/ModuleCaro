@@ -88,9 +88,9 @@ namespace ClassLibraryServer.UserControls
             OnButtonCloseClicked(e);
         }
 
-        private void btnShowMatch_Click(object sender, RoutedEventArgs e)
+        private async void btnShowMatch_Click(object sender, RoutedEventArgs e)
         {
-            ShowMatchAsync();
+            await ShowMatchAsync();
         }
 
         private async Task ShowMatchAsync()

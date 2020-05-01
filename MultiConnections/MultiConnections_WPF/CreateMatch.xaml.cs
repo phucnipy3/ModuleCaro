@@ -184,7 +184,6 @@ namespace MultiConnections_WPF
         private async void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
 
-            this.DialogResult = true;
             if (player1 == null || player2 == null)
             {
                 MessageBox.Show("Không đủ số người chơi.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -195,7 +194,8 @@ namespace MultiConnections_WPF
 
             match = await Match.CreateNewMatchAsync(player1, player2, BestOf(), (bool)tbtnCheckRule.IsChecked);
             if (rbtnPlayer2.IsChecked == true)
-                match.SwapPlayers();
+                await match.SwapPlayersAsync();
+            this.DialogResult = true;
             this.Close();
         }
 

@@ -13,8 +13,5 @@ namespace DBAccessLibary.Models
         public int CoordinateX { get; set; }
         public int CoordinateY { get; set; }
         public int Order { get; set; }
-        public virtual StoredGame Game { get; set; }
-
-
     }
 }

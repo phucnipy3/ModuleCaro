@@ -55,27 +55,27 @@ namespace ClassLibraryServer
                 for (int j = 0; j < BOARD_SIZE; j++)
                     matrix[i, j] = Chessman.Empty;
         }
-        public void Start ()
+        public async Task StartAsync ()
         {
             SendStartMessageToFirstPlayer();
             SendStartMessageToSecondPlayer();
             while (true)
             {
                 chessman = Chessman.O;
-                ProcessingDataFrom(firstPlayer);
+                await ProcessingDataFromAsync(firstPlayer);
                 if (gameEnded)
                 {
                     winner = firstPlayer;
-                    Helper.SetWinnerAsync(Helper.GetPlayerByName(firstPlayer.Name), storedGame);
+                    await Helper.SetWinnerAsync(Helper.GetPlayerByName(firstPlayer.Name), storedGame);
                     return;
                 }
                 TrySendData(secondPlayer, moveString + "[end]");
                 chessman = Chessman.X;
-                ProcessingDataFrom(secondPlayer);
+                await ProcessingDataFromAsync(secondPlayer);
                 if (gameEnded)
                 {
                     winner = secondPlayer;
-                    Helper.SetWinnerAsync(Helper.GetPlayerByName(secondPlayer.Name), storedGame);
+                    await Helper.SetWinnerAsync(Helper.GetPlayerByName(secondPlayer.Name), storedGame);
                     return;
                 }
                 TrySendData(firstPlayer, moveString + "[end]");
@@ -91,12 +91,12 @@ namespace ClassLibraryServer
             TrySendData(secondPlayer, "playsecond[end]");
         }
 
-        private void ProcessingDataFrom(Player player)
+        private async Task ProcessingDataFromAsync(Player player)
         {
             moveString = TryGetData(player);
             if (StrValid())
-            {
-                MakeMove();
+            { 
+                await MakeMoveAsync();
                 if (GameOver())
                 {
                     gameEnded = true;
@@ -153,7 +153,7 @@ namespace ClassLibraryServer
             }
             return false;
         }
-        public void MakeMove()
+        public async Task MakeMoveAsync()
         {
             string[] move = moveString.Split(',');
             int row = int.Parse(move[0]);
@@ -161,7 +161,7 @@ namespace ClassLibraryServer
             matrix[row, col] = chessman;
             string saveValue = chessman.ToString() + moveCount.ToString();
             moveCount++;
-            Helper.AddMoveAsync(storedGame, chessman == Chessman.X ? "X" : "O", col, row);
+            await Helper.AddMoveAsync(storedGame, chessman == Chessman.X ? "X" : "O", col, row);
         }
 
         public bool GameOver()
