@@ -114,7 +114,7 @@ namespace MultiConnections_WPF
         private void AddUCPlayer(ListBox listBox) 
         {
             listBox.Items.Clear();
-            for (int i = 0; i < players.Count - 1; i++)
+            for (int i = 0; i < players.Count; i++)
             {
                 ClassLibraryServer.UserControls.UCPlayer ucPlayer = new ClassLibraryServer.UserControls.UCPlayer(players[i]);
                 ucPlayer.MouseDown += new MouseButtonEventHandler(UcPlayer_MouseDown);
@@ -181,7 +181,7 @@ namespace MultiConnections_WPF
             return match;
         }
 
-        private void BtnCreate_Click(object sender, RoutedEventArgs e)
+        private async void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
 
             this.DialogResult = true;
@@ -192,10 +192,8 @@ namespace MultiConnections_WPF
             }
             player1.OnMatch();
             player2.OnMatch();
-            //TODO
 
-
-            match = new Match(player1, player2, BestOf(), (bool)tbtnCheckRule.IsChecked);
+            match = await Match.CreateNewMatchAsync(player1, player2, BestOf(), (bool)tbtnCheckRule.IsChecked);
             if (rbtnPlayer2.IsChecked == true)
                 match.SwapPlayers();
             this.Close();

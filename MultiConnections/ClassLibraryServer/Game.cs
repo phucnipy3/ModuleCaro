@@ -32,14 +32,21 @@ namespace ClassLibraryServer
         {
             get { return winner; }
         }
-        public Game(Player firstPlayer, Player secondPlayer, StoredMatch match)
+        private Game(Player firstPlayer, Player secondPlayer, StoredMatch match)
         {
-            storedGame = Helper.AddNewGameToMatch(match);
+
             this.firstPlayer = firstPlayer;
             this.secondPlayer = secondPlayer;
             gameEnded = false;
             moveCount = 1;
             InitBoard();
+        }
+
+        public static async Task<Game> CreateNewGameAsync(Player firstPlayer, Player secondPlayer, StoredMatch match)
+        {
+            Game game = new Game(firstPlayer, secondPlayer, match);
+            game.storedGame = await Helper.AddNewGameToMatchAsync(match);
+            return game;
         }
         private void InitBoard()
         {
@@ -48,7 +55,7 @@ namespace ClassLibraryServer
                 for (int j = 0; j < BOARD_SIZE; j++)
                     matrix[i, j] = Chessman.Empty;
         }
-        public void Start()
+        public void Start ()
         {
             SendStartMessageToFirstPlayer();
             SendStartMessageToSecondPlayer();
@@ -59,7 +66,7 @@ namespace ClassLibraryServer
                 if (gameEnded)
                 {
                     winner = firstPlayer;
-                    Helper.SetWinner(Helper.GetPlayerByName(firstPlayer.Name), storedGame);
+                    Helper.SetWinnerAsync(Helper.GetPlayerByName(firstPlayer.Name), storedGame);
                     return;
                 }
                 TrySendData(secondPlayer, moveString + "[end]");
@@ -68,7 +75,7 @@ namespace ClassLibraryServer
                 if (gameEnded)
                 {
                     winner = secondPlayer;
-                    Helper.SetWinner(Helper.GetPlayerByName(secondPlayer.Name), storedGame);
+                    Helper.SetWinnerAsync(Helper.GetPlayerByName(secondPlayer.Name), storedGame);
                     return;
                 }
                 TrySendData(firstPlayer, moveString + "[end]");
@@ -154,7 +161,7 @@ namespace ClassLibraryServer
             matrix[row, col] = chessman;
             string saveValue = chessman.ToString() + moveCount.ToString();
             moveCount++;
-            Helper.AddMove(storedGame, chessman == Chessman.X ? "X" : "O", col, row);
+            Helper.AddMoveAsync(storedGame, chessman == Chessman.X ? "X" : "O", col, row);
         }
 
         public bool GameOver()

@@ -31,7 +31,7 @@ namespace MultiConnections_WPF
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            Helper.AddPlayer(txtID.Text.Trim(), txtPassword.Password.Trim());
+            Helper.AddPlayerAsync(txtID.Text.Trim(), txtPassword.Password.Trim());
             MessageBox.Show("Tạo tài khoản mới thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }

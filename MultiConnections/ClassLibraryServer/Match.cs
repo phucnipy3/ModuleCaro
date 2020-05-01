@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.IO;
 using DBAccessLibrary.DBHelper;
 using DBAccessLibary.Models;
-
+using System.Threading;
 
 namespace ClassLibraryServer
 {
@@ -32,13 +32,14 @@ namespace ClassLibraryServer
 
         public bool IsBlockBothEnds { get => isBlockBothEnds; set => isBlockBothEnds = value; }
         public StoredMatch StoredMatch { get => storedMatch; set => storedMatch = value; }
+        public int MaxGames { get => maxGames;}
 
         public Match()
         {
 
         }
 
-        public Match(Player player1, Player player2, int maxGames = 1, bool isBlockBothEnds = false)
+        private Match(Player player1, Player player2, int maxGames = 1, bool isBlockBothEnds = false)
         {
             this.Player1 = player1;
             this.Player2 = player2;
@@ -50,36 +51,39 @@ namespace ClassLibraryServer
             gamesCounter = 1;
             gameEnded = false;
 
-            StoredMatch = Helper.AddNewMatch(Helper.GetPlayerByName(Player1.Name), Helper.GetPlayerByName(Player2.Name), IsPlayer1PlayFirst, IsBlockBothEnds, maxGames);
-
         }
 
+        public static async Task<Match> CreateNewMatchAsync(Player player1, Player player2, int maxGames = 1, bool isBlockBothEnds = false)
+        {
+            Match match = new Match(player1, player2, maxGames, isBlockBothEnds);
+            match.StoredMatch = await Helper.AddNewMatchAsync(Helper.GetPlayerByName(match.Player1.Name), Helper.GetPlayerByName(match.Player2.Name), match.IsPlayer1PlayFirst, match.IsBlockBothEnds, match.maxGames);
+            return match;
+        }
 
-
-        public void TryStartAllGames()
+        public async Task TryStartAllGamesAsync()
         {
             try
             {
-                StartAllGames();
+                await StartAllGamesAsync();
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message + "\r\n"+e.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void StartAllGames()
+        private async Task StartAllGamesAsync()
         {
-            while(gamesCounter<=maxGames)
+            while(gamesCounter<=MaxGames)
             {
-                StartOneGame();
+                await StartOneGameAsync();
             }
         }
 
-        public void TryStartOneGame()
+        public async Task TryStartOneGameAsync()
         {
             try
             {
-                StartOneGame();
+                await StartOneGameAsync();
             }
             catch (Exception e)
             {
@@ -87,20 +91,24 @@ namespace ClassLibraryServer
             }
         }
 
-        private void StartOneGame()
+        private async Task StartOneGameAsync()
         {
            
-            Game game = new Game(firstPlayer, secondPlayer, StoredMatch);
+            Game game = await Game.CreateNewGameAsync(firstPlayer, secondPlayer, StoredMatch);
             game.Start();
+            Thread.Sleep(2000);
             IncreaseScoreOf(game.Winner);
             SwapPlayers();
             gamesCounter++;
-            ShowScore();
+            NotifyScoreChanged();
         }
 
-        public string ShowScore()
+        public void NotifyScoreChanged()
         {
-            return scoreOfPlayer1 + " : " + scoreOfPlayer2;
+            ScoreChangedEventArgs args = new ScoreChangedEventArgs();
+            args.ScoreOfPlayer1 = scoreOfPlayer1;
+            args.ScoreOfPlayer2 = scoreOfPlayer2;
+            OnScoreChanged(args);
         }
         private void IncreaseScoreOf(Player winner)
         {
@@ -118,7 +126,21 @@ namespace ClassLibraryServer
             Player tempPlayer = firstPlayer;
             firstPlayer = secondPlayer;
             secondPlayer = tempPlayer;
-            Helper.SwapPlayer(StoredMatch);
+            Helper.SwapPlayerAsync(StoredMatch);
         }
+        protected virtual void OnScoreChanged(ScoreChangedEventArgs e)
+        {
+            EventHandler<ScoreChangedEventArgs> handler = ScoreChanged;
+            if(handler != null)
+            {
+                handler(this, e);
+            }    
+        }
+        public EventHandler<ScoreChangedEventArgs> ScoreChanged;
+    }
+    public class ScoreChangedEventArgs : EventArgs
+    {
+        public int ScoreOfPlayer1 { get; set; }
+        public int ScoreOfPlayer2 { get; set; }
     }
 }
