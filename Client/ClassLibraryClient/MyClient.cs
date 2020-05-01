@@ -17,7 +17,7 @@ using System.Diagnostics;
 
 namespace ClassLibraryClient
 {
-    public class MyClient
+    public class MyClient : IDisposable
     {
         private const int PORT_NUMBER = 9999;
         private const int SIZE_OF_BYTE = 1024;
@@ -47,6 +47,8 @@ namespace ClassLibraryClient
         private string botPath;
         private bool botStarted = false;
 
+        private List<Thread> runningThreads;
+
         public MyClient(string username, string password, string serverIPAddress)
         {
             player = new TcpClient();
@@ -55,9 +57,10 @@ namespace ClassLibraryClient
             this.serverIPAddress = serverIPAddress;
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
             moveTracker = new MoveTracker();
-            StartThread(ReceiveAndSend);
-            StartThread(ConnectToServer);
-            StartThread(CheckForConnection);
+            runningThreads = new List<Thread>();
+            runningThreads.Add(StartThread(ReceiveAndSend));
+            runningThreads.Add(StartThread(ConnectToServer));
+            runningThreads.Add(StartThread(CheckForConnection));
             botProcess = new Process();
         }
         ~MyClient()
@@ -95,11 +98,12 @@ namespace ClassLibraryClient
 
         public delegate void ConsecutiveFuction();
 
-        public void StartThread(ConsecutiveFuction function)
+        public Thread StartThread(ConsecutiveFuction function)
         {
             Thread thread = new Thread(new ThreadStart(function));
             thread.IsBackground = true;
             thread.Start();
+            return thread;
         }
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -274,7 +278,7 @@ namespace ClassLibraryClient
             stream.Read(dataTemp, 0, dataTemp.Length);
             string data = Encoding.ASCII.GetString(dataTemp);
             return data.Substring(0, data.IndexOf("[end]"));
-;
+            
         }
 
         public bool isEmpty(byte[] data)
@@ -398,7 +402,15 @@ namespace ClassLibraryClient
                 Thread.Sleep(1000);
             }
         }
-
+        public void Dispose()
+        {
+            foreach(var thread in runningThreads)
+            {
+                thread.Abort();
+            }
+            StopBot();
+            player.Close();
+        }
         protected virtual void OnTakeTooMuchTimeToConnect(EventArgs e)
         {
             EventHandler handler = TakeTooMuchTimeToConnect;
@@ -438,5 +450,5 @@ namespace ClassLibraryClient
     {
         public bool isConnected { get; set; }
     }
-
+    
 }
