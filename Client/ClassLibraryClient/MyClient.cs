@@ -146,33 +146,7 @@ namespace ClassLibraryClient
         }
         private bool isConnecting()
         {
-            if (!networkAvailable)
-                return false;
-            bool blockingState = player.Client.Blocking;
-            try
-            {
-                byte[] tmp = new byte[1];
-
-                player.Client.Blocking = false;
-                player.Client.Send(tmp, 0, 0);
-                return true;
-            }
-            catch (SocketException e)
-            {
-                // 10035 == WSAEWOULDBLOCK
-                if (e.NativeErrorCode.Equals(10035))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            finally
-            {
-                player.Client.Blocking = blockingState;
-            }
+            return MyClient.GetState(player) == TcpState.Established;
         }
         public void ConnectToServer()
         {
@@ -409,7 +383,16 @@ namespace ClassLibraryClient
                 thread.Abort();
             }
             StopBot();
-            player.Close();
+            if(isConnecting())
+            {
+                player.GetStream().Close();
+                player.Close();
+            }
+        }
+        public static TcpState GetState(TcpClient tcpClient)
+        {
+            var foo = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().SingleOrDefault(x => x.LocalEndPoint.Equals(tcpClient.Client.LocalEndPoint));
+            return foo != null ? foo.State : TcpState.Unknown;
         }
         protected virtual void OnTakeTooMuchTimeToConnect(EventArgs e)
         {
@@ -417,7 +400,7 @@ namespace ClassLibraryClient
             if(handler!=null)
             {
                 handler(this, e);
-            }
+            } 
         }
         public EventHandler TakeTooMuchTimeToConnect;
         protected virtual void OnLoginMessageReceived(LoginMessageReceivedEventArgs e)

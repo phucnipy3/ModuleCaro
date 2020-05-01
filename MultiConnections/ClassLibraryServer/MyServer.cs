@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using DBAccessLibrary.DBHelper;
 using System.Windows;
+using System.Net.NetworkInformation;
 
 namespace ClassLibraryServer
 {
@@ -208,9 +209,8 @@ namespace ClassLibraryServer
                 int i = 0;
                 while (i < Players.Count - 1)
                 {
-                    if (!Players[i].Playing && !isConnecting(Players[i].Client))
+                    if (!Players[i].Playing && MyServer.GetState(Players[i].Client) != TcpState.Established)
                     {
-
                         RemoveConnection(Players[i]);
                     }
                     else
@@ -233,6 +233,8 @@ namespace ClassLibraryServer
             bool blockingState = client.Client.Blocking;
             try
             {
+                if (!client.Client.Connected)
+                    return false;
                 byte[] tmp = new byte[1];
 
                 client.Client.Blocking = false;
@@ -257,6 +259,10 @@ namespace ClassLibraryServer
             }
 
         }
-
+        public static TcpState GetState(TcpClient tcpClient)
+        {
+            var foo = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().SingleOrDefault(x => x.LocalEndPoint.Equals(tcpClient.Client.LocalEndPoint));
+            return foo != null ? foo.State : TcpState.Unknown;
+        }
     }
 }
