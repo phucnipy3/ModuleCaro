@@ -47,6 +47,11 @@ namespace ClassLibraryClient
         private string botPath;
         private bool botStarted = false;
 
+        public bool isRunningBotProcess
+        {
+            get { return this.botProcess.Responding; }
+        }
+
         public MyClient(string username, string password, string serverIPAddress)
         {
             player = new TcpClient();
@@ -59,6 +64,7 @@ namespace ClassLibraryClient
             StartThread(ConnectToServer);
             StartThread(CheckForConnection);
             botProcess = new Process();
+            
         }
         ~MyClient()
         {
