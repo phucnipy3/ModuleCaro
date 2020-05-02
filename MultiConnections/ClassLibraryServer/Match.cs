@@ -23,7 +23,7 @@ namespace ClassLibraryServer
         private int scoreOfPlayer1;
         private int scoreOfPlayer2;
         private bool gameEnded;
-        private StoredMatch storedMatch;
+        private int storedMatchId;
 
         public Player Player1 { get => player1; set => player1 = value; }
         public Player Player2 { get => player2; set => player2 = value; }
@@ -31,7 +31,7 @@ namespace ClassLibraryServer
         public bool IsPlayer1PlayFirst { get { return player1 == firstPlayer; } }
 
         public bool IsBlockBothEnds { get => isBlockBothEnds; set => isBlockBothEnds = value; }
-        public StoredMatch StoredMatch { get => storedMatch; set => storedMatch = value; }
+        public int StoredMatchId { get => storedMatchId; set => storedMatchId = value; }
         public int MaxGames { get => maxGames;}
 
         public Match()
@@ -56,15 +56,15 @@ namespace ClassLibraryServer
         public static async Task<Match> CreateNewMatchAsync(Player player1, Player player2, int maxGames = 1, bool isBlockBothEnds = false)
         {
             Match match = new Match(player1, player2, maxGames, isBlockBothEnds);
-            match.StoredMatch = await Helper.AddNewMatchAsync(Helper.GetPlayerByName(match.Player1.Name), Helper.GetPlayerByName(match.Player2.Name), match.IsPlayer1PlayFirst, match.IsBlockBothEnds, match.maxGames);
+            match.StoredMatchId = await Helper.AddNewMatchAsync(Helper.GetPlayerIdByName(match.Player1.Name), Helper.GetPlayerIdByName(match.Player2.Name), match.IsPlayer1PlayFirst, match.IsBlockBothEnds, match.maxGames);
             return match;
         }
 
-        public async Task TryStartAllGamesAsync()
+        public void TryStartAllGames()
         {
             try
             {
-                await StartAllGamesAsync();
+                StartAllGamesAsync();
             }
             catch (Exception e)
             {
@@ -79,11 +79,11 @@ namespace ClassLibraryServer
             }
         }
 
-        public async Task TryStartOneGameAsync()
+        public void TryStartOneGame()
         {
             try
             {
-                await StartOneGameAsync();
+                StartOneGameAsync();
             }
             catch (Exception e)
             {
@@ -94,7 +94,7 @@ namespace ClassLibraryServer
         private async Task StartOneGameAsync()
         {
            
-            Game game = await Game.CreateNewGameAsync(firstPlayer, secondPlayer, StoredMatch);
+            Game game = await Game.CreateNewGameAsync(firstPlayer, secondPlayer, StoredMatchId);
             await game.StartAsync();
             Thread.Sleep(2000);
             IncreaseScoreOf(game.Winner);
@@ -126,7 +126,7 @@ namespace ClassLibraryServer
             Player tempPlayer = firstPlayer;
             firstPlayer = secondPlayer;
             secondPlayer = tempPlayer;
-            await Helper.SwapPlayerAsync(StoredMatch);
+            await Helper.SwapPlayerAsync(StoredMatchId);
         }
         protected virtual void OnScoreChanged(ScoreChangedEventArgs e)
         {

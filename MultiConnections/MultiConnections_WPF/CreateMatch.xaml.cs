@@ -38,7 +38,7 @@ namespace MultiConnections_WPF
             InitializeComponent();
             this.players = players;
             playersCount = players.Count;
-            lastPlayer = players[players.Count - 1];
+            lastPlayer = players.Count> 0 ? players[players.Count - 1]: null;
             AddUCPlayer(spnlPlayer);
             StartThreadRefreshListPlayer(spnlPlayer);
         }

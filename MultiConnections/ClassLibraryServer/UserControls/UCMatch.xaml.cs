@@ -60,11 +60,11 @@ namespace ClassLibraryServer.UserControls
             }
         }
 
-        private async void BtnPlay_Click(object sender, RoutedEventArgs e)
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
         {
             if(radOneGame.IsChecked == true)
             {
-                await match.TryStartOneGameAsync();
+                match.TryStartOneGame();
                 gamesPlayed++;
                 if(gamesPlayed >= match.MaxGames)
                     btnPlay.IsEnabled = false;
@@ -72,7 +72,7 @@ namespace ClassLibraryServer.UserControls
             }
             else
             {
-                await match.TryStartAllGamesAsync();
+                match.TryStartAllGames();
                 btnPlay.IsEnabled = false;
             }
         }
@@ -95,7 +95,7 @@ namespace ClassLibraryServer.UserControls
 
         private async Task ShowMatchAsync()
         {
-            StoredMatch match = await Helper.GetMatchAsync(this.match.StoredMatch.Id);
+            StoredMatch match = await Helper.GetMatchAsync(this.match.StoredMatchId);
             ShowMatch showMatch = new ShowMatch(match);
             showMatch.Show();
         }
