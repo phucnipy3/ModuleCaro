@@ -60,11 +60,11 @@ namespace ClassLibraryServer
             return match;
         }
 
-        public void TryStartAllGames()
+        public async Task TryStartAllGamesAsync()
         {
             try
             {
-                StartAllGamesAsync();
+                await StartAllGamesAsync();
             }
             catch (Exception e)
             {
@@ -79,11 +79,11 @@ namespace ClassLibraryServer
             }
         }
 
-        public void TryStartOneGame()
+        public async Task TryStartOneGameAsync()
         {
             try
             {
-                StartOneGameAsync();
+                await StartOneGameAsync();
             }
             catch (Exception e)
             {
@@ -96,7 +96,6 @@ namespace ClassLibraryServer
            
             Game game = await Game.CreateNewGameAsync(firstPlayer, secondPlayer, StoredMatchId);
             await game.StartAsync();
-            Thread.Sleep(2000);
             IncreaseScoreOf(game.Winner);
             await SwapPlayersAsync();
             gamesCounter++;

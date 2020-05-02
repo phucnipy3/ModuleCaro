@@ -57,8 +57,8 @@ namespace ClassLibraryServer
         }
         public async Task StartAsync ()
         {
-            SendStartMessageToFirstPlayer();
-            SendStartMessageToSecondPlayer();
+            await SendStartMessageToFirstPlayerAsync();
+            await SendStartMessageToSecondPlayerAsync();
             while (true)
             {
                 chessman = Chessman.O;
@@ -69,7 +69,7 @@ namespace ClassLibraryServer
                     await Helper.SetWinnerAsync(Helper.GetPlayerIdByName(firstPlayer.Name), storedGameId);
                     return;
                 }
-                TrySendData(secondPlayer, moveString + "[end]");
+                await TrySendDataAsync(secondPlayer, moveString + "[end]");
                 chessman = Chessman.X;
                 await ProcessingDataFromAsync(secondPlayer);
                 if (gameEnded)
@@ -78,22 +78,22 @@ namespace ClassLibraryServer
                     await Helper.SetWinnerAsync(Helper.GetPlayerIdByName(secondPlayer.Name), storedGameId);
                     return;
                 }
-                TrySendData(firstPlayer, moveString + "[end]");
+                await TrySendDataAsync(firstPlayer, moveString + "[end]");
             }
         }
 
-        private void SendStartMessageToFirstPlayer()
+        private async Task SendStartMessageToFirstPlayerAsync()
         {
-            TrySendData(firstPlayer, "playfirst[end]");
+            await TrySendDataAsync(firstPlayer, "playfirst[end]");
         }
-        private void SendStartMessageToSecondPlayer()
+        private async Task SendStartMessageToSecondPlayerAsync()
         {
-            TrySendData(secondPlayer, "playsecond[end]");
+            await TrySendDataAsync(secondPlayer, "playsecond[end]");
         }
 
         private async Task ProcessingDataFromAsync(Player player)
         {
-            moveString = TryGetData(player);
+            moveString = await TryGetDataAsync(player);
             if (StrValid())
             { 
                 await MakeMoveAsync();
@@ -108,28 +108,27 @@ namespace ClassLibraryServer
             }
         }
 
-        public string TryGetData(Player player)
+        public async Task<string> TryGetDataAsync(Player player)
         {
             while (true)
             {
                 try
                 {
-                    return GetData(player.Client);
+                    return await GetDataAsync(player.Client);
                 }
                 catch(Exception e)
                 {
-                    Thread.Sleep(2000);
+                    await Task.Delay(2000);
                     continue;
                 }
             }  
         }
-        public string GetData(TcpClient player)
+        public async Task<string> GetDataAsync(TcpClient player)
         {
-
             byte[] buffer = new byte[BYTES_SIZE];
             NetworkStream stream = player.GetStream();
             stream.ReadTimeout = 10000;
-            stream.Read(buffer, 0, buffer.Length);
+            await stream.ReadAsync(buffer, 0, buffer.Length);
             string data = Encoding.ASCII.GetString(buffer);
             return data.Substring(0,data.LastIndexOf("[end]"));
         }
@@ -223,29 +222,29 @@ namespace ClassLibraryServer
             return row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE;
         }
 
-        public void TrySendData(Player player, string msg)
+        public async Task TrySendDataAsync(Player player, string msg)
         {
             while(true)
             {
                 try
                 {
-                    SendData(player, msg);
+                    await SendDataAsync(player, msg);
                     break;
                 }
                 catch
                 {
-                    Thread.Sleep(2000);
+                    await Task.Delay(2000);
                     continue;
                 }
             }
         }
-        public void SendData(Player player, string msg)
+        public async Task SendDataAsync(Player player, string msg)
         {
             byte[] buffer = new byte[BYTES_SIZE];
             buffer = Encoding.ASCII.GetBytes(msg);
             NetworkStream stream = player.Client.GetStream();
             stream.WriteTimeout = 10000;
-            stream.Write(buffer, 0, buffer.Length);
+            await stream.WriteAsync(buffer, 0, buffer.Length);
         }
     }
 }
