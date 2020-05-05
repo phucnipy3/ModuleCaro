@@ -6,147 +6,153 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Client_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="280" Width="430" Background="White" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Grid x:Name="grdMain">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        Title="MainWindow" Height="320" Width="440" AllowsTransparency="True" Background="Transparent"  WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
-        
+    <Border Margin="5">
+        <Border.Effect>
+            <DropShadowEffect Color="Black"
+                              Direction="270"
+                              BlurRadius="5"
+                              ShadowDepth="1"/>
+        </Border.Effect>
 
-
-
-        <StackPanel Background="#FF8522BD" Orientation="Horizontal" FlowDirection="RightToLeft" MouseDown="StackPanel_MouseDown">
-            <Button x:Name="btnClose" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" 
-                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Close" Click="btnClose_Click">
-                <materialDesign:PackIcon Kind="WindowClose"/>
-            </Button>
-            <Button x:Name="btnMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" 
-                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Minimize" Click="btnMinimize_Click">
-                <materialDesign:PackIcon Kind="WindowMinimize"/>
-            </Button>
-        </StackPanel>
-
-        <Grid x:Name="grdLogin" Grid.Row="1" >
+        <Grid x:Name="grdMain" Background="White">
             <Grid.RowDefinitions>
-                <RowDefinition Height="65*"/>
-                <RowDefinition Height="197*"/>
-            </Grid.RowDefinitions>
-
-            <materialDesign:Card  Margin="10,10" Grid.Row="1" Background="#FFF0F0F0">
-                <Grid x:Name="grdAccount">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Margin="0,5">
-                        <Grid Margin="10,0">
-                            <Rectangle Fill="#FF03A9F4" Width="89" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Margin="0,0,0,-10" RadiusX="10" RadiusY="10" />
-                            <TextBlock Text="Tài khoản" FontSize="15" Margin="13,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        </Grid>
-                        <materialDesign:Card Margin="10,0,10,10">
-                            <TextBox x:Name="txtID" BorderThickness="0" FontSize="13" Background="White"/>
-                        </materialDesign:Card>
-
-                    </StackPanel>
-                    <StackPanel Grid.Row="1" Margin="0,5">
-                        <Grid Margin="10,0">
-                            <Rectangle Fill="#FF03A9F4" Width="89" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Margin="0,0,0,-10" RadiusX="10" RadiusY="10" />
-                            <TextBlock Text="Mật khẩu" FontSize="15" Margin="13,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        </Grid>
-
-                        <materialDesign:Card Margin="10,0,10,10">
-                            <PasswordBox x:Name="txtPassword" FontSize="13" Background="White" BorderThickness="0"/>
-                        </materialDesign:Card>
-                    </StackPanel>
-
-                    <Button x:Name="btnLogin" Grid.Row="3" Click="btnLogin_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Đăng nhập"/>
-                </Grid>
-            </materialDesign:Card>
-
-            <materialDesign:Card Grid.Row="0" Margin="10,5,10,0" Background="#FF03A9F4">
-                <StackPanel x:Name="pnlIPServer">
-                    <TextBlock Text="Địa chỉ IP Server" Foreground="White" FontSize="15" Margin="10,0"/>
-                    <StackPanel Orientation="Horizontal" Margin="10,0">
-                        <materialDesign:Card Margin="0,5,5,5" Width="300">
-                            <TextBox x:Name="txtIPServer" BorderThickness="0" Text="192.168.1.244" LostFocus="TxtIPServer_LostFocus"/>
-                        </materialDesign:Card>
-                        <Button IsEnabled="True" Content="Nhập lại" x:Name="btnReFill" Click="BtnReFill_Click"/>
-                    </StackPanel>
-
-                </StackPanel>
-            </materialDesign:Card>
-
-
-        </Grid>
-
-        <Grid  Grid.Row="1" Visibility="Hidden"  x:Name="grdHome">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="49"/>
-                <RowDefinition Height="84"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
 
-            <Grid Background="#FF9162E4" >
-                <Button x:Name="btnChangeAccount" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#FFB71C1C">
-                    <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
-                        <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
-                    </StackPanel>
-                </Button>
 
-                <materialDesign:Card  Margin="10,10,0,10" HorizontalAlignment="Left" Width="130">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" FlowDirection="LeftToRight">
-                        <materialDesign:PackIcon x:Name="iconConnection" Kind="Circle" Foreground="{Binding ElementName=txbTemp, Path=Foreground, Mode=OneWay}" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
-                        <TextBlock x:Name="txbConnectionStatus" Text="{Binding ElementName=txbTemp, Path=Text, Mode=OneWay}" FontSize="15" Padding="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock x:Name="txbTemp" Text="Đang kết nối" Foreground="Red" Visibility="Collapsed"/>
+
+
+            <StackPanel Background="#FF8522BD" Orientation="Horizontal" FlowDirection="RightToLeft" MouseDown="StackPanel_MouseDown">
+                <Button x:Name="btnClose" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" 
+                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Close" Click="btnClose_Click">
+                    <materialDesign:PackIcon Kind="WindowClose"/>
+                </Button>
+                <Button x:Name="btnMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" 
+                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Minimize" Click="btnMinimize_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize"/>
+                </Button>
+            </StackPanel>
+
+            <Grid x:Name="grdLogin" Grid.Row="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="65*"/>
+                    <RowDefinition Height="197*"/>
+                </Grid.RowDefinitions>
+
+                <materialDesign:Card  Margin="10,10" Grid.Row="1" Background="#FFF0F0F0">
+                    <Grid x:Name="grdAccount">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="80*"/>
+                            <RowDefinition Height="69*"/>
+                            <RowDefinition Height="41*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Margin="0,5">
+                            <Grid Margin="10,0">
+                                <Rectangle Fill="#FF03A9F4" Width="89" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Margin="0,0,0,-10" RadiusX="10" RadiusY="10" />
+                                <TextBlock Text="Tài khoản" FontSize="15" Margin="13,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            </Grid>
+                            <materialDesign:Card Margin="10,0,10,10">
+                                <TextBox x:Name="txtID" BorderThickness="0" FontSize="13" Background="White"/>
+                            </materialDesign:Card>
+
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Margin="0,5">
+                            <Grid Margin="10,0">
+                                <Rectangle Fill="#FF03A9F4" Width="89" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Margin="0,0,0,-10" RadiusX="10" RadiusY="10" />
+                                <TextBlock Text="Mật khẩu" FontSize="15" Margin="13,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <materialDesign:Card Margin="10,0,10,10">
+                                <PasswordBox x:Name="txtPassword" FontSize="13" Background="White" BorderThickness="0"/>
+                            </materialDesign:Card>
+                        </StackPanel>
+
+                        <Button x:Name="btnLogin" Grid.Row="2" Click="btnLogin_Click" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Đăng nhập" Margin="154.065,0" Width="101.87"/>
+                    </Grid>
+                </materialDesign:Card>
+
+                <materialDesign:Card Grid.Row="0" Margin="10,5,10,0" Background="#FF03A9F4">
+                    <StackPanel x:Name="pnlIPServer">
+                        <TextBlock Text="Địa chỉ IP Server" Foreground="White" FontSize="15" Margin="10,0"/>
+                        <StackPanel Orientation="Horizontal" Margin="10,0">
+                            <materialDesign:Card Margin="0,5,5,5" Width="299">
+                                <TextBox x:Name="txtIPServer" BorderThickness="0" Text="192.168.1.244" LostFocus="TxtIPServer_LostFocus"/>
+                            </materialDesign:Card>
+                            <Button IsEnabled="True" Content="Nhập lại" x:Name="btnReFill" Click="BtnReFill_Click"/>
+                        </StackPanel>
+
                     </StackPanel>
+                </materialDesign:Card>
+
+
+            </Grid>
+
+            <Grid Visibility="Hidden" Grid.Row="1"  x:Name="grdHome">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="49"/>
+                    <RowDefinition Height="84"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+
+                <Grid Background="#FF9162E4" >
+                    <Button x:Name="btnBack" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#FFB71C1C" Click="btnBack_Click">
+                        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                            <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20"/>
+                        </StackPanel>
+                    </Button>
+
+                    <materialDesign:Card  Margin="10,10,0,10" HorizontalAlignment="Left" Width="130">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" FlowDirection="LeftToRight">
+                            <materialDesign:PackIcon x:Name="iconConnection" Kind="Circle" Foreground="{Binding ElementName=txbTemp, Path=Foreground, Mode=OneWay}" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Center" HorizontalContentAlignment="Center"/>
+                            <TextBlock x:Name="txbConnectionStatus" Text="{Binding ElementName=txbTemp, Path=Text, Mode=OneWay}" FontSize="15" Padding="10,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock x:Name="txbTemp" Text="Đang kết nối" Foreground="Red" Visibility="Collapsed"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+
+
+                <materialDesign:Card Grid.Row="2" Margin="10,-5,10,10">
+                    <RichTextBox x:Name="rtxtLog" Margin="5" BorderThickness="1">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="RichTextBox"/>
+                                <Run Text="RichTextBox"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+
+                </materialDesign:Card>
+
+
+
+
+                <materialDesign:Card Grid.Row="1" Margin="10,10,10,0" Background="#FF8522BD">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="335">
+                                <TextBlock Text="Đường dẫn tới phần mềm" FontSize="15" Padding="0,0,0,5" Foreground="White"/>
+                                <materialDesign:Card VerticalAlignment="Center">
+                                    <TextBox x:Name="txtApp" BorderThickness="0"/>
+                                </materialDesign:Card>
+                            </StackPanel>
+                            <Button x:Name="btnBrowse" Margin="10,0,0,9" HorizontalAlignment="Right" Height="26" Background="White" Foreground="#DD102897" VerticalAlignment="Bottom" Click="btnBrowse_Click">
+                                <materialDesign:PackIcon Kind="ApplicationImport"/>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
                 </materialDesign:Card>
             </Grid>
 
 
-            <materialDesign:Card Grid.Row="2" Margin="10,-5,10,40">
-                <StackPanel Margin="0,5,0,0">
-                    <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <materialDesign:PackIcon Kind="Circle" Foreground="Red" VerticalAlignment="Center"/>
-                        <TextBlock Text="Đang chạy" FontSize="15" Margin="10,0,0,0"/>
-                    </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button x:Name="btnPlay" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,5,0" Click="btnPlay_Click">
-                            <materialDesign:PackIcon Kind="Play"/>
-                        </Button>
-                        <Button x:Name="btnStop" Background="Red" Style="{StaticResource MaterialDesignFloatingActionButton}" Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0" BorderBrush="{x:Null}" Click="btnStop_Click">
-                            <materialDesign:PackIcon Kind="Stop"/>
-                        </Button>
-                    </StackPanel>
-                </StackPanel>
-            </materialDesign:Card>
-
-
-
-
-            <materialDesign:Card Grid.Row="1" Margin="10,10,10,0" Background="#FF8522BD">
-                <Grid>
-                    <StackPanel Orientation="Horizontal">
-                        <StackPanel Margin="10,0,0,10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="335">
-                            <TextBlock Text="Đường dẫn tới phần mềm" FontSize="15" Padding="0,0,0,5" Foreground="White"/>
-                            <materialDesign:Card VerticalAlignment="Center">
-                                <TextBox x:Name="txtApp" BorderThickness="0"/>
-                            </materialDesign:Card>
-                        </StackPanel>
-                        <Button x:Name="btnBrowse" Margin="10,0,0,9" HorizontalAlignment="Right" Height="26" Background="White" Foreground="#DD102897" VerticalAlignment="Bottom" Click="btnBrowse_Click">
-                            <materialDesign:PackIcon Kind="ApplicationImport"/>
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </materialDesign:Card>
         </Grid>
 
+    </Border>
 
-
-    </Grid>
 </Window>

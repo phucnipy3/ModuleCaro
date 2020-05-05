@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MultiConnections_WPF"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:library="clr-namespace:MultiConnections_WPF.UC_Library"
+        xmlns:library="clr-namespace:MultiConnections_WPF.UserControls"
         mc:Ignorable="d"
         Title="CreateMatch" Height="350" Width="550" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" BorderThickness="1" BorderBrush="Black">
     <Grid>
@@ -107,13 +107,13 @@
                                 
                             </StackPanel>
 
-                            <RadioButton x:Name="rbtnPlayer1" Style="{StaticResource MaterialDesignTabRadioButton}" IsChecked="True" BorderBrush="YellowGreen" BorderThickness="2" Height="90" Margin="0,5,0,0" Padding="0" Width="90" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <RadioButton x:Name="rbtnPlayer1" Style="{StaticResource MaterialDesignTabRadioButton}" IsChecked="True" BorderBrush="#FF0624B2" BorderThickness="2" Height="90" Margin="0,5,0,0" Padding="0" Width="90" HorizontalAlignment="Center" VerticalAlignment="Top">
                                 <RadioButton.Background>
                                     <ImageBrush ImageSource="default_avatar.png"/>
                                 </RadioButton.Background>
                             </RadioButton>
-                            
-                            <RadioButton x:Name="rbtnPlayer2" Style="{StaticResource MaterialDesignTabRadioButton}" IsChecked="False" BorderBrush="GreenYellow" BorderThickness="2" Height="90" Margin="0,5,0,0" Padding="0" Width="90" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1">
+
+                            <RadioButton x:Name="rbtnPlayer2" Style="{StaticResource MaterialDesignTabRadioButton}" IsChecked="False" BorderBrush="#FF0624B2" BorderThickness="2" Height="90" Margin="0,5,0,0" Padding="0" Width="90" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Column="1">
                                 <RadioButton.Background>
                                     <ImageBrush ImageSource="default_avatar.png"/>
                                 </RadioButton.Background>
@@ -160,6 +160,20 @@
 
                         <ScrollViewer Grid.Row="1">
                             <ListBox x:Name="spnlPlayer" Grid.Row="1">
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsSelected" Value="True" >
+                                                <Setter Property="FontWeight" Value="Bold" />
+                                                <Setter Property="Background" Value="Red" />
+                                                <Setter Property="Foreground" Value="Black" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                        <Style.Resources>
+                                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                                        </Style.Resources>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
                                 <library:UCPlayer/>
                                 <library:UCPlayer/>
                                 <library:UCPlayer/>

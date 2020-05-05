@@ -24,20 +24,24 @@ namespace Client_WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Process app;
 
         private string ipAddress;
         private string username;
         private string password;
         private MyClient myClient;
+        private DialogLoading dialogLoading;
+
         public MainWindow()
         {
             InitializeComponent();
-            txbConnectionStatus.Tag = Colors.Red;
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            dialogLoading = new DialogLoading();
+            Grid.SetRow(dialogLoading, 1);
+            grdMain.Children.Add(dialogLoading);
+            dialogLoading.loading.IsOpen = true;
             btnLogin.IsEnabled = false;
             InitHomePage();
         }
@@ -45,12 +49,8 @@ namespace Client_WPF
         {
             Application.Current.Dispatcher.Invoke(new Action(delegate
             {
-                DialogLoading dialog = new DialogLoading();
-                Grid.SetRow(dialog, 1);
-                grdMain.Children.Add(dialog);
-                dialog.loading.IsOpen = true;
                 ForwardPage();
-                grdMain.Children.Remove(dialog);
+                grdMain.Children.Remove(dialogLoading);
             }));
         }
         private void InitHomePage()
@@ -69,15 +69,22 @@ namespace Client_WPF
             txbTemp.Dispatcher.BeginInvoke(new Action(delegate
             {
                 if (e.isConnected)
+                {
                     txbTemp.Text = "Đã kết nối";
+                    iconConnection.Foreground = new SolidColorBrush(Colors.YellowGreen);
+                }
                 else
+                {
                     txbTemp.Text = "Mất kết nối";
+                    iconConnection.Foreground = new SolidColorBrush(Colors.Red);
+                }
+                    
             }));
         }
 
         private void myClient_TakeTooMuchTime(object sender, EventArgs e)
         {
-            MessageBox.Show("Mất quá nhiều thời gian để thiết lập kết nối");
+            MessageBox.Show("Mất quá nhiều thời gian để thiết lập kết nối", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             btnLogin.Dispatcher.BeginInvoke(new Action(delegate
             {
                 btnLogin.IsEnabled = true;
@@ -90,7 +97,8 @@ namespace Client_WPF
                 MoveToHomePage();
             else
             {
-                MessageBox.Show("Sai thông tin đăng nhập");
+                grdMain.Children.Remove(dialogLoading);
+                MessageBox.Show("Sai thông tin đăng nhập", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                 btnLogin.Dispatcher.BeginInvoke(new Action(delegate
                 {
                     btnLogin.IsEnabled = true;
@@ -138,6 +146,12 @@ namespace Client_WPF
         {
             myClient.ClearInputOutput();
             myClient.StartBot();
+            if (myClient.isRunningBotProcess)
+            {
+                txbAppStatus.Text = "Đang chạy ứng dụng";
+                iconApp.Foreground = new SolidColorBrush(Colors.YellowGreen);
+            }
+                
             
         }
 
@@ -157,6 +171,28 @@ namespace Client_WPF
         private void btnStop_Click(object sender, RoutedEventArgs e)
         {
             myClient.StopBot();
+            txbAppStatus.Text = "Chưa có ứng dụng";
+            iconApp.Foreground = new SolidColorBrush(Colors.Red);
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Reset();    
+        }
+
+        void BackPage()
+        {
+            grdLogin.Visibility = Visibility.Visible;
+            grdHome.Visibility = Visibility.Hidden;
+        }
+
+        void Reset()
+        {
+            BackPage();
+            txtID.Clear();
+            txtPassword.Clear();
+            btnLogin.IsEnabled = true;
+        }
+
     }
 }

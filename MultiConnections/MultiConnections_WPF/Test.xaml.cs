@@ -1,6 +1,7 @@
-﻿using ClassLibraryServer.UserControls;
+﻿
 using DBAccessLibary.Models;
 using DBAccessLibrary.DBHelper;
+using MultiConnections_WPF.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace MultiConnections_WPF
         public Test()
         {
             InitializeComponent();
-            //storedMatch = Helper.GetMatchAsync(26);
+            //storedMatch = await Helper.GetMatchAsync(26);
             InitMatch();
             //storedMatch = match;
 

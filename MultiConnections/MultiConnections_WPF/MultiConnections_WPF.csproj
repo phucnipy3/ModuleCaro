@@ -79,14 +79,26 @@
     <Compile Include="CreateMatch.xaml.cs">
       <DependentUpon>CreateMatch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Operating\ShowMatch.xaml.cs">
+      <DependentUpon>ShowMatch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Test.xaml.cs">
       <DependentUpon>Test.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UC Library\UCMatch.xaml.cs">
+    <Compile Include="UserControls\UCBoard.xaml.cs">
+      <DependentUpon>UCBoard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCMatch.xaml.cs">
       <DependentUpon>UCMatch.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UC Library\UCPlayer.xaml.cs">
+    <Compile Include="UserControls\UCPlayer.xaml.cs">
       <DependentUpon>UCPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCRectangle.xaml.cs">
+      <DependentUpon>UCRectangle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCTab.xaml.cs">
+      <DependentUpon>UCTab.xaml</DependentUpon>
     </Compile>
     <Page Include="CreateAccount.xaml">
       <SubType>Designer</SubType>
@@ -108,17 +120,33 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Operating\ShowMatch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UC Library\UCMatch.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UserControls\UCBoard.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="UC Library\UCPlayer.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UserControls\UCMatch.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\UCPlayer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\UCRectangle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\UCTab.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

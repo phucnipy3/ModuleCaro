@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibraryServer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ClassLibraryServer.UserControls
+namespace MultiConnections_WPF.UserControls
 {
     /// <summary>
     /// Interaction logic for UCPlayer.xaml

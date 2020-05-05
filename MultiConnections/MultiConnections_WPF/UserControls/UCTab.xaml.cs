@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ClassLibraryServer.UserControls
+namespace MultiConnections_WPF.UserControls
 {
     /// <summary>
     /// Interaction logic for UCTab.xaml
@@ -144,11 +144,21 @@ namespace ClassLibraryServer.UserControls
                 chessMan.txbChessman.Text = "";
         }
 
+        
+
         void DeleteChessman(int index)
         {
             int x = storedGame.Moves[index].CoordinateX;
             int y = storedGame.Moves[index].CoordinateY;
             uCBoard.listUCRectangle[x, y].txbChessman.Text = "";
+            uCBoard.listUCRectangle[x, y].Background = new SolidColorBrush(Colors.Transparent);
+            if (index > 0)
+            {
+                int x1 = storedGame.Moves[index - 1].CoordinateX;
+                int y1 = storedGame.Moves[index - 1].CoordinateY;
+
+                uCBoard.listUCRectangle[x1, y1].Background = new SolidColorBrush(Colors.Pink);
+            }
         }
 
         void DrawChessman(int index)
@@ -156,10 +166,23 @@ namespace ClassLibraryServer.UserControls
 
             int x = storedGame.Moves[index].CoordinateX;
             int y = storedGame.Moves[index].CoordinateY;
+            
             string chessMan = storedGame.Moves[index].Chessman;
 
+            if (index > 0)
+            {
+                int x1 = storedGame.Moves[index - 1].CoordinateX;
+                int y1 = storedGame.Moves[index - 1].CoordinateY;
+
+                uCBoard.Dispatcher.BeginInvoke(new Action(delegate {
+                    uCBoard.listUCRectangle[x1, y1].Background = new SolidColorBrush(Colors.Transparent);
+                }));
+                
+            }
             uCBoard.Dispatcher.BeginInvoke(new Action(delegate {
                 uCBoard.listUCRectangle[x, y].txbChessman.Text = chessMan;
+                uCBoard.listUCRectangle[x, y].Background = new SolidColorBrush(Colors.Pink);
+                
             }));
 
             

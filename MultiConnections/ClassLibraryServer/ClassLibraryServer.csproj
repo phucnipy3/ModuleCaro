@@ -59,9 +59,6 @@
     <Compile Include="ExcelFile.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Match.cs" />
-    <Compile Include="Operating\ShowMatch.xaml.cs">
-      <DependentUpon>ShowMatch.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -70,21 +67,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="MyServer.cs" />
-    <Compile Include="UserControls\UCBoard.xaml.cs">
-      <DependentUpon>UCBoard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCMatch.xaml.cs">
-      <DependentUpon>UCMatch.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCPlayer.xaml.cs">
-      <DependentUpon>UCPlayer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCRectangle.xaml.cs">
-      <DependentUpon>UCRectangle.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UCTab.xaml.cs">
-      <DependentUpon>UCTab.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -136,32 +118,6 @@
       <Project>{22f06563-ff9f-46d6-a6f3-28d9592d7c7e}</Project>
       <Name>DBAccessLibrary</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Operating\ShowMatch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\UCBoard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\UCMatch.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\UCPlayer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\UCRectangle.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\UCTab.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
