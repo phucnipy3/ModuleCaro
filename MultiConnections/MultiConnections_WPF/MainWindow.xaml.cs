@@ -1,6 +1,7 @@
 ﻿using ClassLibraryServer;
 using DBAccessLibrary.DBHelper;
 using MaterialDesignThemes.Wpf;
+using MultiConnections_WPF.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,7 +75,7 @@ namespace MultiConnections_WPF
             CreateMatch createMatch = new CreateMatch(myServer.Players);
             if (createMatch.ShowDialog() == true)
             {
-                ClassLibraryServer.UserControls.UCMatch ucMatch = new ClassLibraryServer.UserControls.UCMatch(createMatch.GetMatch());
+                UCMatch ucMatch = new UCMatch(createMatch.GetMatch());
                 ucMatch.ButtonCloseClicked += UcMatch_ButtonCloseClicked;
                 wrapPanelMatches.Children.Add(ucMatch);
             }
@@ -82,7 +83,7 @@ namespace MultiConnections_WPF
 
         private void UcMatch_ButtonCloseClicked(object sender, EventArgs e)
         {
-            wrapPanelMatches.Children.Remove(sender as ClassLibraryServer.UserControls.UCMatch);
+            wrapPanelMatches.Children.Remove(sender as UCMatch);
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -97,7 +98,7 @@ namespace MultiConnections_WPF
                 spnlPlayer.Items.Clear();
                 for (int i = 0; i < players.Count; i++)
                 {
-                    spnlPlayer.Items.Add(new ClassLibraryServer.UserControls.UCPlayer(players[i]));
+                    spnlPlayer.Items.Add(new UCPlayer(players[i]));
                 }
             }));
 

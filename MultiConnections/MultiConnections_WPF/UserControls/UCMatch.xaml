@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="MultiConnections_WPF.UC_Library.UCMatch"
+﻿<UserControl x:Class="MultiConnections_WPF.UserControls.UCMatch"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MultiConnections_WPF.UC_Library"
+             xmlns:local="clr-namespace:MultiConnections_WPF.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="300" Width="300" Height="200">
@@ -15,11 +15,11 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                <Button Height="Auto" Width="20" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,0,5,0">
+                <Button x:Name="btnClose" Click="BtnClose_Click" Height="Auto" Width="20" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,0,5,0">
                     <materialDesign:PackIcon Kind="Close" VerticalAlignment="Center" Width="14" Height="14" HorizontalAlignment="Center" Foreground="#FF8522BD" FontWeight="Bold"/>
                 </Button>
-                <Button Height="Auto" Width="20" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,0,0,0">
-                    <materialDesign:PackIcon Kind="Gear" VerticalAlignment="Center" Width="14" Height="14" HorizontalAlignment="Center" Foreground="#FF8522BD" FontWeight="Bold"/>
+                <Button x:Name="btnShowMatch" Click="btnShowMatch_Click" Height="Auto" Width="20" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Margin="0,0,0,0">
+                    <materialDesign:PackIcon Kind="History" VerticalAlignment="Center" Width="14" Height="14" HorizontalAlignment="Center" Foreground="#FF8522BD" FontWeight="Bold"/>
                 </Button>
             </StackPanel>
 
@@ -40,31 +40,37 @@
                 <StackPanel Margin="10">
                     <materialDesign:Card Width="90" Height="90">
                         <materialDesign:Card.Background>
-                            <ImageBrush ImageSource="/MultiConnections_WPF;component/default_avatar.png"/>
+                            <ImageBrush ImageSource="/Resources/DefaultAvatar.png"/>
                         </materialDesign:Card.Background>
                     </materialDesign:Card>
-                    <TextBlock Text="Người 1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    <TextBlock x:Name="txbPlayer1" Text="Người 1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,15">
+                    <TextBlock x:Name="txbPlayer1Score" Text="0" FontFamily="Segoe UI Semibold" FontSize="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="-" FontFamily="Segoe UI Semibold" FontSize="20"/>
+                    <TextBlock x:Name="txbPlayer2Score" Text="0" FontFamily="Segoe UI Semibold" FontSize="20" Margin="5,0,0,0"/>
                 </StackPanel>
 
                 <StackPanel Margin="10" Grid.Column="2">
                     <materialDesign:Card Width="90" Height="90">
                         <materialDesign:Card.Background>
-                            <ImageBrush ImageSource="/MultiConnections_WPF;component/default_avatar.png"/>
+                            <ImageBrush ImageSource="/Resources/DefaultAvatar.png"/>
                         </materialDesign:Card.Background>
                     </materialDesign:Card>
-                    <TextBlock Text="Người 2" FontFamily="Segoe UI Semibold" HorizontalAlignment="Center" Padding="0,5,0,0"/>
+                    <TextBlock x:Name="txbPlayer2" Text="Người 2" FontFamily="Segoe UI Semibold" HorizontalAlignment="Center" Padding="0,5,0,0"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0">
-                    <RadioButton Content="1 trận" Foreground="White" FontFamily="Segoe UI Semibold" Background="#FFF7F7F7" BorderBrush="White"/>
+                    <RadioButton x:Name="radOneGame" IsChecked="True" Content="1 trận" Foreground="White" FontFamily="Segoe UI Semibold" Background="#FFF7F7F7" BorderBrush="White"/>
                     <RadioButton Content="Tất cả" Foreground="White" FontFamily="Segoe UI Semibold" Margin="5,0,0,0" Background="#FFF7F7F7" BorderBrush="White"/>
                 </StackPanel>
 
-                <Button Background="Red" Grid.Row="1" Grid.Column="1" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" BorderBrush="{x:Null}">
+                <Button x:Name="btnPlay" Click="BtnPlay_Click" Background="Red" Grid.Row="1" Grid.Column="1" Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" BorderBrush="{x:Null}">
                     <materialDesign:PackIcon Kind="Play"/>
                 </Button>
 
-
+                
             </Grid>
 
         </Grid>

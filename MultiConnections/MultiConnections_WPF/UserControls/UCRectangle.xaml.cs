@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ClassLibraryServer.UserControls
+namespace MultiConnections_WPF.UserControls
 {
     /// <summary>
     /// Interaction logic for UCRectangle.xaml

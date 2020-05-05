@@ -12,8 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ClassLibraryServer.UserControls;
+
 using System.Threading;
+using MultiConnections_WPF.UserControls;
 
 namespace MultiConnections_WPF
 {
@@ -116,7 +117,7 @@ namespace MultiConnections_WPF
             listBox.Items.Clear();
             for (int i = 0; i < players.Count; i++)
             {
-                ClassLibraryServer.UserControls.UCPlayer ucPlayer = new ClassLibraryServer.UserControls.UCPlayer(players[i]);
+                UCPlayer ucPlayer = new UCPlayer(players[i]);
                 ucPlayer.MouseDown += new MouseButtonEventHandler(UcPlayer_MouseDown);
                 listBox.Items.Add(ucPlayer);
             }
@@ -124,7 +125,7 @@ namespace MultiConnections_WPF
 
         private void UcPlayer_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Player selectedPlayer = ((ClassLibraryServer.UserControls.UCPlayer)sender).Player;
+            Player selectedPlayer = ((UCPlayer)sender).Player;
             if (selectedPlayer.Playing)
             {
                 MessageBox.Show("Player is now playing!!!");

@@ -12,11 +12,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ClassLibraryServer.UserControls;
+
 using DBAccessLibary.Models;
 using DBAccessLibrary.DBHelper;
+using MultiConnections_WPF.UserControls;
 
-namespace ClassLibraryServer.Operating
+namespace MultiConnections_WPF.Operating
 {
     /// <summary>
     /// Interaction logic for ShowMatch.xaml

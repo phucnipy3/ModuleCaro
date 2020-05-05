@@ -34,8 +34,6 @@ E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\E
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csprojAssemblyReference.cache
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.ResolveComReference.cache
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.Properties.Resources.resources
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCMatch.resources
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCPlayer.resources
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.GenerateResource.cache
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
@@ -57,17 +55,6 @@ E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\M
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.pdb
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.pdb
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.xml
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.g.cs
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.g.cs
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.cache
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.lref
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.baml
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.baml
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.g.resources
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.g.cs
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.baml
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.g.cs
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.baml
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.dll
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.pdb
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll
@@ -105,10 +92,6 @@ E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.g.cs
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.baml
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.baml
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.g.cs
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.baml
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.g.cs
-E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.baml
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.g.cs
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.g.cs
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.baml

@@ -15,9 +15,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ClassLibraryServer.Operating;
+using MultiConnections_WPF.Operating;
+using ClassLibraryServer;
 
-namespace ClassLibraryServer.UserControls
+namespace MultiConnections_WPF.UserControls
 {
     /// <summary>
     /// Interaction logic for UCMatch.xaml

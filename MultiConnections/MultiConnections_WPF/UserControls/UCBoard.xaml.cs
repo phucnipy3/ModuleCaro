@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DBAccessLibary.Models;
 
-namespace ClassLibraryServer.UserControls
+namespace MultiConnections_WPF.UserControls
 {
     /// <summary>
     /// Interaction logic for UCBoard.xaml
@@ -23,6 +23,7 @@ namespace ClassLibraryServer.UserControls
     {
         
         private const int BOARD_SIZE = 10;
+        private const int NUMBER = 1;
         private int sizeOfRectangle;
         public UCRectangle[,] listUCRectangle = new UCRectangle[BOARD_SIZE,BOARD_SIZE];
         
@@ -38,16 +39,30 @@ namespace ClassLibraryServer.UserControls
 
         public void DrawBoard()
         {
-            
-
-            for (int i = 0; i < BOARD_SIZE; i++)
+            for (int i = 0; i < BOARD_SIZE + NUMBER; i++)
             {
-                DrawRectangle(i, 0);
-                for (int j = 1; j < BOARD_SIZE; j++)
+                if (i == 0)
+                    DrawNumber(i, 0);
+                else
+                    DrawRectangle(i, 0);
+
+                for (int j = 1; j < BOARD_SIZE + NUMBER; j++)
                 {
-                    DrawRectangle(i, j);
+                    if (j == 0)
+                        DrawNumber(i, j);
+                    else
+                        DrawRectangle(i, j);
                 }
             }
+        }
+
+        public void DrawNumber(int i, int j)
+        {
+            UCRectangle uCRectangle = new UCRectangle() { Width = sizeOfRectangle, Height = sizeOfRectangle };
+            uCRectangle.txbChessman.Text = i.ToString();
+            uCRectangle.recBorder.StrokeThickness = 0;
+            listUCRectangle[i, j] = uCRectangle;
+            wpnlBoard.Children.Add(uCRectangle);
         }
 
         public void DrawRectangle(int i, int j)
