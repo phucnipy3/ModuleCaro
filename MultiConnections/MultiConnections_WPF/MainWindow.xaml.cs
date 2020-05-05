@@ -30,10 +30,12 @@ namespace MultiConnections_WPF
             InitializeComponent();
             myServer = new MyServer();
             txbIP.Text = myServer.GetIPAddress().ToString();
-            myServer.StartThreadGetConnections();
-            myServer.StartThreadCreateEmptyPlayer();
-            myServer.StartThreadRefreshListPlayer(spnlPlayer);
-            myServer.StartThreadCheckAndRemoveConnection();
+            myServer.ConnectionsChanged += myServer_ConnectionsChanged;
+        }
+
+        private void myServer_ConnectionsChanged(object sender, EventArgs e)
+        {
+            RefreshListPlayer(myServer.Players);
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
@@ -85,7 +87,21 @@ namespace MultiConnections_WPF
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
-              myServer.HardRefreshListPlayer(spnlPlayer);
+            RefreshListPlayer(myServer.Players);
+        }
+
+        private void RefreshListPlayer(List<Player> players)
+        {
+            spnlPlayer.Dispatcher.BeginInvoke(new Action(delegate
+            {
+                spnlPlayer.Items.Clear();
+                for (int i = 0; i < players.Count; i++)
+                {
+                    spnlPlayer.Items.Add(new ClassLibraryServer.UserControls.UCPlayer(players[i]));
+                }
+            }));
+
+            
         }
 
         private void btnCreateAccount_Click(object sender, RoutedEventArgs e)

@@ -26,7 +26,7 @@ namespace MultiConnections_WPF
         public Test()
         {
             InitializeComponent();
-            storedMatch = Helper.GetMatch(26);
+            //storedMatch = Helper.GetMatchAsync(26);
             InitMatch();
             //storedMatch = match;
 

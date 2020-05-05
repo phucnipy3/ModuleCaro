@@ -2,6 +2,7 @@
 using DBAccessLibary.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace DBAccessLibrary.DBHelper
     {
         public static ModuleContext DB = new ModuleContext();
         
-        public static StoredMatch AddNewMatch(
+        public static async Task<StoredMatch> AddNewMatchAsync(
             StoredPlayer player1, 
             StoredPlayer player2, 
             bool isPlayer1PlayFirst, 
@@ -31,22 +32,22 @@ namespace DBAccessLibrary.DBHelper
                 DateTime = DateTime.Now
             };
             DB.Matches.Add(match);
-            DB.SaveChanges();
+            await DB.SaveChangesAsync();
             return match;
         }
         public static StoredPlayer GetPlayerByName(string name)
         {
             return DB.Players.Where(x => x.Username == name).SingleOrDefault();
         }
-        public static StoredGame AddNewGameToMatch(StoredMatch match)
+        public static async Task<StoredGame> AddNewGameToMatchAsync(StoredMatch match)
         {
             StoredGame game = new StoredGame();
             match.Games.Add(game);
             game.Order = match.Games.Count;
-            DB.SaveChanges();
+            await DB.SaveChangesAsync();
             return game;
         }
-        public static void AddMove(StoredGame game, string chessman, int coordinateX, int coordinateY)
+        public static async Task AddMoveAsync(StoredGame game, string chessman, int coordinateX, int coordinateY)
         {
             Move move = new Move()
             {
@@ -56,20 +57,20 @@ namespace DBAccessLibrary.DBHelper
             };
             game.Moves.Add(move);
             move.Order = game.Moves.Count;
-            DB.SaveChanges();
+            await DB.SaveChangesAsync();
         }
-        public static void SetWinner(StoredPlayer winner, StoredGame game)
+        public static async Task SetWinnerAsync(StoredPlayer winner, StoredGame game)
         {
             game.Winner = winner;
-            DB.SaveChanges();
+            await DB.SaveChangesAsync();
         }
 
-        public static void SwapPlayer(StoredMatch storedMatch)
+        public static async Task SwapPlayerAsync(StoredMatch storedMatch)
         {
             if (storedMatch.GameCount < 1)
             {
                 storedMatch.IsPlayer1PlayFirst = !storedMatch.IsPlayer1PlayFirst;
-                DB.SaveChanges();
+                await DB.SaveChangesAsync();
             }
         }
         
@@ -78,19 +79,19 @@ namespace DBAccessLibrary.DBHelper
             var players = DB.Players;
             return players.Where(x => infomation.Equals("[username]"+x.Username+"[password]"+x.Password+"[end]")).Count() > 0;
         }
-        public static bool AddPlayer(string username, string password)
+        public static async Task<bool> AddPlayerAsync(string username, string password)
         {
             if (DB.Players.Where(x => x.Username == username).Count() > 0)
                 return false;
             StoredPlayer player = new StoredPlayer() { Username = username, Password = password };
             DB.Players.Add(player);
-            DB.SaveChanges();
+            await DB.SaveChangesAsync();
             return true;
         }
 
-        public static StoredMatch GetMatch(int id)
+        public static async Task<StoredMatch> GetMatchAsync(int id)
         {
-            return DB.Matches.Include("Player1").Include("Player2").Include("Games.Moves").Include("Games.Winner").Where(x => x.Id == id).SingleOrDefault();
+            return await DB.Matches.Include("Player1").Include("Player2").Include("Games.Moves").Include("Games.Winner").Where(x => x.Id == id).SingleOrDefaultAsync();
         }
 
         public static void CheckOnSomething()

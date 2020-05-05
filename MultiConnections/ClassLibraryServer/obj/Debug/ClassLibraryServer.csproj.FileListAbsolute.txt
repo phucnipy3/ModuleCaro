@@ -14,8 +14,6 @@ E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.pd
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csprojAssemblyReference.cache
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.ResolveComReference.cache
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.Properties.Resources.resources
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCMatch.resources
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.UCPlayer.resources
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.GenerateResource.cache
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CoreCompileInputs.cache
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll

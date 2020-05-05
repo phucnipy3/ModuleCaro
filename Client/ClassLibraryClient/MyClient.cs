@@ -17,7 +17,7 @@ using System.Diagnostics;
 
 namespace ClassLibraryClient
 {
-    public class MyClient
+    public class MyClient : IDisposable
     {
         private const int PORT_NUMBER = 9999;
         private const int SIZE_OF_BYTE = 1024;
@@ -47,10 +47,7 @@ namespace ClassLibraryClient
         private string botPath;
         private bool botStarted = false;
 
-        public bool isRunningBotProcess
-        {
-            get { return this.botProcess.Responding; }
-        }
+        private List<Thread> runningThreads;
 
         public MyClient(string username, string password, string serverIPAddress)
         {
@@ -60,11 +57,11 @@ namespace ClassLibraryClient
             this.serverIPAddress = serverIPAddress;
             NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
             moveTracker = new MoveTracker();
-            StartThread(ReceiveAndSend);
-            StartThread(ConnectToServer);
-            StartThread(CheckForConnection);
+            runningThreads = new List<Thread>();
+            runningThreads.Add(StartThread(ReceiveAndSend));
+            runningThreads.Add(StartThread(ConnectToServer));
+            runningThreads.Add(StartThread(CheckForConnection));
             botProcess = new Process();
-            
         }
         ~MyClient()
         {
@@ -101,11 +98,12 @@ namespace ClassLibraryClient
 
         public delegate void ConsecutiveFuction();
 
-        public void StartThread(ConsecutiveFuction function)
+        public Thread StartThread(ConsecutiveFuction function)
         {
             Thread thread = new Thread(new ThreadStart(function));
             thread.IsBackground = true;
             thread.Start();
+            return thread;
         }
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -148,33 +146,7 @@ namespace ClassLibraryClient
         }
         private bool isConnecting()
         {
-            if (!networkAvailable)
-                return false;
-            bool blockingState = player.Client.Blocking;
-            try
-            {
-                byte[] tmp = new byte[1];
-
-                player.Client.Blocking = false;
-                player.Client.Send(tmp, 0, 0);
-                return true;
-            }
-            catch (SocketException e)
-            {
-                // 10035 == WSAEWOULDBLOCK
-                if (e.NativeErrorCode.Equals(10035))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            finally
-            {
-                player.Client.Blocking = blockingState;
-            }
+            return MyClient.GetState(player) == TcpState.Established;
         }
         public void ConnectToServer()
         {
@@ -280,7 +252,7 @@ namespace ClassLibraryClient
             stream.Read(dataTemp, 0, dataTemp.Length);
             string data = Encoding.ASCII.GetString(dataTemp);
             return data.Substring(0, data.IndexOf("[end]"));
-;
+            
         }
 
         public bool isEmpty(byte[] data)
@@ -404,14 +376,31 @@ namespace ClassLibraryClient
                 Thread.Sleep(1000);
             }
         }
-
+        public void Dispose()
+        {
+            foreach(var thread in runningThreads)
+            {
+                thread.Abort();
+            }
+            StopBot();
+            if(isConnecting())
+            {
+                player.GetStream().Close();
+                player.Close();
+            }
+        }
+        public static TcpState GetState(TcpClient tcpClient)
+        {
+            var foo = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().SingleOrDefault(x => x.LocalEndPoint.Equals(tcpClient.Client.LocalEndPoint));
+            return foo != null ? foo.State : TcpState.Unknown;
+        }
         protected virtual void OnTakeTooMuchTimeToConnect(EventArgs e)
         {
             EventHandler handler = TakeTooMuchTimeToConnect;
             if(handler!=null)
             {
                 handler(this, e);
-            }
+            } 
         }
         public EventHandler TakeTooMuchTimeToConnect;
         protected virtual void OnLoginMessageReceived(LoginMessageReceivedEventArgs e)
@@ -444,5 +433,5 @@ namespace ClassLibraryClient
     {
         public bool isConnected { get; set; }
     }
-
+    
 }

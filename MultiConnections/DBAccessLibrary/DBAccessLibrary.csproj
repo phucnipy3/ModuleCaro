@@ -68,6 +68,10 @@
     <Compile Include="Migrations\202004041356560_UpdateChessman1.designer.cs">
       <DependentUpon>202004041356560_UpdateChessman1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005011511138_UpdateFK.cs" />
+    <Compile Include="Migrations\202005011511138_UpdateFK.designer.cs">
+      <DependentUpon>202005011511138_UpdateFK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Move.cs" />
     <Compile Include="Models\StoredGame.cs" />
@@ -88,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004041356560_UpdateChessman1.resx">
       <DependentUpon>202004041356560_UpdateChessman1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005011511138_UpdateFK.resx">
+      <DependentUpon>202005011511138_UpdateFK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

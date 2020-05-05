@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using DBAccessLibrary.DBHelper;
 using System.Windows;
+using System.Net.NetworkInformation;
 
 namespace ClassLibraryServer
 {
@@ -17,17 +18,26 @@ namespace ClassLibraryServer
         private const int IMAGE_BYTE_SIZE = 20000;
         private const int BYTES_SIZE = 1024;
         private TcpListener server;
-        private int connectionCount;
         private List<Player> players;
-        private bool connectionsChanged;
+        private List<Thread> runningThreads;
 
         public List<Player> Players { get => players; set => players = value; }
 
         public MyServer()
         {
-            connectionsChanged = false;
-            connectionCount = 0;
             Players = new List<Player>();
+            runningThreads = new List<Thread>();
+            runningThreads.Add(StartThread(CheckAndRemoveConnection));
+            runningThreads.Add(StartThread(GetConnection));
+        }
+        public delegate void ConsecutiveFuction();
+
+        public Thread StartThread(ConsecutiveFuction function)
+        {
+            Thread thread = new Thread(new ThreadStart(function));
+            thread.IsBackground = true;
+            thread.Start();
+            return thread;
         }
         public IPAddress GetIPAddress()
         {
@@ -41,30 +51,8 @@ namespace ClassLibraryServer
             }
             return null;
         }
-        public void StartThreadCheckAndRemoveConnection()
-        {
-            Thread threadCheckAndRemoveConnection = new Thread(new ThreadStart(CheckAndRemoveConnection));
-            threadCheckAndRemoveConnection.IsBackground = true;
-            threadCheckAndRemoveConnection.Start();
-        }
-        public void StartThreadRefreshListPlayer(System.Windows.Controls.ListBox listBox)
-        {
-            Thread threadRefreshListPlayer = new Thread(RefreshListPlayer);
-            threadRefreshListPlayer.IsBackground = true;
-            threadRefreshListPlayer.Start(listBox);
-        }
-        public void StartThreadCreateEmptyPlayer()
-        {
-            Thread threadCreateEmptyPlayer = new Thread(new ThreadStart(CreateEmptyPlayer));
-            threadCreateEmptyPlayer.IsBackground = true;
-            threadCreateEmptyPlayer.Start();
-        }
-        public void StartThreadGetConnections()
-        {
-            Thread threadGetConnection = new Thread(new ThreadStart(GetConnection));
-            threadGetConnection.IsBackground = true;
-            threadGetConnection.Start();
-        }
+
+        
         private void GetConnection()
         {
             server = new TcpListener(GetIPAddress(), 9999);
@@ -78,7 +66,7 @@ namespace ClassLibraryServer
         }
         public void AddNewPlayer(TcpClient client)
         {
-            string loginString = GetName(client);
+            string loginString = GetLoginString(client);
             string name = loginString.Substring(0, loginString.IndexOf("[password]")).Substring(loginString.IndexOf("[username]")+10);
             if (!Helper.Login(loginString))
             {
@@ -88,39 +76,30 @@ namespace ClassLibraryServer
             {
                 SendMesssage(client, "valid[end]");
 
-                while (true)
+                Player y = Players.Where(x => x.Name == name).SingleOrDefault();
+                if (y != null)
                 {
-                    if (isAvailableToConnect())
-                    {
-                        connectionsChanged = true;
-                        Player y = Players.Where(x => x.Name == name).SingleOrDefault();
-                        if (y != null)
-                        {
-                            y.Client = client;
-
-                        }
-                        else
-                        {
-                            Players[connectionCount] = new Player(client, name);
-                            connectionCount++;
-                        }
-                        break;
-                    }
-                    Thread.Sleep(100);
+                    y.Client = client;
                 }
+                else
+                {
+                    Players.Add(new Player(client, name));
+                }
+
+                OnConnectionsChanged(EventArgs.Empty);
             }
         }
 
-        private string GetName(TcpClient client)
+        private string GetLoginString(TcpClient client)
         {
-            string name;
+            string login;
 
             byte[] buffer = new byte[BYTES_SIZE];
             NetworkStream stream = client.GetStream();
             stream.Read(buffer, 0, buffer.Length);
-            name = Encoding.UTF8.GetString(buffer);
+            login = Encoding.UTF8.GetString(buffer);
 
-            return name.Trim();
+            return login.Trim();
         }
         private void SendMesssage(TcpClient client, string loginMessage)
         {
@@ -130,86 +109,17 @@ namespace ClassLibraryServer
             stream.Write(buffer, 0, buffer.Length);
         }
         
-        private bool isAvailableToConnect()
-        {
-            return connectionCount < Players.Count;
-        }
-        public void CreateEmptyPlayer()
-        {
-            while(true)
-            {
-                if (!isAvailableToConnect())
-                {
-                    Players.Add(new Player());
-                }
-                else
-                {
-                    Thread.Sleep(1000);
-                }
-            }
-            
-        }
-        public void HardRefreshListPlayer(FlowLayoutPanel PnlPlayerList)
-        {
-            PnlPlayerList.Controls.Clear();
-            for (int i = 0; i < connectionCount; i++)
-            {
-                PnlPlayerList.Controls.Add(new UCPlayer(Players[i]));
-            }
-            connectionsChanged = false;
-        }
-        public void RefreshListPlayer(FlowLayoutPanel PnlPlayerList)
-        {
-            if (connectionsChanged)
-            {
-                PnlPlayerList.Controls.Clear();
-                for (int i = 0; i < connectionCount; i++)
-                {
-                    PnlPlayerList.Controls.Add(new UCPlayer(Players[i]));
-                }
-                connectionsChanged = false;
-            }
-        }
-        public void RefreshListPlayer(object sender)
-        {
-            while(true)
-            {
-                System.Windows.Controls.ListBox listBox = sender as System.Windows.Controls.ListBox;
-                if (connectionsChanged)
-                {
-                    listBox.Dispatcher.BeginInvoke(new Action(delegate ()
-                    {
-                        listBox.Items.Clear();
-                        for (int i = 0; i < connectionCount; i++)
-                        {
-                            listBox.Items.Add(new UserControls.UCPlayer(Players[i]));
-                        }
-                    }));
-                    connectionsChanged = false;
-                }
-                Thread.Sleep(500);
-            }
-            
-        }
-        public void HardRefreshListPlayer(System.Windows.Controls.ListBox listBox)
-        {
-            listBox.Items.Clear();
-            for (int i = 0; i < connectionCount; i++)
-            {
-                listBox.Items.Add(new UserControls.UCPlayer(Players[i]));
-            }
-            connectionsChanged = false;
-        }
+        
+
         public void CheckAndRemoveConnection()
         {
             while(true)
             {
                 int i = 0;
-                while (i < Players.Count - 1)
+                while (i < Players.Count)
                 {
-                    if (!Players[i].Playing && !isConnecting(Players[i].Client))
+                    if (!Players[i].Playing && MyServer.GetState(Players[i].Client) != TcpState.Established)
                     {
-
                         RemoveConnection(Players[i]);
                     }
                     else
@@ -223,15 +133,16 @@ namespace ClassLibraryServer
         }
         private void RemoveConnection(Player player)
         {
-            connectionsChanged = true;
+            OnConnectionsChanged(EventArgs.Empty);
             Players.Remove(player);
-            connectionCount--;
         }
         private bool isConnecting(TcpClient client)
         {
             bool blockingState = client.Client.Blocking;
             try
             {
+                if (!client.Client.Connected)
+                    return false;
                 byte[] tmp = new byte[1];
 
                 client.Client.Blocking = false;
@@ -256,14 +167,20 @@ namespace ClassLibraryServer
             }
 
         }
-
-        public void PushIP()
+        public static TcpState GetState(TcpClient tcpClient)
         {
-            new ServerIP().PushIP(GetIPAddress().ToString());
+            var foo = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().FirstOrDefault(x => x.RemoteEndPoint.Equals(tcpClient.Client.RemoteEndPoint));
+            return foo != null ? foo.State : TcpState.Unknown;
         }
-        public void DeleteIP()
+
+        public EventHandler ConnectionsChanged;
+        protected virtual void OnConnectionsChanged(EventArgs e)
         {
-            new ServerIP().DeleteIP();
+            EventHandler handler = ConnectionsChanged;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
         }
     }
 }
