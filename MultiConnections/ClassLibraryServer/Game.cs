@@ -86,17 +86,17 @@ namespace ClassLibraryServer
 
         private async Task SendEndGameMessageAsync(Player winner, Player notWinner)
         {
-            await TrySendDataAsync(winner, "youwin[end]");
-            await TrySendDataAsync(winner, "youlose[move]" + moveString + "[end]");
+            await TrySendDataAsync(winner, "-5[end]");
+            await TrySendDataAsync(winner, "-6," + moveString + "[end]");
         }
 
         private async Task SendStartMessageToFirstPlayerAsync()
         {
-            await TrySendDataAsync(firstPlayer, "playfirst[end]");
+            await TrySendDataAsync(firstPlayer, "-1[end]");
         }
         private async Task SendStartMessageToSecondPlayerAsync()
         {
-            await TrySendDataAsync(secondPlayer, "playsecond[end]");
+            await TrySendDataAsync(secondPlayer, "-2[end]");
         }
 
         private async Task ProcessingDataFromAsync(Player player)

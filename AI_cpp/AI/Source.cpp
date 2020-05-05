@@ -12,13 +12,19 @@ void main()
 	infile.open("Matrix.txt");
 	if (infile.fail())
 		cout << "Khong mo dc file";
+	int start, row, col;
+
+	cin >> start;
+	if (start == -1) {
+		infile >> row >> col;
+		cout << row << endl;
+		cout << col << endl;
+	}
 	while (1)
 	{
-		string data;
-		cin >> data;
-		if (data._Equal(PlaySecondMessage))
-			continue;
-		infile >> data;
-		cout << data << endl;
+		cin >> row >> col;
+		infile >> row >> col;
+		cout << row << endl;
+		cout << col << endl;
 	}
 }

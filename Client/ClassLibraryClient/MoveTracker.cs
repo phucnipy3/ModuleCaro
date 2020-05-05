@@ -34,4 +34,5 @@ namespace ClassLibraryClient
             allyMoves = new List<string>();
         }
     }
+
 }

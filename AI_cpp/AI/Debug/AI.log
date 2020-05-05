@@ -1,5 +1,3 @@
-﻿  ReadAndWrite.cpp
-  Source.cpp
+﻿  Source.cpp
 E:\NCKH\Caro\AI_cpp\AI\Source.cpp(10,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Generating Code...
   AI.vcxproj -> E:\NCKH\Caro\AI_cpp\Debug\AI.exe

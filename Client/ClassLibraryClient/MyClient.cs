@@ -29,7 +29,15 @@ namespace ClassLibraryClient
         private const string FIRST_TURN = "playfirst";
         private const string SECOND_TURN = "playsecond";
         private const int IMAGE_BYTE_SIZE = 20000;
-
+        private const int START_FIRST_NO_RULE = -1;
+        private const int START_SECOND_NO_RULE = -2;
+        private const int START_FIRST_RULE = -3;
+        private const int START_SECOND_RULE = -4;
+        private const int WIN = -5;
+        private const int LOSE = -6;
+        private const int OUT_RANGE = -7;
+        private const int MOVE_EXIST = -8;
+        private const int OTHER = -9;
 
         private TcpClient player;
         private string oldData = "";
@@ -219,17 +227,32 @@ namespace ClassLibraryClient
         public void ReceiveData()
         {
             string data = TryReadFromStream();
-            TryWriteToConsole(data);
-            moveTracker.AddOpponentMove(data);
-            //TODO: xử lí tín hiêu
-            // Nếu bắt đầu thì chạy lại process
-            // Gửi nước đi
-            if(data.Equals(FIRST_TURN) || data.Equals(SECOND_TURN))
+            string opponentMove = data;
+
+            if (opponentMove[0] == '-')
             {
-                moveTracker.Reset();
-                if (data.Equals(SECOND_TURN))
-                    ReceiveData();
+                int signal = int.Parse(opponentMove.Substring(0, 2));
+                if (signal == LOSE)
+                {
+                    opponentMove = opponentMove.Substring(3);
+                    moveTracker.AddOpponentMove(opponentMove);
+                }
+                if (signal >= START_SECOND_RULE)
+                {
+                    StopBot();
+                    StartBot();
+                    if (signal == START_SECOND_NO_RULE || signal == START_SECOND_RULE)
+                    {
+                        moveTracker.Reset();
+                        ReceiveData();
+                    }
+                }
             }
+            else
+            {
+                moveTracker.AddOpponentMove(opponentMove);
+            }
+            WriteToConsole(data);
         }
 
         public string TryReadFromStream()
@@ -266,24 +289,23 @@ namespace ClassLibraryClient
                     return false;
             return true;
         }
-        public void TryWriteToConsole(string data)
+        public void WriteToConsole(string data)
         {
-            while (true)
+            botProcess.StandardOutput.ReadToEnd();
+            if(data[0] == '-')
             {
-                try
+                int signal = int.Parse(data.Substring(0, 2));
+                botProcess.StandardInput.WriteLine(signal);
+                if (signal == LOSE)
                 {
-                    //TODO: rẽ nhánh.
-                    // Nước đi thông thường
-                    // Thông báo 
-                    // Thông báo kết thúc + nước đi cuối cùng của đối thủ
-                    botProcess.StandardInput.WriteLine(data);
-                    break;
-                }
-                catch
-                {
-                    Thread.Sleep(1000);
-                    continue;
-                }
+                    botProcess.StandardInput.WriteLine(data.Split(',')[1]);
+                    botProcess.StandardInput.WriteLine(data.Split(',')[2]);
+                }    
+            }
+            else
+            {
+                botProcess.StandardInput.WriteLine(data.Split(',')[0]);
+                botProcess.StandardInput.WriteLine(data.Split(',')[1]);
             }
         }
 
@@ -299,27 +321,48 @@ namespace ClassLibraryClient
         {
             //TODO: hk lq j oldata nưuax
 
-            string data;
-            do
+            //string data;
+            //do
+            //{
+            //    do
+            //    {
+            //        data = TryReadConsole();
+            //    }
+            //    while (data == null || data.Equals(oldData));
+            //    //TODO: xử lí lỗi data
+            //    if (moveTracker.TryAddAllyMove(data))
+            //        break;
+            //    else
+            //    {
+            //        //TODO: xử lí lỗi
+            //        WriteToConsole("moveexist");
+            //    }
+            //}
+            //while (true);
+            //oldData = data;
+
+            string data = TryReadConsole();
+            int row, col;
+
+            if(int.TryParse(data.Split(',')[0], out row) && 
+                int.TryParse(data.Split(',')[1], out col))
             {
-                do
+                if(row >=0 && row<20 && col >0 && col<20)
                 {
-                    data = TryReadConsole();
+                    if (moveTracker.TryAddAllyMove(data))
+                        TryWriteToStream(data + "[end]");
+                    else
+                        WriteToConsole(MOVE_EXIST.ToString());
                 }
-                while (data == null || data.Equals(oldData));
-                //TODO: xử lí lỗi data
-                if (moveTracker.TryAddAllyMove(data))
-                    break;
                 else
                 {
-                    //TODO: xử lí lỗi
-                    TryWriteToConsole("moveexist");
-                }
+                    WriteToConsole(OUT_RANGE.ToString());
+                } 
             }
-            while (true);
-            oldData = data;
-
-            TryWriteToStream(data + "[end]");
+            else
+            {
+                WriteToConsole(OTHER.ToString());
+            }
         }
 
         public void TryWriteToStream(string data)
@@ -351,20 +394,8 @@ namespace ClassLibraryClient
 
         public string TryReadConsole()
         {
-            while (true)
-            {
-                try
-                {
-                    //TODO: xử lí đọc 2 thông số tọa độ nước đi 
-                    //Đọc rồi gắn dấu , xong trả ra
-                    return botProcess.StandardOutput.ReadLine();
-                }
-                catch
-                {
-                    Thread.Sleep(1000);
-                    continue;
-                }
-            }
+            string result = botProcess.StandardOutput.ReadLine() + ',' + botProcess.StandardOutput.ReadLine();
+            return result;
         }
 
         public string ReadFile(string filename)
