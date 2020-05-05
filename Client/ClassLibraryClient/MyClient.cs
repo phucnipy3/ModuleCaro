@@ -219,8 +219,11 @@ namespace ClassLibraryClient
         public void ReceiveData()
         {
             string data = TryReadFromStream();
-            TryWriteFile(data);
+            TryWriteToConsole(data);
             moveTracker.AddOpponentMove(data);
+            //TODO: xử lí tín hiêu
+            // Nếu bắt đầu thì chạy lại process
+            // Gửi nước đi
             if(data.Equals(FIRST_TURN) || data.Equals(SECOND_TURN))
             {
                 moveTracker.Reset();
@@ -263,13 +266,16 @@ namespace ClassLibraryClient
                     return false;
             return true;
         }
-        public void TryWriteFile(string data)
+        public void TryWriteToConsole(string data)
         {
             while (true)
             {
                 try
                 {
-                    //WriteFile(data);
+                    //TODO: rẽ nhánh.
+                    // Nước đi thông thường
+                    // Thông báo 
+                    // Thông báo kết thúc + nước đi cuối cùng của đối thủ
                     botProcess.StandardInput.WriteLine(data);
                     break;
                 }
@@ -291,19 +297,23 @@ namespace ClassLibraryClient
 
         public void SendData()
         {
+            //TODO: hk lq j oldata nưuax
+
             string data;
             do
             {
                 do
                 {
-                    data = TryReadFile(LINK_OUTPUT);
+                    data = TryReadConsole();
                 }
                 while (data == null || data.Equals(oldData));
+                //TODO: xử lí lỗi data
                 if (moveTracker.TryAddAllyMove(data))
                     break;
                 else
                 {
-                    TryWriteFile("moveexist");
+                    //TODO: xử lí lỗi
+                    TryWriteToConsole("moveexist");
                 }
             }
             while (true);
@@ -314,6 +324,7 @@ namespace ClassLibraryClient
 
         public void TryWriteToStream(string data)
         {
+
             while(true)
             {
                 try
@@ -324,6 +335,7 @@ namespace ClassLibraryClient
                 catch
                 {
                     Thread.Sleep(1000);
+
                     continue;
                 }
             }    
@@ -337,13 +349,14 @@ namespace ClassLibraryClient
             stream.Write(dataTemp, 0, dataTemp.Length);
         }
 
-        public string TryReadFile(string filename)
+        public string TryReadConsole()
         {
             while (true)
             {
                 try
                 {
-                    //return ReadFile(filename);
+                    //TODO: xử lí đọc 2 thông số tọa độ nước đi 
+                    //Đọc rồi gắn dấu , xong trả ra
                     return botProcess.StandardOutput.ReadLine();
                 }
                 catch
@@ -371,6 +384,7 @@ namespace ClassLibraryClient
                     isConnected = !isConnected;
                     ConnectionChangedEventArgs args = new ConnectionChangedEventArgs();
                     args.isConnected = isConnected;
+
                     OnConnectionChanged(args);
                 }    
                 Thread.Sleep(1000);

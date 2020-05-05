@@ -67,6 +67,7 @@ namespace ClassLibraryServer
                 {
                     winner = firstPlayer;
                     await Helper.SetWinnerAsync(Helper.GetPlayerIdByName(firstPlayer.Name), storedGameId);
+                    //await SendEndGameMessageAsync(firstPlayer, secondPlayer);
                     return;
                 }
                 await TrySendDataAsync(secondPlayer, moveString + "[end]");
@@ -76,10 +77,17 @@ namespace ClassLibraryServer
                 {
                     winner = secondPlayer;
                     await Helper.SetWinnerAsync(Helper.GetPlayerIdByName(secondPlayer.Name), storedGameId);
+                    //await SendEndGameMessageAsync(secondPlayer, firstPlayer);
                     return;
                 }
                 await TrySendDataAsync(firstPlayer, moveString + "[end]");
             }
+        }
+
+        private async Task SendEndGameMessageAsync(Player winner, Player notWinner)
+        {
+            await TrySendDataAsync(winner, "youwin[end]");
+            await TrySendDataAsync(winner, "youlose[move]" + moveString + "[end]");
         }
 
         private async Task SendStartMessageToFirstPlayerAsync()
