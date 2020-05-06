@@ -53,6 +53,7 @@ namespace ClassLibraryClient
         private Process botProcess;
 
         private string botPath;
+        private bool botPathDefined = false;
         private bool botStarted = false;
 
         private List<Thread> runningThreads;
@@ -86,6 +87,7 @@ namespace ClassLibraryClient
         public void ChangeBot(string botPath)
         {
             this.botPath = botPath;
+            botPathDefined = true;
             StopBot();
         }
         public void StartBot()
@@ -133,7 +135,7 @@ namespace ClassLibraryClient
         {
             while (true)
             {
-                if (botStarted && isConnecting())
+                if (botPathDefined && isConnecting())
                 {
                     try
                     {
@@ -226,6 +228,7 @@ namespace ClassLibraryClient
 
         public void ReceiveData()
         {
+            // Rẽ nhánh sai
             string data = TryReadFromStream();
             string opponentMove = data;
 
@@ -241,18 +244,22 @@ namespace ClassLibraryClient
                 {
                     StopBot();
                     StartBot();
-                    if (signal == START_SECOND_NO_RULE || signal == START_SECOND_RULE)
-                    {
-                        moveTracker.Reset();
-                        ReceiveData();
-                    }
+                    moveTracker.Reset();
                 }
+                if(signal != START_FIRST_NO_RULE && signal != START_FIRST_RULE)
+                {
+                    WriteToConsole(data);
+
+                    ReceiveData();
+                    return;
+                }    
             }
             else
             {
                 moveTracker.AddOpponentMove(opponentMove);
             }
             WriteToConsole(data);
+            
         }
 
         public string TryReadFromStream()
@@ -291,7 +298,7 @@ namespace ClassLibraryClient
         }
         public void WriteToConsole(string data)
         {
-            botProcess.StandardOutput.ReadToEnd();
+            //botProcess.StandardOutput.ReadToEnd();
             if(data[0] == '-')
             {
                 int signal = int.Parse(data.Substring(0, 2));
@@ -347,7 +354,7 @@ namespace ClassLibraryClient
             if(int.TryParse(data.Split(',')[0], out row) && 
                 int.TryParse(data.Split(',')[1], out col))
             {
-                if(row >=0 && row<20 && col >0 && col<20)
+                if(row >=0 && row<20 && col >=0 && col<20)
                 {
                     if (moveTracker.TryAddAllyMove(data))
                         TryWriteToStream(data + "[end]");

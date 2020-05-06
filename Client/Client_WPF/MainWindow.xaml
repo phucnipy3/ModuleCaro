@@ -81,7 +81,7 @@
                         <TextBlock Text="Địa chỉ IP Server" Foreground="White" FontSize="15" Margin="10,0"/>
                         <StackPanel Orientation="Horizontal" Margin="10,0">
                             <materialDesign:Card Margin="0,5,5,5" Width="299">
-                                <TextBox x:Name="txtIPServer" BorderThickness="0" Text="192.168.1.244" LostFocus="TxtIPServer_LostFocus"/>
+                                <TextBox x:Name="txtIPServer" BorderThickness="0" Text="192.168.1.8" LostFocus="TxtIPServer_LostFocus"/>
                             </materialDesign:Card>
                             <Button IsEnabled="True" Content="Nhập lại" x:Name="btnReFill" Click="BtnReFill_Click"/>
                         </StackPanel>

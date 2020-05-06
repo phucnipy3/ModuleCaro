@@ -38,18 +38,11 @@ E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\C
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.cache
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.g.cs
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer_MarkupCompile.lref
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.dll
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.dll
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.pdb
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.pdb
 E:\NCKH\Caro\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.xml
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCPlayer.baml
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.g.resources
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.g.cs
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCMatch.baml
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.dll
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.dll
 E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.pdb
@@ -88,11 +81,3 @@ D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServ
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.g.cs
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.g.cs
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCBoard.baml
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCRectangle.baml
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.g.cs
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.g.cs
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\Operating\ShowMatch.baml
-E:\NCKH\Caro\MultiConnections\ClassLibraryServer\obj\Debug\UserControls\UCTab.baml

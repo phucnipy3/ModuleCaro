@@ -146,11 +146,11 @@ namespace Client_WPF
         {
             myClient.ClearInputOutput();
             myClient.StartBot();
-            if (myClient.isRunningBotProcess)
-            {
-                txbAppStatus.Text = "Đang chạy ứng dụng";
-                iconApp.Foreground = new SolidColorBrush(Colors.YellowGreen);
-            }
+            //if (myClient.isRunningBotProcess)
+            //{
+            //    txbAppStatus.Text = "Đang chạy ứng dụng";
+            //    iconApp.Foreground = new SolidColorBrush(Colors.YellowGreen);
+            //}
                 
             
         }
@@ -171,8 +171,8 @@ namespace Client_WPF
         private void btnStop_Click(object sender, RoutedEventArgs e)
         {
             myClient.StopBot();
-            txbAppStatus.Text = "Chưa có ứng dụng";
-            iconApp.Foreground = new SolidColorBrush(Colors.Red);
+            //txbAppStatus.Text = "Chưa có ứng dụng";
+            //iconApp.Foreground = new SolidColorBrush(Colors.Red);
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

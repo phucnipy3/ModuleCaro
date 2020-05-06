@@ -108,7 +108,7 @@ namespace MultiConnections_WPF
                     return false;
             }
             playersCount = players.Count;
-            lastPlayer = players[playersCount - 1];
+            //lastPlayer = players[playersCount - 1];
             return true;
         }
 
