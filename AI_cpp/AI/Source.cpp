@@ -22,7 +22,9 @@ void main()
 	}
 	while (1)
 	{
-		cin >> row >> col;
+		cin >> row;
+		if (row >= 0)
+			cin >> col;
 		infile >> row >> col;
 		cout << row << endl;
 		cout << col << endl;

@@ -228,7 +228,7 @@ namespace ClassLibraryClient
 
         public void ReceiveData()
         {
-            // Rẽ nhánh sai
+            
             string data = TryReadFromStream();
             string opponentMove = data;
 
@@ -298,7 +298,8 @@ namespace ClassLibraryClient
         }
         public void WriteToConsole(string data)
         {
-            //botProcess.StandardOutput.ReadToEnd();
+            //if(!botProcess.StandardOutput.EndOfStream)
+            //    botProcess.StandardOutput.ReadToEnd();
             if(data[0] == '-')
             {
                 int signal = int.Parse(data.Substring(0, 2));
@@ -348,28 +349,34 @@ namespace ClassLibraryClient
             //while (true);
             //oldData = data;
 
-            string data = TryReadConsole();
-            int row, col;
-
-            if(int.TryParse(data.Split(',')[0], out row) && 
-                int.TryParse(data.Split(',')[1], out col))
+            while(true)
             {
-                if(row >=0 && row<20 && col >=0 && col<20)
+                string data = TryReadConsole();
+                int row, col;
+
+                if (int.TryParse(data.Split(',')[0], out row) &&
+                    int.TryParse(data.Split(',')[1], out col))
                 {
-                    if (moveTracker.TryAddAllyMove(data))
-                        TryWriteToStream(data + "[end]");
+                    if (row >= 0 && row < 20 && col >= 0 && col < 20)
+                    {
+                        if (moveTracker.TryAddAllyMove(data))
+                        {
+                            TryWriteToStream(data + "[end]");
+                            return;
+                        }
+                        else
+                            WriteToConsole(MOVE_EXIST.ToString());
+                    }
                     else
-                        WriteToConsole(MOVE_EXIST.ToString());
+                    {
+                        WriteToConsole(OUT_RANGE.ToString());
+                    }
                 }
                 else
                 {
-                    WriteToConsole(OUT_RANGE.ToString());
-                } 
-            }
-            else
-            {
-                WriteToConsole(OTHER.ToString());
-            }
+                    WriteToConsole(OTHER.ToString());
+                }
+            }    
         }
 
         public void TryWriteToStream(string data)
