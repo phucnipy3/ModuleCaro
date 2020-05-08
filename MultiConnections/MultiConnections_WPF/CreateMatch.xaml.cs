@@ -38,36 +38,17 @@ namespace MultiConnections_WPF
         {
             InitializeComponent();
             this.players = players;
-            playersCount = players.Count;
-            lastPlayer = players.Count> 0 ? players[players.Count - 1]: null;
             AddUCPlayer(spnlPlayer);
-            StartThreadRefreshListPlayer(spnlPlayer);
         }
 
-        private void StartThreadRefreshListPlayer(ListBox spnlPlayer)
+        
+        public void RefreshListPlayer()
         {
-            Thread threadRefreshListPlayer = new Thread(RefreshListPlayer);
-            threadRefreshListPlayer.IsBackground = true;
-            threadRefreshListPlayer.Start(spnlPlayer);
-        }
-
-        private void RefreshListPlayer(object sender)
-        {
-            while(true)
+            spnlPlayer.Dispatcher.BeginInvoke(new Action(delegate ()
             {
-                ListBox listBox = sender as ListBox;
-                if (PlayersChange())
-                {
-                    listBox.Dispatcher.BeginInvoke(new Action(delegate ()
-                    {
-                        AddUCPlayer(listBox);
-                        RemoveDisconnectedPlayersOnMatch();
-                    }));
-
-                }
-                Thread.Sleep(1000);
-            }
-            
+                AddUCPlayer(spnlPlayer);
+                RemoveDisconnectedPlayersOnMatch();
+            }));
         }
         private void RemoveDisconnectedPlayersOnMatch()
         {
@@ -99,17 +80,6 @@ namespace MultiConnections_WPF
                 txbPlayerName2.Text = "Người 2";
 
             }));
-        }
-        private bool PlayersChange()
-        {
-            if (playersCount == players.Count)
-            {
-                if (lastPlayer == players[players.Count - 1])
-                    return false;
-            }
-            playersCount = players.Count;
-            //lastPlayer = players[playersCount - 1];
-            return true;
         }
 
         private void AddUCPlayer(ListBox listBox) 
@@ -213,6 +183,11 @@ namespace MultiConnections_WPF
                     return 5;   
             }
             return 0;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshListPlayer();
         }
     }
 }

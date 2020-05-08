@@ -25,7 +25,7 @@ namespace MultiConnections_WPF.UserControls
         private const int BOARD_SIZE = 10;
         private const int NUMBER = 1;
         private int sizeOfRectangle;
-        public UCRectangle[,] listUCRectangle = new UCRectangle[BOARD_SIZE,BOARD_SIZE];
+        public UCRectangle[,] listUCRectangle = new UCRectangle[BOARD_SIZE + NUMBER,BOARD_SIZE + NUMBER];
         
 
         public UCBoard()

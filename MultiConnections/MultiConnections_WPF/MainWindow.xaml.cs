@@ -26,17 +26,21 @@ namespace MultiConnections_WPF
     public partial class MainWindow : Window
     {
         MyServer myServer;
+        CreateMatch createMatch;
         public MainWindow()
         {
             InitializeComponent();
             myServer = new MyServer();
             txbIP.Text = myServer.GetIPAddress().ToString();
             myServer.ConnectionsChanged += myServer_ConnectionsChanged;
+            createMatch = new CreateMatch(myServer.Players);
         }
 
         private void myServer_ConnectionsChanged(object sender, EventArgs e)
         {
             RefreshListPlayer(myServer.Players);
+            if(createMatch.Visibility == Visibility.Visible)
+                createMatch.RefreshListPlayer();
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
@@ -72,7 +76,7 @@ namespace MultiConnections_WPF
 
         private void btnCreateMatch_Click(object sender, RoutedEventArgs e)
         {
-            CreateMatch createMatch = new CreateMatch(myServer.Players);
+            createMatch = new CreateMatch(myServer.Players);
             if (createMatch.ShowDialog() == true)
             {
                 UCMatch ucMatch = new UCMatch(createMatch.GetMatch());
