@@ -85,6 +85,7 @@ namespace ClassLibraryClient
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
             timesUp = true;
+            OnTimesUp(e);
         }
 
         ~MyClient()
@@ -117,7 +118,6 @@ namespace ClassLibraryClient
                 botProcess.StartInfo.RedirectStandardInput = true;
                 botProcess.StartInfo.RedirectStandardOutput = true;
                 botProcess.StartInfo.CreateNoWindow = true;
-                botProcess.StandardOutput.BaseStream.ReadTimeout = Convert.ToInt32(INTERVAL) + 1000;
                 botStarted = botProcess.Start();
             }    
         }
