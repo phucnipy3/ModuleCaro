@@ -33,13 +33,12 @@ namespace MultiConnections_WPF
             myServer = new MyServer();
             txbIP.Text = myServer.GetIPAddress().ToString();
             myServer.ConnectionsChanged += myServer_ConnectionsChanged;
-            createMatch = new CreateMatch(myServer.Players);
         }
 
         private void myServer_ConnectionsChanged(object sender, EventArgs e)
         {
             RefreshListPlayer(myServer.Players);
-            if(createMatch.Visibility == Visibility.Visible)
+            if(createMatch != null && createMatch.Visibility == Visibility.Visible)
                 createMatch.RefreshListPlayer();
         }
 
@@ -74,9 +73,9 @@ namespace MultiConnections_WPF
             this.WindowState = WindowState.Minimized;
         }
 
-        private void btnCreateMatch_Click(object sender, RoutedEventArgs e)
+        private async void btnCreateMatch_Click(object sender, RoutedEventArgs e)
         {
-            createMatch = new CreateMatch(myServer.Players);
+            createMatch = await CreateMatch.CreateNewWindowAsync(myServer.Players);
             if (createMatch.ShowDialog() == true)
             {
                 UCMatch ucMatch = new UCMatch(createMatch.GetMatch());

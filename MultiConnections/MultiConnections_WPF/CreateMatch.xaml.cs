@@ -30,25 +30,27 @@ namespace MultiConnections_WPF
         private Player player1;
         private Player player2;
         private Match match;
-        public CreateMatch()
+        private CreateMatch()
         {
             InitializeComponent();
         }
-        public CreateMatch(List<Player> players)
+        private CreateMatch(List<Player> players)
         {
             InitializeComponent();
             this.players = players;
-            AddUCPlayer(spnlPlayer);
         }
 
-        
+        public static async Task<CreateMatch> CreateNewWindowAsync(List<Player> players)
+        {
+            CreateMatch window = new CreateMatch(players);
+            await Task.Run(() => window.AddUCPlayer());
+            return window;
+        }
+
         public void RefreshListPlayer()
         {
-            spnlPlayer.Dispatcher.BeginInvoke(new Action(delegate ()
-            {
-                AddUCPlayer(spnlPlayer);
-                RemoveDisconnectedPlayersOnMatch();
-            }));
+            AddUCPlayer();
+            RemoveDisconnectedPlayersOnMatch();
         }
         private void RemoveDisconnectedPlayersOnMatch()
         {
@@ -82,15 +84,19 @@ namespace MultiConnections_WPF
             }));
         }
 
-        private void AddUCPlayer(ListBox listBox) 
+        private void AddUCPlayer() 
         {
-            listBox.Items.Clear();
-            for (int i = 0; i < players.Count; i++)
+            spnlPlayer.Dispatcher.BeginInvoke(new Action(delegate
             {
-                UCPlayer ucPlayer = new UCPlayer(players[i]);
-                ucPlayer.MouseDown += new MouseButtonEventHandler(UcPlayer_MouseDown);
-                listBox.Items.Add(ucPlayer);
-            }
+                spnlPlayer.Items.Clear();
+                for (int i = 0; i < players.Count; i++)
+                {
+                    UCPlayer ucPlayer = new UCPlayer(players[i]);
+                    ucPlayer.MouseDown += new MouseButtonEventHandler(UcPlayer_MouseDown);
+                    spnlPlayer.Items.Add(ucPlayer);
+                }
+            }));
+            
         }
 
         private void UcPlayer_MouseDown(object sender, MouseButtonEventArgs e)
@@ -154,12 +160,14 @@ namespace MultiConnections_WPF
 
         private async void BtnCreate_Click(object sender, RoutedEventArgs e)
         {
-
+            btnCreate.IsEnabled = false;
             if (player1 == null || player2 == null)
             {
                 MessageBox.Show("Không đủ số người chơi.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                btnCreate.IsEnabled = true;
                 return;
             }
+            
             player1.OnMatch();
             player2.OnMatch();
 
