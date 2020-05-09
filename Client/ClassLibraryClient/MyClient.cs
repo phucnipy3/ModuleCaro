@@ -38,6 +38,7 @@ namespace ClassLibraryClient
         private const int OUT_RANGE = -7;
         private const int MOVE_EXIST = -8;
         private const int OTHER = -9;
+        private const double INTERVAL = 5000;
 
         private TcpClient player;
         private string oldData = "";
@@ -55,8 +56,10 @@ namespace ClassLibraryClient
         private string botPath;
         private bool botPathDefined = false;
         private bool botStarted = false;
+        private bool timesUp = false;
 
         private List<Thread> runningThreads;
+        private System.Timers.Timer timer;
 
         public MyClient(string username, string password, string serverIPAddress)
         {
@@ -71,7 +74,19 @@ namespace ClassLibraryClient
             runningThreads.Add(StartThread(ConnectToServer));
             runningThreads.Add(StartThread(CheckForConnection));
             botProcess = new Process();
+            timer = new System.Timers.Timer();
+            timer.Interval = INTERVAL;
+            timer.Elapsed += Timer_Elapsed;
+            timer.Start();
+            timer.AutoReset = false;
+            
         }
+
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            timesUp = true;
+        }
+
         ~MyClient()
         {
             StopBot();
@@ -102,6 +117,7 @@ namespace ClassLibraryClient
                 botProcess.StartInfo.RedirectStandardInput = true;
                 botProcess.StartInfo.RedirectStandardOutput = true;
                 botProcess.StartInfo.CreateNoWindow = true;
+                botProcess.StandardOutput.BaseStream.ReadTimeout = Convert.ToInt32(INTERVAL) + 1000;
                 botStarted = botProcess.Start();
             }    
         }
@@ -253,11 +269,14 @@ namespace ClassLibraryClient
                     ReceiveData();
                     return;
                 }    
+
             }
             else
             {
                 moveTracker.AddOpponentMove(opponentMove);
             }
+            timesUp = false;
+            timer.Start();
             WriteToConsole(data);
             
         }
@@ -353,28 +372,36 @@ namespace ClassLibraryClient
             {
                 string data = TryReadConsole();
                 int row, col;
-
-                if (int.TryParse(data.Split(',')[0], out row) &&
-                    int.TryParse(data.Split(',')[1], out col))
+                if (!timesUp)
                 {
-                    if (row >= 0 && row < 20 && col >= 0 && col < 20)
+                    if (int.TryParse(data.Split(',')[0], out row) &&
+                        int.TryParse(data.Split(',')[1], out col))
                     {
-                        if (moveTracker.TryAddAllyMove(data))
+                        if (row >= 0 && row < 20 && col >= 0 && col < 20)
                         {
-                            TryWriteToStream(data + "[end]");
-                            return;
+                            if (moveTracker.TryAddAllyMove(data))
+                            {
+                                timer.Stop();
+                                TryWriteToStream(data + "[end]");
+                                return;
+                            }
+                            else
+                                WriteToConsole(MOVE_EXIST.ToString());
                         }
                         else
-                            WriteToConsole(MOVE_EXIST.ToString());
+                        {
+                            WriteToConsole(OUT_RANGE.ToString());
+                        }
                     }
                     else
                     {
-                        WriteToConsole(OUT_RANGE.ToString());
+                        WriteToConsole(OTHER.ToString());
                     }
                 }
                 else
                 {
-                    WriteToConsole(OTHER.ToString());
+                    TryWriteToStream("-10[end]");
+                    return;
                 }
             }    
         }
@@ -480,9 +507,22 @@ namespace ClassLibraryClient
 
             }
         }
+
+        protected virtual void OnTimesUp(System.Timers.ElapsedEventArgs e)
+        {
+            EventHandler<System.Timers.ElapsedEventArgs> handler = TimesUp;
+            if (handler != null)
+            {
+                handler(this, e);
+
+            }
+        }
+
         public EventHandler<LoginMessageReceivedEventArgs> LoginMessageReceived;
 
         public EventHandler<ConnectionChangedEventArgs> ConnectionChanged;
+
+        public EventHandler<System.Timers.ElapsedEventArgs> TimesUp;
     }
     public class LoginMessageReceivedEventArgs : EventArgs
     {

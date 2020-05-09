@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using Microsoft.Win32;
+using System.Timers;
 
 namespace Client_WPF
 {
@@ -62,6 +63,16 @@ namespace Client_WPF
             myClient.LoginMessageReceived += myClient_LoginMessageReceived;
             myClient.TakeTooMuchTimeToConnect += myClient_TakeTooMuchTime;
             myClient.ConnectionChanged += myClient_ConnectionChanged;
+            myClient.TimesUp += myClient_TimesUp;
+
+        }
+
+        private void myClient_TimesUp(object sender, ElapsedEventArgs e)
+        {
+            rtxtLog.Dispatcher.BeginInvoke(new Action(delegate
+            {
+               rtxtLog.AppendText(e.SignalTime.ToString());
+            }));
         }
 
         private void myClient_ConnectionChanged(object sender, ConnectionChangedEventArgs e)
