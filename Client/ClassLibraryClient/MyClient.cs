@@ -77,7 +77,6 @@ namespace ClassLibraryClient
             timer = new System.Timers.Timer();
             timer.Interval = INTERVAL;
             timer.Elapsed += Timer_Elapsed;
-            timer.Start();
             timer.AutoReset = false;
             
         }
@@ -346,28 +345,6 @@ namespace ClassLibraryClient
 
         public void SendData()
         {
-            //TODO: hk lq j oldata nưuax
-
-            //string data;
-            //do
-            //{
-            //    do
-            //    {
-            //        data = TryReadConsole();
-            //    }
-            //    while (data == null || data.Equals(oldData));
-            //    //TODO: xử lí lỗi data
-            //    if (moveTracker.TryAddAllyMove(data))
-            //        break;
-            //    else
-            //    {
-            //        //TODO: xử lí lỗi
-            //        WriteToConsole("moveexist");
-            //    }
-            //}
-            //while (true);
-            //oldData = data;
-
             while(true)
             {
                 string data = TryReadConsole();
@@ -435,7 +412,12 @@ namespace ClassLibraryClient
 
         public string TryReadConsole()
         {
-            string result = botProcess.StandardOutput.ReadLine() + ',' + botProcess.StandardOutput.ReadLine();
+            string result = "";
+            Task t = Task.Run(() =>
+            {
+                result = botProcess.StandardOutput.ReadLine() + ',' + botProcess.StandardOutput.ReadLine();
+            });
+            t.Wait(Convert.ToInt32(INTERVAL));
             return result;
         }
 
