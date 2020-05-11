@@ -22,16 +22,16 @@ namespace MultiConnections_WPF.UserControls
     public partial class UCBoard : UserControl
     {
         
-        private const int BOARD_SIZE = 10;
+        private const int BOARD_SIZE = 20;
         private const int NUMBER = 1;
         private int sizeOfRectangle;
-        public UCRectangle[,] listUCRectangle = new UCRectangle[BOARD_SIZE + NUMBER,BOARD_SIZE + NUMBER];
+        public UCRectangle[,] listUCRectangle = new UCRectangle[BOARD_SIZE,BOARD_SIZE];
         
 
         public UCBoard()
         {
             InitializeComponent();
-            sizeOfRectangle = (int)this.Width / BOARD_SIZE;
+            sizeOfRectangle = (int)this.Width / (BOARD_SIZE + NUMBER);
 
             DrawBoard();
             
@@ -39,30 +39,39 @@ namespace MultiConnections_WPF.UserControls
 
         public void DrawBoard()
         {
-            for (int i = 0; i < BOARD_SIZE + NUMBER; i++)
+            for (int i = 1; i < BOARD_SIZE + NUMBER; i++)
             {
-                if (i == 0)
-                    DrawNumber(i, 0);
-                else
-                    DrawRectangle(i, 0);
+                DrawNumber(i, 0, false);
+                DrawNumber(0, i, true);
+            }
 
-                for (int j = 1; j < BOARD_SIZE + NUMBER; j++)
+
+            for (int i = 0; i < BOARD_SIZE; i++)
+            {
+                DrawRectangle(i, 0);
+                for (int j = 1; j < BOARD_SIZE; j++)
                 {
-                    if (j == 0)
-                        DrawNumber(i, j);
-                    else
-                        DrawRectangle(i, j);
+                    DrawRectangle(i, j);
                 }
             }
         }
 
-        public void DrawNumber(int i, int j)
+        public void DrawNumber(int i, int j, bool isRow)
         {
             UCRectangle uCRectangle = new UCRectangle() { Width = sizeOfRectangle, Height = sizeOfRectangle };
-            uCRectangle.txbChessman.Text = i.ToString();
-            uCRectangle.recBorder.StrokeThickness = 0;
-            listUCRectangle[i, j] = uCRectangle;
-            wpnlBoard.Children.Add(uCRectangle);
+            
+            if (isRow)
+            {
+                uCRectangle.txbChessman.Text = (j - 1).ToString();
+                uCRectangle.recBorder.StrokeThickness = 0;
+                wpnlRow.Children.Add(uCRectangle);
+            }
+            else
+            {
+                uCRectangle.txbChessman.Text = (i - 1).ToString();
+                uCRectangle.recBorder.StrokeThickness = 0;
+                wpnlCol.Children.Add(uCRectangle);
+            }
         }
 
         public void DrawRectangle(int i, int j)

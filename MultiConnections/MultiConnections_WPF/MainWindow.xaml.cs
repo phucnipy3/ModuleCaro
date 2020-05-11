@@ -1,6 +1,8 @@
 ﻿using ClassLibraryServer;
+using DBAccessLibary.Models;
 using DBAccessLibrary.DBHelper;
 using MaterialDesignThemes.Wpf;
+using MultiConnections_WPF.Operating;
 using MultiConnections_WPF.UserControls;
 using System;
 using System.Collections.Generic;
@@ -112,6 +114,13 @@ namespace MultiConnections_WPF
         {
             CreateAccount createAccount = new CreateAccount();
             createAccount.Show();
+        }
+
+        
+        private void btnTest_Click(object sender, RoutedEventArgs e)
+        {
+            ShowMatch show = new ShowMatch();
+            show.Show();
         }
     }   
 }

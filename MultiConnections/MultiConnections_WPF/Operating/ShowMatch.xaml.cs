@@ -25,6 +25,18 @@ namespace MultiConnections_WPF.Operating
     public partial class ShowMatch : Window
     {
         private StoredMatch storedMatch;
+        
+        public ShowMatch()
+        {
+            InitializeComponent();
+
+            UCTab tab = new UCTab();
+            TabItem tabItem = new TabItem() { Header = "Trận " + (1).ToString() };
+            tabItem.Content = tab;
+            tcMatch.Items.Add(tabItem);
+
+        }
+        
         public ShowMatch(StoredMatch match)
         {
             InitializeComponent();

@@ -81,3 +81,4 @@ D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServ
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
 D:\caro\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
+E:\Learning\Science Research\New\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CoreCompileInputs.cache

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Width="35" Height="35">
     <Grid>
-        <Rectangle x:Name="recBorder" Stroke="Black"/>
-        <TextBlock x:Name="txbChessman" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <Rectangle x:Name="recBorder" Stroke="Black" StrokeThickness="0.5"/>
+        <TextBlock x:Name="txbChessman" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Semibold"/>
     </Grid>
 </UserControl>

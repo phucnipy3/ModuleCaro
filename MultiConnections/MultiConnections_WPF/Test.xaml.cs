@@ -28,10 +28,16 @@ namespace MultiConnections_WPF
         {
             InitializeComponent();
             //storedMatch = await Helper.GetMatchAsync(26);
-            InitMatch();
+            //InitMatch();
             //storedMatch = match;
 
-            ShowPlayerInformations();
+            UCTab tab = new UCTab();
+
+            TabItem tabItem = new TabItem() { Header = "Trận " + (1).ToString() };
+            tabItem.Content = tab;
+            tcMatch.Items.Add(tabItem);
+
+            //ShowPlayerInformations();
         }
 
         private void InitMatch()

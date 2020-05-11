@@ -32,6 +32,13 @@ namespace MultiConnections_WPF.UserControls
         private bool isPause;
         private bool isOver;
 
+        public UCTab()
+        {
+            InitializeComponent();
+            uCBoard = new UCBoard();
+            grdMain.Children.Add(uCBoard);
+        }
+
         public UCTab(StoredGame storedGame)
         {
             this.storedGame = storedGame;
