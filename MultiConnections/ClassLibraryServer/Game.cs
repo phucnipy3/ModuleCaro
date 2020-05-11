@@ -24,6 +24,7 @@ namespace ClassLibraryServer
         private Player secondPlayer;
         private Player winner;
         private bool gameEnded;
+        private bool timesUp;
         private string moveString;
         private Chessman chessman;
         private int moveCount;
@@ -63,6 +64,14 @@ namespace ClassLibraryServer
             {
                 chessman = Chessman.O;
                 await ProcessingDataFromAsync(firstPlayer);
+                if (timesUp)
+                {
+                    winner = secondPlayer;
+                    await Helper.SetWinnerAsync(Helper.GetPlayerIdByName(secondPlayer.Name), storedGameId);
+                    moveString = "-1,-1";
+                    await SendEndGameMessageAsync(secondPlayer, firstPlayer);
+                    return;
+                }
                 if (gameEnded)
                 {
                     winner = firstPlayer;
@@ -73,6 +82,14 @@ namespace ClassLibraryServer
                 await TrySendDataAsync(secondPlayer, moveString + "[end]");
                 chessman = Chessman.X;
                 await ProcessingDataFromAsync(secondPlayer);
+                if (timesUp)
+                {
+                    winner = firstPlayer;
+                    await Helper.SetWinnerAsync(Helper.GetPlayerIdByName(firstPlayer.Name), storedGameId);
+                    moveString = "-1,-1";
+                    await SendEndGameMessageAsync(firstPlayer, secondPlayer);
+                    return;
+                }
                 if (gameEnded)
                 {
                     winner = secondPlayer;
@@ -102,6 +119,11 @@ namespace ClassLibraryServer
         private async Task ProcessingDataFromAsync(Player player)
         {
             moveString = await TryGetDataAsync(player);
+            if (moveString == "-10")
+            {
+                timesUp = true;
+                return;
+            }
             if (StrValid())
             { 
                 await MakeMoveAsync();

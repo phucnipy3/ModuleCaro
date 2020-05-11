@@ -71,7 +71,7 @@ namespace DBAccessLibrary.DBHelper
                     CoordinateY = coordinateY
                 };
                 game.Moves.Add(move);
-                move.Order = game.Moves.Count;
+                move.Order = await DB.Games.Where(x => x.Id == gameId).Select(y => y.Moves.Count).FirstOrDefaultAsync();
                 await DB.SaveChangesAsync();
             }
         }
