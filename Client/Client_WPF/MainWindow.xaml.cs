@@ -1,22 +1,14 @@
 ﻿using ClassLibraryClient;
 using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Diagnostics;
 using Microsoft.Win32;
 using System.Timers;
+using System.IO;
+using System.Windows.Documents;
 
 namespace Client_WPF
 {
@@ -46,6 +38,7 @@ namespace Client_WPF
             btnLogin.IsEnabled = false;
             InitHomePage();
         }
+
         public void MoveToHomePage()
         {
             Application.Current.Dispatcher.Invoke(new Action(delegate
@@ -123,8 +116,6 @@ namespace Client_WPF
             grdHome.Visibility = Visibility.Visible;
         }
 
-
-
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
@@ -161,9 +152,7 @@ namespace Client_WPF
             //{
             //    txbAppStatus.Text = "Đang chạy ứng dụng";
             //    iconApp.Foreground = new SolidColorBrush(Colors.YellowGreen);
-            //}
-                
-            
+            //} 
         }
 
         private void btnBrowse_Click(object sender, RoutedEventArgs e)
@@ -204,6 +193,5 @@ namespace Client_WPF
             txtPassword.Clear();
             btnLogin.IsEnabled = true;
         }
-
     }
 }

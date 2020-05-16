@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +11,8 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using System.Net.NetworkInformation;
-using System.Windows.Media;
 using System.Diagnostics;
+using NLog;
 
 namespace ClassLibraryClient
 {
@@ -91,6 +90,7 @@ namespace ClassLibraryClient
         {
             StopBot();
         }
+
         public void StopBot()
         {
             if (botStarted)
@@ -99,12 +99,14 @@ namespace ClassLibraryClient
                 botStarted = false;
             }
         }
+
         public void ChangeBot(string botPath)
         {
             this.botPath = botPath;
             botPathDefined = true;
             StopBot();
         }
+
         public void StartBot()
         {
             if(!botStarted)
@@ -169,10 +171,12 @@ namespace ClassLibraryClient
                 }
             }
         }
+
         private bool isConnecting()
         {
             return MyClient.GetState(player) == TcpState.Established;
         }
+
         public void ConnectToServer()
         {
             int counter = 4;
@@ -201,6 +205,7 @@ namespace ClassLibraryClient
                             break;
                         isConnected = true;
                         ignoreCounter = true;
+                        ShowLogClient("Đã kết nối đến server");
                     }
                     catch (Exception e )
                     {
@@ -208,13 +213,13 @@ namespace ClassLibraryClient
                     }
                 }
             }
-
         }
 
         private IPAddress GetIPAddress()
         {
             return IPAddress.Parse(serverIPAddress);
         }
+
         public bool SendLoginInfomation()
         {
             byte[] nameBuffer = new byte[SIZE_OF_BYTE];
@@ -264,7 +269,6 @@ namespace ClassLibraryClient
                 if(signal != START_FIRST_NO_RULE && signal != START_FIRST_RULE)
                 {
                     WriteToConsole(data);
-
                     ReceiveData();
                     return;
                 }    
@@ -295,6 +299,7 @@ namespace ClassLibraryClient
                 }
             }    
         }
+
         public string ReadFromStream()
         {
             byte[] dataTemp = new byte[SIZE_OF_BYTE];
@@ -314,6 +319,7 @@ namespace ClassLibraryClient
                     return false;
             return true;
         }
+
         public void WriteToConsole(string data)
         {
             //if(!botProcess.StandardOutput.EndOfStream)
@@ -360,19 +366,25 @@ namespace ClassLibraryClient
                             {
                                 timer.Stop();
                                 TryWriteToStream(data + "[end]");
+                                ShowLogClient("Đã đi nước '" + data + "'");
                                 return;
                             }
                             else
+                            {
                                 WriteToConsole(MOVE_EXIST.ToString());
+                                ShowLogClient("Nước đi '" + data + "' đã tồn tại");
+                            }
                         }
                         else
                         {
                             WriteToConsole(OUT_RANGE.ToString());
+                            ShowLogClient("Nước đi '" + data + "' ngoài phạm vi bàn cờ");
                         }
                     }
                     else
                     {
                         WriteToConsole(OTHER.ToString());
+                        ShowLogClient("Các lỗi khác");
                     }
                 }
                 else
@@ -401,6 +413,7 @@ namespace ClassLibraryClient
                 }
             }    
         }
+
         public void WriteToStream(string data)
         {
             byte[] dataTemp = new byte[SIZE_OF_BYTE];
@@ -429,6 +442,7 @@ namespace ClassLibraryClient
                 return newData;
             }
         }
+
         public void CheckForConnection()
         {
             while (true)
@@ -436,6 +450,7 @@ namespace ClassLibraryClient
                 if(isConnecting() != isConnected)
                 {
                     isConnected = !isConnected;
+                    ShowLogClient("Mất kết nối tới server");
                     ConnectionChangedEventArgs args = new ConnectionChangedEventArgs();
                     args.isConnected = isConnected;
 
@@ -444,6 +459,7 @@ namespace ClassLibraryClient
                 Thread.Sleep(1000);
             }
         }
+
         public void Dispose()
         {
             foreach(var thread in runningThreads)
@@ -457,11 +473,29 @@ namespace ClassLibraryClient
                 player.Close();
             }
         }
+
+        public void ShowLogClient(string info)
+        {
+            Logger logger = LogManager.GetLogger("fileLogger");
+            //var config = new NLog.Config.LoggingConfiguration();
+
+            //var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "logs.txt" };
+            //var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
+
+            //config.AddRule(LogLevel.Info, LogLevel.Fatal, logconsole);
+            //config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+
+            //NLog.LogManager.Configuration = config;
+
+            logger.Info(info);
+        }
+
         public static TcpState GetState(TcpClient tcpClient)
         {
             var foo = IPGlobalProperties.GetIPGlobalProperties().GetActiveTcpConnections().SingleOrDefault(x => x.LocalEndPoint.Equals(tcpClient.Client.LocalEndPoint));
             return foo != null ? foo.State : TcpState.Unknown;
         }
+
         protected virtual void OnTakeTooMuchTimeToConnect(EventArgs e)
         {
             EventHandler handler = TakeTooMuchTimeToConnect;
@@ -470,7 +504,9 @@ namespace ClassLibraryClient
                 handler(this, e);
             } 
         }
+
         public EventHandler TakeTooMuchTimeToConnect;
+
         protected virtual void OnLoginMessageReceived(LoginMessageReceivedEventArgs e)
         {
             EventHandler<LoginMessageReceivedEventArgs> handler = LoginMessageReceived;
@@ -480,6 +516,7 @@ namespace ClassLibraryClient
                 
             }
         }
+
         protected virtual void OnConnectionChanged(ConnectionChangedEventArgs e)
         {
             EventHandler<ConnectionChangedEventArgs> handler = ConnectionChanged;
