@@ -36,3 +36,4 @@ E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibrar
 E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.GenerateResource.cache
 E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.dll
 E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.pdb
+E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.CoreCompileInputs.cache

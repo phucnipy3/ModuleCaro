@@ -95,6 +95,12 @@ namespace Client_WPF
 
         private void myClient_TakeTooMuchTime(object sender, EventArgs e)
         {
+            grdMain.Dispatcher.BeginInvoke(new Action(delegate 
+            {
+                grdMain.Children.Remove(dialogLoading);
+            }));
+            
+            
             MessageBox.Show("Mất quá nhiều thời gian để thiết lập kết nối", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             btnLogin.Dispatcher.BeginInvoke(new Action(delegate
             {

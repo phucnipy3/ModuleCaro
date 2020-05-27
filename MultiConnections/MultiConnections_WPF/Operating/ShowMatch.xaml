@@ -7,89 +7,111 @@
         xmlns:userControl="clr-namespace:MultiConnections_WPF.UserControls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ShowMatch" Height="720" Width="920" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="None">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        Title="ShowMatch" Height="720" Width="920" AllowsTransparency="True" Background="Transparent"  WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
-        <StackPanel Background="#FF8522BD" Orientation="Horizontal" FlowDirection="RightToLeft" Grid.ColumnSpan="2" MouseDown="StackPanel_MouseDown">
-            <Button x:Name="btnClose" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" 
-                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Close" Click="btnClose_Click">
-                <materialDesign:PackIcon Kind="WindowClose"/>
-            </Button>
-            <Button x:Name="btnMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" 
-                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Minimize" Click="btnMinimize_Click">
-                <materialDesign:PackIcon Kind="WindowMinimize"/>
-            </Button>
-        </StackPanel>
+    <Border Margin="5">
+        <Border.Effect>
+            <DropShadowEffect Color="Black"
+                              Direction="270"
+                              BlurRadius="5"
+                              ShadowDepth="1"/>
+        </Border.Effect>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="234"/>
-            </Grid.ColumnDefinitions>
 
-            <Grid>
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-                <TabControl x:Name="tcMatch" Margin="10">
-                    
-
-                </TabControl>
-
-                
-
+            <Grid Background="#FF8522BD" Grid.ColumnSpan="2" MouseDown="StackPanel_MouseDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnClose" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="0,0,5,0" VerticalAlignment="Center" 
+                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Close" Click="btnClose_Click" Grid.Column="1">
+                    <materialDesign:PackIcon Kind="WindowClose"/>
+                </Button>
+                <Button x:Name="btnMaximize" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="0,0,30,0" VerticalAlignment="Center" 
+                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Maximize" Click="btnMaximize_Click" Grid.Column="1">
+                    <materialDesign:PackIcon x:Name="iconMaximize" Kind="WindowMaximize"/>
+                </Button>
+                <Button x:Name="btnMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" HorizontalAlignment="Right" Margin="0,0,55,0" VerticalAlignment="Center" 
+                    Width="20" Height="20" BorderThickness="0" FontFamily="UTM Tam Le" FontSize="16" ToolTip="Minimize" Click="btnMinimize_Click" Grid.Column="1">
+                    <materialDesign:PackIcon Kind="WindowMinimize"/>
+                </Button>
             </Grid>
 
-            <Grid Grid.Column="1" Background="#FFB39DDB">
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="234"/>
+                </Grid.ColumnDefinitions>
 
-                <materialDesign:Card Margin="10" Background="#FFEDE7F6">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
+                <Grid>
 
-                        <materialDesign:Card Margin="0" Background="#FF8522BD" Width="154" Height="140" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <materialDesign:Card Width="90" Height="90">
-                                    <materialDesign:Card.Background>
-                                        <ImageBrush ImageSource="/Resources/DefaultAvatar.png"/>
-                                    </materialDesign:Card.Background>
-                                </materialDesign:Card>
-                                <TextBlock x:Name="txbPlayer1" Text="Người 1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Center" Padding="0,5,0,0" Foreground="White"/>
-                            </StackPanel>
-                        </materialDesign:Card>
-
-                        <materialDesign:Card Grid.Row="1" Margin="0" Background="#FFC30000" Width="214" Height="50">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock x:Name="txbPlayer1Score" Text="0" FontFamily="Segoe UI Semibold" FontSize="20" Margin="0,0,5,0" Foreground="White"/>
-                                <TextBlock Text="-" FontFamily="Segoe UI Semibold" FontSize="20" Foreground="White"/>
-                                <TextBlock x:Name="txbPlayer2Score" Text="0" FontFamily="Segoe UI Semibold" FontSize="20" Margin="5,0,0,0" Foreground="White"/>
-                            </StackPanel>
-                        </materialDesign:Card>
+                    <TabControl x:Name="tcMatch" Margin="10">
 
 
-                        <materialDesign:Card Grid.Row="2" Margin="0" Background="#FF8522BD" Width="154" Height="140" HorizontalAlignment="Center" VerticalAlignment="Top">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <materialDesign:Card Width="90" Height="90">
-                                    <materialDesign:Card.Background>
-                                        <ImageBrush ImageSource="/Resources/DefaultAvatar.png"/>
-                                    </materialDesign:Card.Background>
-                                </materialDesign:Card>
-                                <TextBlock x:Name="txbPlayer2" Text="Người 2" FontFamily="Segoe UI Semibold" HorizontalAlignment="Center" Padding="0,5,0,0" Foreground="White"/>
-                            </StackPanel>
-                        </materialDesign:Card>
+                    </TabControl>
 
 
-                    </Grid>
 
-                </materialDesign:Card>
+                </Grid>
+
+                <Grid Grid.Column="1" Background="#FFB39DDB">
+
+                    <materialDesign:Card Margin="10" Background="#FFEDE7F6">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+
+                            <materialDesign:Card Margin="0" Background="#FF8522BD" Width="154" Height="140" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <materialDesign:Card Width="90" Height="90">
+                                        <materialDesign:Card.Background>
+                                            <ImageBrush ImageSource="/Resources/DefaultAvatar.png"/>
+                                        </materialDesign:Card.Background>
+                                    </materialDesign:Card>
+                                    <TextBlock x:Name="txbPlayer1" Text="Người 1" FontFamily="Segoe UI Semibold" HorizontalAlignment="Center" Padding="0,5,0,0" Foreground="White"/>
+                                </StackPanel>
+                            </materialDesign:Card>
+
+                            <materialDesign:Card Grid.Row="1" Margin="0" Background="#FFC30000" Width="214" Height="50">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock x:Name="txbPlayer1Score" Text="0" FontFamily="Segoe UI Semibold" FontSize="20" Margin="0,0,5,0" Foreground="White"/>
+                                    <TextBlock Text="-" FontFamily="Segoe UI Semibold" FontSize="20" Foreground="White"/>
+                                    <TextBlock x:Name="txbPlayer2Score" Text="0" FontFamily="Segoe UI Semibold" FontSize="20" Margin="5,0,0,0" Foreground="White"/>
+                                </StackPanel>
+                            </materialDesign:Card>
+
+
+                            <materialDesign:Card Grid.Row="2" Margin="0" Background="#FF8522BD" Width="154" Height="140" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <materialDesign:Card Width="90" Height="90">
+                                        <materialDesign:Card.Background>
+                                            <ImageBrush ImageSource="/Resources/DefaultAvatar.png"/>
+                                        </materialDesign:Card.Background>
+                                    </materialDesign:Card>
+                                    <TextBlock x:Name="txbPlayer2" Text="Người 2" FontFamily="Segoe UI Semibold" HorizontalAlignment="Center" Padding="0,5,0,0" Foreground="White"/>
+                                </StackPanel>
+                            </materialDesign:Card>
+
+
+                        </Grid>
+
+                    </materialDesign:Card>
+
+                </Grid>
 
             </Grid>
-
         </Grid>
-    </Grid>
+
+    </Border>
+
+    
 </Window>

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 using DBAccessLibary.Models;
 using DBAccessLibrary.DBHelper;
+using MaterialDesignThemes.Wpf;
 using MultiConnections_WPF.UserControls;
 
 namespace MultiConnections_WPF.Operating
@@ -96,6 +97,22 @@ namespace MultiConnections_WPF.Operating
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnMaximize_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+                iconMaximize.Kind = PackIconKind.WindowMaximize;
+                btnMaximize.ToolTip = "Maximize";
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+                iconMaximize.Kind = PackIconKind.WindowRestore;
+                btnMaximize.ToolTip = "Restore Down";
+            }
         }
 
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
