@@ -1,5 +1,3 @@
-﻿  ReadAndWrite.cpp
-  Source.cpp
-E:\Learning\Science Research\New\AI_cpp\AI\Source.cpp(10,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  Generating Code...
-  AI.vcxproj -> E:\Learning\Science Research\New\AI_cpp\Debug\AI.exe
+﻿  Source.cpp
+F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\AI_cpp\AI\Source.cpp(10,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  AI.vcxproj -> F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\AI_cpp\Debug\AI.exe
