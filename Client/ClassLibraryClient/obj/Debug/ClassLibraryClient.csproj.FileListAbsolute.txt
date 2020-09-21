@@ -48,3 +48,8 @@ F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\Client\ClassL
 F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.CopyComplete
 F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.dll
 F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.pdb
+E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.CoreCompileInputs.cache
+E:\Learning\Science Research\New\Client\ClassLibraryClient\bin\Debug\NLog.config
+E:\Learning\Science Research\New\Client\ClassLibraryClient\bin\Debug\NLog.dll
+E:\Learning\Science Research\New\Client\ClassLibraryClient\bin\Debug\NLog.xml
+E:\Learning\Science Research\New\Client\ClassLibraryClient\obj\Debug\ClassLibraryClient.csproj.CopyComplete

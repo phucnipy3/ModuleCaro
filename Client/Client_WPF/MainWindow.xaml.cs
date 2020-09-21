@@ -72,6 +72,7 @@ namespace Client_WPF
         {
             txbTemp.Dispatcher.BeginInvoke(new Action(delegate
             {
+
                 if (e.isConnected)
                 {
                     txbTemp.Text = "Đã kết nối";

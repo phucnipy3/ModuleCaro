@@ -12,7 +12,6 @@ using System.IO;
 using System.Threading;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
-using NLog;
 
 namespace ClassLibraryClient
 {
@@ -205,7 +204,7 @@ namespace ClassLibraryClient
                             break;
                         isConnected = true;
                         ignoreCounter = true;
-                        ShowLogClient("Đã kết nối đến server");
+                        //ShowLogClient("Đã kết nối đến server");
                     }
                     catch (Exception e )
                     {
@@ -366,25 +365,25 @@ namespace ClassLibraryClient
                             {
                                 timer.Stop();
                                 TryWriteToStream(data + "[end]");
-                                ShowLogClient("Đã đi nước '" + data + "'");
+                                //ShowLogClient("Đã đi nước '" + data + "'");
                                 return;
                             }
                             else
                             {
                                 WriteToConsole(MOVE_EXIST.ToString());
-                                ShowLogClient("Nước đi '" + data + "' đã tồn tại");
+                                //ShowLogClient("Nước đi '" + data + "' đã tồn tại");
                             }
                         }
                         else
                         {
                             WriteToConsole(OUT_RANGE.ToString());
-                            ShowLogClient("Nước đi '" + data + "' ngoài phạm vi bàn cờ");
+                            //ShowLogClient("Nước đi '" + data + "' ngoài phạm vi bàn cờ");
                         }
                     }
                     else
                     {
                         WriteToConsole(OTHER.ToString());
-                        ShowLogClient("Các lỗi khác");
+                        //ShowLogClient("Các lỗi khác");
                     }
                 }
                 else
@@ -450,7 +449,7 @@ namespace ClassLibraryClient
                 if(isConnecting() != isConnected)
                 {
                     isConnected = !isConnected;
-                    ShowLogClient("Mất kết nối tới server");
+                    //ShowLogClient("Mất kết nối tới server");
                     ConnectionChangedEventArgs args = new ConnectionChangedEventArgs();
                     args.isConnected = isConnected;
 
@@ -474,21 +473,6 @@ namespace ClassLibraryClient
             }
         }
 
-        public void ShowLogClient(string info)
-        {
-            Logger logger = LogManager.GetLogger("fileLogger");
-            //var config = new NLog.Config.LoggingConfiguration();
-
-            //var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "logs.txt" };
-            //var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
-
-            //config.AddRule(LogLevel.Info, LogLevel.Fatal, logconsole);
-            //config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
-
-            //NLog.LogManager.Configuration = config;
-
-            logger.Info(info);
-        }
 
         public static TcpState GetState(TcpClient tcpClient)
         {
@@ -513,7 +497,7 @@ namespace ClassLibraryClient
             if (handler != null)
             {
                 handler(this, e);
-                
+
             }
         }
 
@@ -537,7 +521,9 @@ namespace ClassLibraryClient
             }
         }
 
+
         public EventHandler<LoginMessageReceivedEventArgs> LoginMessageReceived;
+
 
         public EventHandler<ConnectionChangedEventArgs> ConnectionChanged;
 
