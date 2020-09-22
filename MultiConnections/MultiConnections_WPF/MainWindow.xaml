@@ -60,7 +60,7 @@
                                          materialDesign:ShadowAssist.ShadowEdges="Top">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <materialDesign:PackIcon Kind="Ip" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="#FF8522BD" Width="20" Height="20" />
-                            <TextBlock x:Name="txbIP" Text="192.168.1.9" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF8522BD" FontFamily="Segoe UI Semibold" Margin="10,0,0,0" FontSize="15"  />
+                            <TextBox x:Name="txbIP" Text="192.168.1.9" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FF8522BD" FontFamily="Segoe UI Semibold" Margin="10,0,0,0" FontSize="15" BorderThickness="0"  />
                         </StackPanel>
                     </materialDesign:Card>
 
@@ -73,6 +73,9 @@
 
                 </Grid>
 
+                <Grid>
+                    
+                </Grid>
                 <ScrollViewer  Grid.Row="1">
                     <WrapPanel x:Name="wrapPanelMatches" HorizontalAlignment="Center" VerticalAlignment="Top">
                         

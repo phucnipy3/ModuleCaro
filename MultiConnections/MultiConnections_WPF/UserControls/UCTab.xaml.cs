@@ -22,7 +22,6 @@ namespace MultiConnections_WPF.UserControls
     /// </summary>
     public partial class UCTab : UserControl
     {
-
         
         private int currentMove;
         private StoredGame storedGame;
@@ -49,7 +48,7 @@ namespace MultiConnections_WPF.UserControls
             isPause = true;
             isOver = false;
             currentMove = -1;
-
+            ChangeStatusBtn(isPause);
             Thread thread = new Thread(new ThreadStart(PlayGame));
             thread.IsBackground = true;
             thread.Start();
@@ -57,15 +56,30 @@ namespace MultiConnections_WPF.UserControls
             delay = 1000;
         }
 
+        public void ChangeStatusBtn(bool isPause)
+        {
+            if (isPause)
+            {
+                btnBack.IsEnabled = true;
+                btnNext.IsEnabled = true;
+                btnPlay.Visibility = Visibility.Visible;
+                btnPause.Visibility = Visibility.Collapsed;
+            } 
+            else
+            {
+                btnBack.IsEnabled = false;
+                btnNext.IsEnabled = false;
+                btnPlay.Visibility = Visibility.Collapsed;
+                btnPause.Visibility = Visibility.Visible;
+            }
+        }
+
         private void btnPlay_Click(object sender, RoutedEventArgs e)
         {
             if (isOver)
                 ResetGame();
             isPause = false;
-            btnBack.IsEnabled = false;
-            btnNext.IsEnabled = false;
-            btnPlay.Visibility = Visibility.Collapsed;
-            btnPause.Visibility = Visibility.Visible;
+            ChangeStatusBtn(isPause);
         }
 
         public void PlayGame()
@@ -87,10 +101,7 @@ namespace MultiConnections_WPF.UserControls
         private void btnPause_Click(object sender, RoutedEventArgs e)
         {
             isPause = true;
-            btnBack.IsEnabled = true;
-            btnNext.IsEnabled = true;
-            btnPlay.Visibility = Visibility.Visible;
-            btnPause.Visibility = Visibility.Collapsed;
+            ChangeStatusBtn(isPause);
         }
 
         private void btnSkip_Click(object sender, RoutedEventArgs e)
@@ -143,12 +154,12 @@ namespace MultiConnections_WPF.UserControls
             isOver = false;
             currentMove = -1;
             delay = 1000;
-            btnBack.IsEnabled = false;
-            btnNext.IsEnabled = false;
-            btnPause.Visibility = Visibility.Collapsed;
-            btnPlay.Visibility = Visibility.Visible;
+            ChangeStatusBtn(isPause);
             foreach (var chessMan in uCBoard.listUCRectangle)
+            {
                 chessMan.txbChessman.Text = "";
+                chessMan.Background = new SolidColorBrush(Colors.Transparent);
+            }
         }
 
         
