@@ -102,3 +102,23 @@ F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\MultiConnecti
 F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
 F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
 F:\Specialized Subjects\Scientific Research\Cà Rố\1610\GameCaro\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.dll
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\ClassLibraryServer.pdb
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.dll
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.dll
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\EntityFramework.dll
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.pdb
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\DBAccessLibrary.dll.config
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignColors.pdb
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.pdb
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\MaterialDesignThemes.Wpf.xml
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\bin\Debug\EntityFramework.xml
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csprojAssemblyReference.cache
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.ResolveComReference.cache
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.Properties.Resources.resources
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.GenerateResource.cache
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CoreCompileInputs.cache
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.csproj.CopyComplete
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.dll
+F:\Specialized Subjects\Scientific Research\phucnipy3\MultiConnections\ClassLibraryServer\obj\Debug\ClassLibraryServer.pdb

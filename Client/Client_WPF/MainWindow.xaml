@@ -121,7 +121,6 @@
                     <RichTextBox x:Name="rtxtLog" Margin="5">
                         <FlowDocument>
                             <Paragraph>
-                                <Run Text="This is log"/>
                             </Paragraph>
                         </FlowDocument>
                     </RichTextBox>

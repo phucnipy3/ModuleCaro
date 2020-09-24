@@ -57,7 +57,17 @@ namespace Client_WPF
             myClient.TakeTooMuchTimeToConnect += myClient_TakeTooMuchTime;
             myClient.ConnectionChanged += myClient_ConnectionChanged;
             myClient.TimesUp += myClient_TimesUp;
+            myClient.MessageGenerated += myClient_MessageGenerated;
 
+        }
+
+        private void myClient_MessageGenerated(object sender, MessageGeneratedEventArgs e)
+        {
+            rtxtLog.Dispatcher.BeginInvoke(new Action(delegate
+            {
+                string message = DateTime.Now.ToShortTimeString() + ": " + e.Message + "\n";
+                rtxtLog.AppendText(message);
+            }));
         }
 
         private void myClient_TimesUp(object sender, ElapsedEventArgs e)

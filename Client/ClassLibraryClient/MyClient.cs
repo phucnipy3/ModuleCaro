@@ -12,6 +12,7 @@ using System.IO;
 using System.Threading;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
+using NLog;
 
 namespace ClassLibraryClient
 {
@@ -76,7 +77,7 @@ namespace ClassLibraryClient
             timer.Interval = INTERVAL;
             timer.Elapsed += Timer_Elapsed;
             timer.AutoReset = false;
-            
+
         }
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -108,7 +109,7 @@ namespace ClassLibraryClient
 
         public void StartBot()
         {
-            if(!botStarted)
+            if (!botStarted)
             {
                 if (string.IsNullOrEmpty(botPath))
                     throw new NullReferenceException("Bot path is not set!");
@@ -119,7 +120,7 @@ namespace ClassLibraryClient
                 botProcess.StartInfo.RedirectStandardOutput = true;
                 botProcess.StartInfo.CreateNoWindow = true;
                 botStarted = botProcess.Start();
-            }    
+            }
         }
 
         public delegate void ConsecutiveFuction();
@@ -158,7 +159,7 @@ namespace ClassLibraryClient
                         ReceiveData();
                         SendData();
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         Thread.Sleep(1000);
                         continue;
@@ -182,7 +183,7 @@ namespace ClassLibraryClient
             bool ignoreCounter = false;
             while (true)
             {
-                if(!ignoreCounter)
+                if (!ignoreCounter)
                 {
                     counter--;
                     if (counter < 0)
@@ -204,9 +205,8 @@ namespace ClassLibraryClient
                             break;
                         isConnected = true;
                         ignoreCounter = true;
-                        //ShowLogClient("Đã kết nối đến server");
                     }
-                    catch (Exception e )
+                    catch (Exception e)
                     {
                         continue;
                     }
@@ -232,7 +232,7 @@ namespace ClassLibraryClient
             string loginMessage = Encoding.UTF8.GetString(buffer);
 
             LoginMessageReceivedEventArgs args = new LoginMessageReceivedEventArgs();
-            if (loginMessage.Substring(0,loginMessage.IndexOf("[end]")).Equals("valid"))
+            if (loginMessage.Substring(0, loginMessage.IndexOf("[end]")).Equals("valid"))
             {
                 args.IsValidLogin = true;
             }
@@ -242,12 +242,12 @@ namespace ClassLibraryClient
             }
             OnLoginMessageReceived(args);
             return args.IsValidLogin;
-                
+
         }
 
         public void ReceiveData()
         {
-            
+
             string data = TryReadFromStream();
             string opponentMove = data;
 
@@ -265,14 +265,14 @@ namespace ClassLibraryClient
                     StartBot();
                     moveTracker.Reset();
                 }
-                if(signal != START_FIRST_NO_RULE && signal != START_FIRST_RULE)
+                if (signal != START_FIRST_NO_RULE && signal != START_FIRST_RULE)
                 {
                     WriteToConsole(data);
                     ReceiveData();
                     return;
-                }    
-
+                }
             }
+
             else
             {
                 moveTracker.AddOpponentMove(opponentMove);
@@ -280,12 +280,11 @@ namespace ClassLibraryClient
             timesUp = false;
             timer.Start();
             WriteToConsole(data);
-            
         }
 
         public string TryReadFromStream()
         {
-            while(true)
+            while (true)
             {
                 try
                 {
@@ -296,7 +295,7 @@ namespace ClassLibraryClient
                     Thread.Sleep(1000);
                     continue;
                 }
-            }    
+            }
         }
 
         public string ReadFromStream()
@@ -307,7 +306,7 @@ namespace ClassLibraryClient
             stream.Read(dataTemp, 0, dataTemp.Length);
             string data = Encoding.ASCII.GetString(dataTemp);
             return data.Substring(0, data.IndexOf("[end]"));
-            
+
         }
 
         public bool isEmpty(byte[] data)
@@ -323,7 +322,7 @@ namespace ClassLibraryClient
         {
             //if(!botProcess.StandardOutput.EndOfStream)
             //    botProcess.StandardOutput.ReadToEnd();
-            if(data[0] == '-')
+            if (data[0] == '-')
             {
                 int signal = int.Parse(data.Substring(0, 2));
                 botProcess.StandardInput.WriteLine(signal);
@@ -331,7 +330,8 @@ namespace ClassLibraryClient
                 {
                     botProcess.StandardInput.WriteLine(data.Split(',')[1]);
                     botProcess.StandardInput.WriteLine(data.Split(',')[2]);
-                }    
+                    ShowLogClient("Bạn đã thua ván đấu");
+                }
             }
             else
             {
@@ -350,7 +350,7 @@ namespace ClassLibraryClient
 
         public void SendData()
         {
-            while(true)
+            while (true)
             {
                 string data = TryReadConsole();
                 int row, col;
@@ -365,25 +365,25 @@ namespace ClassLibraryClient
                             {
                                 timer.Stop();
                                 TryWriteToStream(data + "[end]");
-                                //ShowLogClient("Đã đi nước '" + data + "'");
+                                ShowLogClient("Bạn đã đi nước '" + data + "'");
                                 return;
                             }
                             else
                             {
                                 WriteToConsole(MOVE_EXIST.ToString());
-                                //ShowLogClient("Nước đi '" + data + "' đã tồn tại");
+                                ShowLogClient("Nước đi '" + data + "' đã tồn tại");
                             }
                         }
                         else
                         {
                             WriteToConsole(OUT_RANGE.ToString());
-                            //ShowLogClient("Nước đi '" + data + "' ngoài phạm vi bàn cờ");
+                            ShowLogClient("Nước đi '" + data + "' ngoài phạm vi bàn cờ");
                         }
                     }
                     else
                     {
                         WriteToConsole(OTHER.ToString());
-                        //ShowLogClient("Các lỗi khác");
+                        ShowLogClient("Các lỗi khác");
                     }
                 }
                 else
@@ -391,13 +391,13 @@ namespace ClassLibraryClient
                     TryWriteToStream("-10[end]");
                     return;
                 }
-            }    
+            }
         }
 
         public void TryWriteToStream(string data)
         {
 
-            while(true)
+            while (true)
             {
                 try
                 {
@@ -410,7 +410,7 @@ namespace ClassLibraryClient
 
                     continue;
                 }
-            }    
+            }
         }
 
         public void WriteToStream(string data)
@@ -436,7 +436,7 @@ namespace ClassLibraryClient
         public string ReadFile(string filename)
         {
             using (StreamReader read = new StreamReader(filename))
-            { 
+            {
                 string newData = read.ReadLine();
                 return newData;
             }
@@ -446,33 +446,57 @@ namespace ClassLibraryClient
         {
             while (true)
             {
-                if(isConnecting() != isConnected)
+                if (isConnecting() != isConnected)
                 {
                     isConnected = !isConnected;
-                    //ShowLogClient("Mất kết nối tới server");
+                    if (isConnected)
+                    {
+                        ShowLogClient("Đã kết nối thành công");
+                    }
+                    else
+                        ShowLogClient("Mất kết nối tới server");
+
                     ConnectionChangedEventArgs args = new ConnectionChangedEventArgs();
                     args.isConnected = isConnected;
-
                     OnConnectionChanged(args);
-                }    
+                }
                 Thread.Sleep(1000);
             }
         }
 
         public void Dispose()
         {
-            foreach(var thread in runningThreads)
+            foreach (var thread in runningThreads)
             {
                 thread.Abort();
             }
             StopBot();
-            if(isConnecting())
+            if (isConnecting())
             {
                 player.GetStream().Close();
                 player.Close();
             }
         }
 
+        public void ShowLogClient(string info)
+        {
+            Logger logger = LogManager.GetLogger("fileLogger");
+            //var config = new NLog.Config.LoggingConfiguration();
+
+            //var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "logs.txt" };
+            //var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
+
+            //config.AddRule(LogLevel.Info, LogLevel.Fatal, logconsole);
+            //config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+
+            //NLog.LogManager.Configuration = config;
+            logger.Info(info);
+
+            MessageGeneratedEventArgs args = new MessageGeneratedEventArgs();
+            args.Message = info;
+
+            OnMessageGenerated(args);
+        }
 
         public static TcpState GetState(TcpClient tcpClient)
         {
@@ -483,10 +507,10 @@ namespace ClassLibraryClient
         protected virtual void OnTakeTooMuchTimeToConnect(EventArgs e)
         {
             EventHandler handler = TakeTooMuchTimeToConnect;
-            if(handler!=null)
+            if (handler != null)
             {
                 handler(this, e);
-            } 
+            }
         }
 
         public EventHandler TakeTooMuchTimeToConnect;
@@ -521,21 +545,37 @@ namespace ClassLibraryClient
             }
         }
 
+        protected virtual void OnMessageGenerated(MessageGeneratedEventArgs e)
+        {
+            EventHandler<MessageGeneratedEventArgs> handler = MessageGenerated;
+            if (handler != null)
+            {
+                handler(this, e);
+
+            }
+        }
 
         public EventHandler<LoginMessageReceivedEventArgs> LoginMessageReceived;
-
 
         public EventHandler<ConnectionChangedEventArgs> ConnectionChanged;
 
         public EventHandler<System.Timers.ElapsedEventArgs> TimesUp;
+
+        public EventHandler<MessageGeneratedEventArgs> MessageGenerated;
     }
+
+    public class MessageGeneratedEventArgs : EventArgs
+    {
+        public string Message { get; set; }
+    }
+
     public class LoginMessageReceivedEventArgs : EventArgs
     {
         public bool IsValidLogin { get; set; }
     }
+
     public class ConnectionChangedEventArgs : EventArgs
     {
         public bool isConnected { get; set; }
     }
-    
 }
